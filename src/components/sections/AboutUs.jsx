@@ -24,7 +24,7 @@ const AboutUs = () => {
   ]
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
+    <section id="about-us" ref={ref} className="py-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
@@ -39,7 +39,7 @@ const AboutUs = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="space-y-8"
+              className="space-y-8 flex flex-col"
             >
               {/* Badge */}
               <motion.div
@@ -101,7 +101,7 @@ const AboutUs = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              className="space-y-8"
+              className="space-y-8 flex flex-col justify-start"
             >
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed">

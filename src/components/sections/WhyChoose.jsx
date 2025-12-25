@@ -35,7 +35,7 @@ const WhyChoose = () => {
   ]
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
+    <section id="why-choose-us" className="section-padding bg-white relative overflow-hidden">
       <div className="container-custom">
         <motion.div
           className="text-center mb-16"

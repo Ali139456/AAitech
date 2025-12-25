@@ -35,7 +35,7 @@ const Process = () => {
   ]
 
   return (
-    <section className="section-padding bg-gray-50 relative overflow-hidden">
+    <section id="process" className="section-padding bg-gray-50 relative overflow-hidden">
       <div className="container-custom">
         <motion.div
           className="text-center mb-16"

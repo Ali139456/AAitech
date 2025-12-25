@@ -30,135 +30,177 @@ const Header = () => {
   const menuItems = {
     services: {
       label: 'Services',
-      path: '/services',
+      path: '/#services',
       columns: [
         {
-          title: 'Design & Development',
+          title: 'Product Development',
+          icon: '🚀',
+          items: [
+            { label: 'Website Development', path: '/#services' },
+            { label: 'Mobile App Development', path: '/#services' },
+            { label: 'eCommerce Experiences', path: '/#services' },
+            { label: 'UX/UI Design & Prototyping', path: '/#services' },
+            { label: 'Product Design & Discovery', path: '/#services' },
+            { label: 'Game & Interactive Experiences', path: '/#services' },
+          ],
+        },
+        {
+          title: 'Software Engineering',
           icon: '</>',
           items: [
-            { label: 'Website Development', path: '/services/web-development' },
-            { label: 'Mobile App Development', path: '/services/mobile-apps' },
-            { label: 'E-commerce Development', path: '/services/e-commerce' },
-            { label: 'Software Development', path: '/services/software-development' },
-            { label: 'API Development', path: '/services/api-integration' },
-            { label: 'Custom Software Integration', path: '/services/custom-integration' },
+            { label: 'Custom Software Development', path: '/#services' },
+            { label: 'API Design & Development', path: '/#services' },
+            { label: 'System Integration', path: '/#services' },
+            { label: 'Legacy Modernisation', path: '/#services' },
+            { label: 'Bespoke Application Development', path: '/#services' },
           ],
         },
         {
-          title: 'Enterprise Services',
-          icon: '🏢',
+          title: 'Cloud & DevOps',
+          icon: '☁️',
           items: [
-            { label: 'CRM Solutions', path: '/services/crm' },
-            { label: 'Cloud Solutions', path: '/services/cloud' },
-            { label: 'Data Engineering', path: '/services/data-engineering' },
-            { label: 'AI/ML Solutions', path: '/services/ai-ml' },
-            { label: 'Cyber Security', path: '/services/cyber-security' },
+            { label: 'Cloud Architecture & Migration', path: '/#services' },
+            { label: 'Managed Cloud Hosting', path: '/#services' },
+            { label: 'DevOps & CI/CD Automation', path: '/#services' },
+            { label: 'Infrastructure & Server Support', path: '/#services' },
+            { label: 'Cloud Security & Governance', path: '/#services' },
           ],
         },
         {
-          title: 'Support Services',
+          title: 'Data & AI',
+          icon: '🤖',
+          items: [
+            { label: 'Data Engineering', path: '/#services' },
+            { label: 'AI & Machine Learning Solutions', path: '/#services' },
+            { label: 'Intelligent Automation', path: '/#services' },
+            { label: 'Analytics & Business Insights', path: '/#services' },
+          ],
+        },
+        {
+          title: 'Digital Growth',
+          icon: '📈',
+          items: [
+            { label: 'Search Engine Optimization', path: '/#services' },
+            { label: 'Performance Marketing', path: '/#services' },
+            { label: 'Social Media Marketing', path: '/#services' },
+            { label: 'Online Reputation Management', path: '/#services' },
+            { label: 'Conversion & Performance Optimisation', path: '/#services' },
+          ],
+        },
+        {
+          title: 'Managed Services',
           icon: '🛠️',
           items: [
-            { label: 'Hosting', path: '/services/hosting' },
-            { label: 'Server Support', path: '/services/server-support' },
-            { label: 'Development Support', path: '/services/development-support' },
-            { label: 'Staff Augmentation', path: '/hire-developers' },
-            { label: 'DevOps', path: '/services/devops' },
+            { label: 'Application Support', path: '/#services' },
+            { label: 'Platform Support & Optimisation', path: '/#services' },
+            { label: 'Development Support', path: '/#services' },
+            { label: 'Digital Fulfilment', path: '/#services' },
+            { label: 'IT Support Services', path: '/#services' },
+          ],
+        },
+        {
+          title: 'Enterprise Platforms',
+          icon: '🏢',
+          items: [
+            { label: 'CMS & DXP (Sitecore, AEM, Umbraco)', path: '/#services' },
+            { label: 'CRM (Salesforce, HubSpot, Dynamics)', path: '/#services' },
+            { label: 'ServiceNow', path: '/#services' },
+            { label: 'ERP & Business Systems', path: '/#services' },
           ],
         },
       ],
     },
     products: {
       label: 'Products',
-      path: '/products',
+      path: '/#features',
       columns: [
         {
           title: 'Our Products',
           icon: '📦',
           items: [
-            { label: 'AI Analytics Platform', path: '/products/ai-analytics' },
-            { label: 'Cloud Management Suite', path: '/products/cloud-management' },
-            { label: 'Enterprise CRM', path: '/products/enterprise-crm' },
-            { label: 'Data Integration Hub', path: '/products/data-integration' },
+            { label: 'AI Analytics Platform', path: '/#features' },
+            { label: 'Cloud Management Suite', path: '/#features' },
+            { label: 'Enterprise CRM', path: '/#features' },
+            { label: 'Data Integration Hub', path: '/#features' },
           ],
         },
       ],
     },
     'hire-developers': {
       label: 'Hire Developers',
-      path: '/hire-developers',
+      path: '/#hire-requirement',
       columns: [
         {
           title: 'Hiring Models',
           icon: '👥',
           items: [
-            { label: 'Staff Augmentation', path: '/hire-developers#staff-augmentation' },
-            { label: 'Dedicated Team', path: '/hire-developers#dedicated-team' },
-            { label: 'Time-Based Support', path: '/hire-developers#time-based' },
+            { label: 'Staff Augmentation', path: '/#hire-requirement' },
+            { label: 'Dedicated Team', path: '/#hire-requirement' },
+            { label: 'Time-Based Support', path: '/#hire-requirement' },
           ],
         },
         {
           title: 'Technologies',
           icon: '💻',
           items: [
-            { label: 'React Developers', path: '/hire-developers?tech=react' },
-            { label: 'Node.js Developers', path: '/hire-developers?tech=nodejs' },
-            { label: 'Python Developers', path: '/hire-developers?tech=python' },
-            { label: 'AWS/Azure Experts', path: '/hire-developers?tech=cloud' },
-            { label: 'Full-Stack Developers', path: '/hire-developers?tech=fullstack' },
+            { label: 'React Developers', path: '/#languages-frameworks' },
+            { label: 'Node.js Developers', path: '/#languages-frameworks' },
+            { label: 'Python Developers', path: '/#languages-frameworks' },
+            { label: 'AWS/Azure Experts', path: '/#technologies' },
+            { label: 'Full-Stack Developers', path: '/#technologies' },
           ],
         },
       ],
     },
     'partner-success': {
       label: 'Partner Success',
-      path: '/partner-success',
+      path: '/#why-choose-us',
       columns: [
         {
           title: 'Case Studies',
           icon: '📊',
           items: [
-            { label: 'Cloud Migration', path: '/partner-success?category=cloud' },
-            { label: 'AI/ML Projects', path: '/partner-success?category=ai' },
-            { label: 'E-Commerce', path: '/partner-success?category=ecommerce' },
-            { label: 'Mobile Apps', path: '/partner-success?category=mobile' },
-            { label: 'Data Engineering', path: '/partner-success?category=data' },
+            { label: 'Cloud Migration', path: '/#why-choose-us' },
+            { label: 'AI/ML Projects', path: '/#why-choose-us' },
+            { label: 'E-Commerce', path: '/#why-choose-us' },
+            { label: 'Mobile Apps', path: '/#why-choose-us' },
+            { label: 'Data Engineering', path: '/#why-choose-us' },
           ],
         },
       ],
     },
     'managed-services': {
       label: 'Managed Services',
-      path: '/managed-services',
+      path: '/#services',
       columns: [
         {
           title: 'Services',
           icon: '⚙️',
           items: [
-            { label: '24/7 Monitoring & Support', path: '/managed-services#monitoring' },
-            { label: 'Cloud Infrastructure', path: '/managed-services#cloud' },
-            { label: 'Application Maintenance', path: '/managed-services#maintenance' },
-            { label: 'Security Management', path: '/managed-services#security' },
-            { label: 'Database Management', path: '/managed-services#database' },
-            { label: 'DevOps & CI/CD', path: '/managed-services#devops' },
+            { label: '24/7 Monitoring & Support', path: '/#services' },
+            { label: 'Cloud Infrastructure', path: '/#services' },
+            { label: 'Application Maintenance', path: '/#services' },
+            { label: 'Security Management', path: '/#services' },
+            { label: 'Database Management', path: '/#services' },
+            { label: 'DevOps & CI/CD', path: '/#services' },
           ],
         },
       ],
     },
     resources: {
       label: 'Resources',
-      path: '/resources',
+      path: '/#faq',
       columns: [
         {
           title: 'Content',
           icon: '📚',
           items: [
-            { label: 'Blogs & Insights', path: '/resources/blog' },
-            { label: 'Case Studies', path: '/partner-success' },
-            { label: 'Press Releases', path: '/resources/press-releases' },
-            { label: 'Events', path: '/resources/events' },
-            { label: 'Webinars', path: '/resources/webinars' },
-            { label: 'Videos', path: '/resources/videos' },
+            { label: 'Blogs & Insights', path: '/#faq' },
+            { label: 'Case Studies', path: '/#why-choose-us' },
+            { label: 'Press Releases', path: '/#faq' },
+            { label: 'Events', path: '/#faq' },
+            { label: 'Webinars', path: '/#faq' },
+            { label: 'Videos', path: '/#faq' },
           ],
         },
       ],
@@ -248,7 +290,7 @@ const Header = () => {
                       className="fixed left-0 right-0 top-20 bg-white text-gray-900 shadow-2xl py-8 z-50 border-t border-primary-200"
                     >
                     <div className="container-custom">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
                       {item.columns.map((column, colIndex) => (
                         <div key={colIndex}>
                           <div className="flex items-center mb-4">
@@ -260,7 +302,21 @@ const Header = () => {
                               <li key={itemIndex}>
                                 <Link
                                   to={subItem.path}
-                                  onClick={() => setActiveDropdown(null)}
+                                  onClick={(e) => {
+                                    if (subItem.path.startsWith('/#')) {
+                                      e.preventDefault()
+                                      const hash = subItem.path.substring(1)
+                                      if (location.pathname !== '/') {
+                                        window.location.href = subItem.path
+                                      } else {
+                                        const element = document.querySelector(hash)
+                                        if (element) {
+                                          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                        }
+                                      }
+                                    }
+                                    setActiveDropdown(null)
+                                  }}
                                   className="text-gray-700 hover:text-primary-600 transition-colors text-sm block py-1"
                                 >
                                   {subItem.label}
@@ -271,11 +327,25 @@ const Header = () => {
                         </div>
                       ))}
                       </div>
-                      <div className="mt-6 pt-6 border-t border-gray-700">
+                      <div className="mt-6 pt-6 border-t border-gray-200">
                         <Link
                           to={item.path}
-                          onClick={() => setActiveDropdown(null)}
-                          className="text-primary-400 hover:text-primary-300 font-semibold text-sm flex items-center"
+                          onClick={(e) => {
+                            if (item.path.startsWith('/#')) {
+                              e.preventDefault()
+                              const hash = item.path.substring(1)
+                              if (location.pathname !== '/') {
+                                window.location.href = item.path
+                              } else {
+                                const element = document.querySelector(hash)
+                                if (element) {
+                                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                }
+                              }
+                            }
+                            setActiveDropdown(null)
+                          }}
+                          className="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center"
                         >
                           View All {item.label}
                           <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -360,7 +430,21 @@ const Header = () => {
               <div key={key} className="mb-2">
                 <Link
                   to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    if (item.path.startsWith('/#')) {
+                      e.preventDefault()
+                      const hash = item.path.substring(1)
+                      if (location.pathname !== '/') {
+                        window.location.href = item.path
+                      } else {
+                        const element = document.querySelector(hash)
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                        }
+                      }
+                    }
+                    setIsMenuOpen(false)
+                  }}
                 className={`block py-3 text-base font-medium ${
                   location.pathname === item.path
                     ? 'text-primary-600'
@@ -381,7 +465,21 @@ const Header = () => {
                             <li key={itemIndex}>
                               <Link
                                 to={subItem.path}
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                  if (subItem.path.startsWith('/#')) {
+                                    e.preventDefault()
+                                    const hash = subItem.path.substring(1)
+                                    if (location.pathname !== '/') {
+                                      window.location.href = subItem.path
+                                    } else {
+                                      const element = document.querySelector(hash)
+                                      if (element) {
+                                        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                      }
+                                    }
+                                  }
+                                  setIsMenuOpen(false)
+                                }}
                                 className="text-sm text-gray-600 hover:text-primary-600 block py-1"
                               >
                                 {subItem.label}
