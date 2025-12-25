@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const ServiceDetail = () => {
   const { slug } = useParams()
+  const navigate = useNavigate()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
@@ -19,8 +20,8 @@ const ServiceDetail = () => {
   ]
 
   const currentIndex = serviceSlugs.indexOf(slug || 'product-development')
-  const nextSlug = serviceSlugs[(currentIndex + 1) % serviceSlugs.length]
-  const prevSlug = serviceSlugs[(currentIndex - 1 + serviceSlugs.length) % serviceSlugs.length]
+  const nextSlug = currentIndex < serviceSlugs.length - 1 ? serviceSlugs[currentIndex + 1] : serviceSlugs[0]
+  const prevSlug = currentIndex > 0 ? serviceSlugs[currentIndex - 1] : serviceSlugs[serviceSlugs.length - 1]
 
   const serviceData = {
     'product-development': {

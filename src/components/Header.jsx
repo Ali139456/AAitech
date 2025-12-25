@@ -305,10 +305,22 @@ const Header = () => {
                               <li key={itemIndex}>
                                 <Link
                                   to={subItem.path}
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    if (subItem.path.startsWith('/#')) {
+                                      e.preventDefault()
+                                      const hash = subItem.path.substring(1)
+                                      if (location.pathname !== '/') {
+                                        window.location.href = subItem.path
+                                      } else {
+                                        const element = document.querySelector(hash)
+                                        if (element) {
+                                          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                        }
+                                      }
+                                    }
                                     setActiveDropdown(null)
                                   }}
-                                  className="text-gray-700 hover:text-primary-600 transition-colors text-sm block py-1 cursor-pointer"
+                                  className="text-gray-700 hover:text-primary-600 transition-colors text-sm block py-1"
                                 >
                                   {subItem.label}
                                 </Link>
