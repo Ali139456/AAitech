@@ -101,7 +101,7 @@ const AboutUs = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              className="space-y-8 flex flex-col justify-start"
+              className="space-y-8 flex flex-col justify-start lg:pt-16"
             >
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
@@ -135,12 +135,12 @@ const AboutUs = () => {
                 </div>
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Button - Aligned with left column bottom */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="pt-4"
+                className="pt-4 mt-auto"
               >
                 <motion.a
                   href="/about"
