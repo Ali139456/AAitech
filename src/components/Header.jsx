@@ -30,82 +30,82 @@ const Header = () => {
   const menuItems = {
     services: {
       label: 'Services',
-      path: '/#services',
+      path: '/services',
       columns: [
         {
           title: 'Product Development',
           icon: '🚀',
           items: [
-            { label: 'Website Development', path: '/#services' },
-            { label: 'Mobile App Development', path: '/#services' },
-            { label: 'eCommerce Experiences', path: '/#services' },
-            { label: 'UX/UI Design & Prototyping', path: '/#services' },
-            { label: 'Product Design & Discovery', path: '/#services' },
-            { label: 'Game & Interactive Experiences', path: '/#services' },
+            { label: 'Website Development', path: '/services/product-development' },
+            { label: 'Mobile App Development', path: '/services/product-development' },
+            { label: 'eCommerce Experiences', path: '/services/product-development' },
+            { label: 'UX/UI Design & Prototyping', path: '/services/product-development' },
+            { label: 'Product Design & Discovery', path: '/services/product-development' },
+            { label: 'Game & Interactive Experiences', path: '/services/product-development' },
           ],
         },
         {
           title: 'Software Engineering',
           icon: '</>',
           items: [
-            { label: 'Custom Software Development', path: '/#services' },
-            { label: 'API Design & Development', path: '/#services' },
-            { label: 'System Integration', path: '/#services' },
-            { label: 'Legacy Modernisation', path: '/#services' },
-            { label: 'Bespoke Application Development', path: '/#services' },
+            { label: 'Custom Software Development', path: '/services/software-engineering' },
+            { label: 'API Design & Development', path: '/services/software-engineering' },
+            { label: 'System Integration', path: '/services/software-engineering' },
+            { label: 'Legacy Modernisation', path: '/services/software-engineering' },
+            { label: 'Bespoke Application Development', path: '/services/software-engineering' },
           ],
         },
         {
           title: 'Cloud & DevOps',
           icon: '☁️',
           items: [
-            { label: 'Cloud Architecture & Migration', path: '/#services' },
-            { label: 'Managed Cloud Hosting', path: '/#services' },
-            { label: 'DevOps & CI/CD Automation', path: '/#services' },
-            { label: 'Infrastructure & Server Support', path: '/#services' },
-            { label: 'Cloud Security & Governance', path: '/#services' },
+            { label: 'Cloud Architecture & Migration', path: '/services/cloud-devops' },
+            { label: 'Managed Cloud Hosting', path: '/services/cloud-devops' },
+            { label: 'DevOps & CI/CD Automation', path: '/services/cloud-devops' },
+            { label: 'Infrastructure & Server Support', path: '/services/cloud-devops' },
+            { label: 'Cloud Security & Governance', path: '/services/cloud-devops' },
           ],
         },
         {
           title: 'Data & AI',
           icon: '🤖',
           items: [
-            { label: 'Data Engineering', path: '/#services' },
-            { label: 'AI & Machine Learning Solutions', path: '/#services' },
-            { label: 'Intelligent Automation', path: '/#services' },
-            { label: 'Analytics & Business Insights', path: '/#services' },
+            { label: 'Data Engineering', path: '/services/data-ai' },
+            { label: 'AI & Machine Learning Solutions', path: '/services/data-ai' },
+            { label: 'Intelligent Automation', path: '/services/data-ai' },
+            { label: 'Analytics & Business Insights', path: '/services/data-ai' },
           ],
         },
         {
           title: 'Digital Growth',
           icon: '📈',
           items: [
-            { label: 'Search Engine Optimization', path: '/#services' },
-            { label: 'Performance Marketing', path: '/#services' },
-            { label: 'Social Media Marketing', path: '/#services' },
-            { label: 'Online Reputation Management', path: '/#services' },
-            { label: 'Conversion & Performance Optimisation', path: '/#services' },
+            { label: 'Search Engine Optimization', path: '/services/digital-growth' },
+            { label: 'Performance Marketing', path: '/services/digital-growth' },
+            { label: 'Social Media Marketing', path: '/services/digital-growth' },
+            { label: 'Online Reputation Management', path: '/services/digital-growth' },
+            { label: 'Conversion & Performance Optimisation', path: '/services/digital-growth' },
           ],
         },
         {
           title: 'Managed Services',
           icon: '🛠️',
           items: [
-            { label: 'Application Support', path: '/#services' },
-            { label: 'Platform Support & Optimisation', path: '/#services' },
-            { label: 'Development Support', path: '/#services' },
-            { label: 'Digital Fulfilment', path: '/#services' },
-            { label: 'IT Support Services', path: '/#services' },
+            { label: 'Application Support', path: '/services/managed-services' },
+            { label: 'Platform Support & Optimisation', path: '/services/managed-services' },
+            { label: 'Development Support', path: '/services/managed-services' },
+            { label: 'Digital Fulfilment', path: '/services/managed-services' },
+            { label: 'IT Support Services', path: '/services/managed-services' },
           ],
         },
         {
           title: 'Enterprise Platforms',
           icon: '🏢',
           items: [
-            { label: 'CMS & DXP (Sitecore, AEM, Umbraco)', path: '/#services' },
-            { label: 'CRM (Salesforce, HubSpot, Dynamics)', path: '/#services' },
-            { label: 'ServiceNow', path: '/#services' },
-            { label: 'ERP & Business Systems', path: '/#services' },
+            { label: 'CMS & DXP (Sitecore, AEM, Umbraco)', path: '/services/enterprise-platforms' },
+            { label: 'CRM (Salesforce, HubSpot, Dynamics)', path: '/services/enterprise-platforms' },
+            { label: 'ServiceNow', path: '/services/enterprise-platforms' },
+            { label: 'ERP & Business Systems', path: '/services/enterprise-platforms' },
           ],
         },
       ],
@@ -333,19 +333,7 @@ const Header = () => {
                       <div className="mt-6 pt-6 border-t border-gray-200">
                         <Link
                           to={item.path}
-                          onClick={(e) => {
-                            if (item.path.startsWith('/#')) {
-                              e.preventDefault()
-                              const hash = item.path.substring(1)
-                              if (location.pathname !== '/') {
-                                window.location.href = item.path
-                              } else {
-                                const element = document.querySelector(hash)
-                                if (element) {
-                                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                                }
-                              }
-                            }
+                          onClick={() => {
                             setActiveDropdown(null)
                           }}
                           className="text-primary-600 hover:text-primary-700 font-semibold text-sm flex items-center"
@@ -433,23 +421,11 @@ const Header = () => {
               <div key={key} className="mb-2">
                 <Link
                   to={item.path}
-                  onClick={(e) => {
-                    if (item.path.startsWith('/#')) {
-                      e.preventDefault()
-                      const hash = item.path.substring(1)
-                      if (location.pathname !== '/') {
-                        window.location.href = item.path
-                      } else {
-                        const element = document.querySelector(hash)
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                        }
-                      }
-                    }
+                  onClick={() => {
                     setIsMenuOpen(false)
                   }}
                 className={`block py-3 text-base font-medium ${
-                  location.pathname === item.path
+                  location.pathname === item.path || location.pathname.startsWith(item.path + '/')
                     ? 'text-primary-600'
                     : 'text-gray-700'
                 }`}
@@ -468,19 +444,7 @@ const Header = () => {
                             <li key={itemIndex}>
                               <Link
                                 to={subItem.path}
-                                onClick={(e) => {
-                                  if (subItem.path.startsWith('/#')) {
-                                    e.preventDefault()
-                                    const hash = subItem.path.substring(1)
-                                    if (location.pathname !== '/') {
-                                      window.location.href = subItem.path
-                                    } else {
-                                      const element = document.querySelector(hash)
-                                      if (element) {
-                                        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                                      }
-                                    }
-                                  }
+                                onClick={() => {
                                   setIsMenuOpen(false)
                                 }}
                                 className="text-sm text-gray-600 hover:text-primary-600 block py-1"
