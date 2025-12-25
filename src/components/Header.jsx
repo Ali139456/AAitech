@@ -112,16 +112,19 @@ const Header = () => {
     },
     products: {
       label: 'Products',
-      path: '/#features',
+      path: '/products',
       columns: [
         {
-          title: 'Our Products',
-          icon: '📦',
+          title: 'AI Agents',
+          icon: '🤖',
           items: [
-            { label: 'AI Analytics Platform', path: '/#features' },
-            { label: 'Cloud Management Suite', path: '/#features' },
-            { label: 'Enterprise CRM', path: '/#features' },
-            { label: 'Data Integration Hub', path: '/#features' },
+            { label: 'AI Sales Agent', path: '/products' },
+            { label: 'AI Salon Booking Agent', path: '/products' },
+            { label: 'AI Trade Strategy Agent', path: '/products' },
+            { label: 'AI Restaurant Booking Agent', path: '/products' },
+            { label: 'AI Real Estate Agent', path: '/products' },
+            { label: 'AI Dentist Assist Agent', path: '/products' },
+            { label: 'AI Lawn Care Agent', path: '/products' },
           ],
         },
       ],
