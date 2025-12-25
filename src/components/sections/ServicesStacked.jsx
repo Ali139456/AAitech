@@ -275,7 +275,8 @@ const ServicesStacked = () => {
                   </div>
                 )}
               </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
