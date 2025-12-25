@@ -46,16 +46,14 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200"
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-sky-100 border border-sky-200 mb-6"
               >
-                <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">About Aaitek</span>
+                <span className="text-sm font-semibold text-sky-600 uppercase tracking-wider">ABOUT AAITEK</span>
               </motion.div>
 
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-                ABOUT{' '}
-                <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-                  US
-                </span>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+                <span className="text-gray-900">ABOUT</span>{' '}
+                <span className="text-cyan-500">US</span>
               </h2>
               
               <p className="text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed">
