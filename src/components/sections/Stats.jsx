@@ -7,19 +7,15 @@ const Stats = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const partners = [
-    { name: 'Microsoft', initial: 'MS', color: 'from-blue-500 to-blue-600', bg: 'bg-blue-50' },
-    { name: 'Adobe', initial: 'AD', color: 'from-red-500 to-pink-500', bg: 'bg-red-50' },
-    { name: 'Google Partner', initial: 'GP', color: 'from-red-500 to-orange-500', bg: 'bg-orange-50' },
-    { name: 'Commerce', initial: 'CM', color: 'from-blue-500 to-cyan-500', bg: 'bg-cyan-50' },
-    { name: 'KEYFACTOR', initial: 'KF', color: 'from-purple-500 to-purple-600', bg: 'bg-purple-50' },
-    { name: 'Shopify', initial: 'SP', color: 'from-green-500 to-emerald-500', bg: 'bg-green-50' },
-    { name: 'Clutch', initial: 'CL', color: 'from-indigo-500 to-indigo-600', bg: 'bg-indigo-50' },
-    { name: 'HubSpot', initial: 'HS', color: 'from-orange-500 to-red-500', bg: 'bg-orange-50' },
-    { name: 'CRA', initial: 'CRA', color: 'from-blue-600 to-blue-700', bg: 'bg-blue-50' },
-    { name: 'Pantheon', initial: 'PN', color: 'from-gray-600 to-gray-700', bg: 'bg-gray-50' },
-    { name: 'Forbes', initial: 'FB', color: 'from-yellow-500 to-yellow-600', bg: 'bg-yellow-50' },
-    { name: 'Sitecore', initial: 'SC', color: 'from-blue-500 to-blue-600', bg: 'bg-blue-50' },
+    { name: 'Microsoft', logo: '/microsoft-partner.png' },
+    { name: 'Cisco', logo: '/Cisco-Nov-17-2023-06-32-51-2041-AM.webp' },
+    { name: 'Cloudflare', logo: '/cf-blog-logo-crop.png' },
+    { name: 'YouTube', logo: '/hd-official-youtube-yt-logo-png-701751694786680qxacfiwgqw.png' },
+    { name: 'Instagram', logo: '/instagram-vector-logo-icon-social-media-logotype_901408-392.avif' },
   ]
+
+  // Duplicate partners for seamless loop
+  const duplicatedPartners = [...partners, ...partners, ...partners]
 
   return (
     <section className="section-padding bg-white relative overflow-hidden">
@@ -42,40 +38,42 @@ const Stats = () => {
           </p>
         </motion.div>
 
-        {/* Partners Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.3, 
-                delay: index * 0.05, 
-                ease: 'easeIn' 
-              }}
-              whileHover={{ y: -8, scale: 1.05 }}
-              className="group relative"
-            >
-              <div className={`${partner.bg} rounded-2xl p-6 border-2 border-gray-200 hover:border-primary-300 shadow-sm hover:shadow-xl transition-all duration-0 h-full flex flex-col items-center justify-center aspect-square`}>
-                {/* Logo Circle */}
-                <div className={`w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br ${partner.color} rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-lg group-hover:scale-110 transition-transform duration-0 mb-4 relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                  <span className="relative z-10">{partner.initial}</span>
-                </div>
-                
-                {/* Partner Name */}
-                <h3 className="text-sm md:text-base font-semibold text-gray-800 text-center group-hover:text-primary-600 transition-colors duration-0">
-                  {partner.name}
-                </h3>
-                
-                {/* Hover Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${partner.color} opacity-0 group-hover:opacity-5 transition-opacity duration-0 rounded-2xl`}></div>
-              </div>
-            </motion.div>
-          ))}
+        {/* Continuous Rotating Logo Carousel */}
+        <div className="relative overflow-hidden py-8">
+          {/* Gradient Fade on Sides */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none"></div>
+          
+          <motion.div
+            className="flex items-center gap-12 md:gap-16"
+            animate={{
+              x: [0, -(partners.length * 200)],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration: 20,
+                ease: 'linear',
+              },
+            }}
+          >
+            {duplicatedPartners.map((partner, index) => (
+              <motion.div
+                key={`${partner.name}-${index}`}
+                className="flex-shrink-0 flex items-center justify-center"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-16 md:h-20 w-auto object-contain transition-all duration-300 opacity-80 hover:opacity-100"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Achievement Badges */}

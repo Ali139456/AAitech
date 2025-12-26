@@ -60,87 +60,85 @@ const ServiceShowcase = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: 'easeIn' }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
+            <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Our Solutions</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Enterprise Mobile Application
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            A comprehensive mobile solution that provides real-time updates on booking and management services, delivering seamless experiences across iOS and Android platforms.
+          </p>
+        </motion.div>
+
+        {/* Three Column Layout: Features Left | Phones Center | Features Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
           {/* Left Side - Features */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.3, ease: 'easeIn' }}
+            className="space-y-4 order-2 lg:order-1"
           >
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
-                <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Our Solutions</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-                Enterprise Mobile Application
-              </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                A comprehensive mobile solution that provides real-time updates on booking and management services, delivering seamless experiences across iOS and Android platforms.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                  transition={{ duration: 0.3, delay: 0.2 + index * 0.1, ease: 'easeIn' }}
-                  whileHover={{ x: 8, scale: 1.02 }}
-                  className="group flex items-start gap-4 p-5 bg-white rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-0"
-                >
-                  {/* Icon */}
-                  <div className={`w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform duration-0 flex-shrink-0`}>
-                    {feature.icon}
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-0">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                  
-                  {/* Arrow */}
-                  <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-0">
-                    <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            {features.slice(0, 4).map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                transition={{ duration: 0.3, delay: 0.2 + index * 0.1, ease: 'easeIn' }}
+                whileHover={{ x: 8, scale: 1.02 }}
+                className="group flex items-start gap-3 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-0"
+              >
+                {/* Icon */}
+                <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform duration-0 flex-shrink-0`}>
+                  {feature.icon}
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors duration-0">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Right Side - Visual Mockups */}
+          {/* Center - Phone Mockups (Smaller) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.3, delay: 0.2, ease: 'easeIn' }}
-            className="relative"
+            className="relative flex items-center justify-center order-1 lg:order-2"
           >
             {/* Phone Mockups Container */}
-            <div className="relative flex items-center justify-center gap-4 md:gap-6">
+            <div className="relative flex items-center justify-center gap-3 md:gap-4">
               {/* Phone 1 - Left */}
               <motion.div
-                initial={{ opacity: 0, y: 50, rotate: -10 }}
-                animate={isInView ? { opacity: 1, y: 0, rotate: -10 } : { opacity: 0, y: 50, rotate: -10 }}
+                initial={{ opacity: 0, y: 50, rotate: -8 }}
+                animate={isInView ? { opacity: 1, y: 0, rotate: -8 } : { opacity: 0, y: 50, rotate: -8 }}
                 transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
                 className="relative z-10"
               >
-                <div className="w-48 md:w-56 h-[500px] md:h-[600px] bg-gradient-to-br from-blue-600 to-blue-800 rounded-[2.5rem] p-3 shadow-2xl border-8 border-gray-900">
-                  <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
-                    {/* Phone Screen Content */}
-                    <div className="p-4 h-full flex flex-col">
-                      <div className="h-12 bg-blue-600 rounded-lg mb-4 flex items-center justify-center">
-                        <span className="text-white font-semibold text-sm">Flight Search</span>
+                <div className="w-32 md:w-40 h-[400px] md:h-[480px] bg-gradient-to-br from-blue-600 to-blue-800 rounded-[2rem] p-2 shadow-2xl border-6 border-gray-900">
+                  <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
+                    <div className="p-3 h-full flex flex-col">
+                      <div className="h-10 bg-blue-600 rounded-lg mb-3 flex items-center justify-center">
+                        <span className="text-white font-semibold text-xs">Flight Search</span>
                       </div>
-                      <div className="space-y-3 flex-1">
+                      <div className="space-y-2 flex-1">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="h-20 bg-gray-100 rounded-lg"></div>
+                          <div key={i} className="h-16 bg-gray-100 rounded-lg"></div>
                         ))}
                       </div>
                     </div>
@@ -155,19 +153,18 @@ const ServiceShowcase = () => {
                 transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
                 className="relative z-20"
               >
-                <div className="w-52 md:w-64 h-[550px] md:h-[650px] bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-[2.5rem] p-3 shadow-2xl border-8 border-gray-900">
-                  <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
-                    {/* Phone Screen Content */}
-                    <div className="p-4 h-full flex flex-col">
-                      <div className="h-16 bg-cyan-500 rounded-lg mb-4 flex items-center justify-center">
-                        <span className="text-white font-semibold">Booking Confirmed</span>
+                <div className="w-36 md:w-44 h-[440px] md:h-[520px] bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-[2rem] p-2 shadow-2xl border-6 border-gray-900">
+                  <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
+                    <div className="p-3 h-full flex flex-col">
+                      <div className="h-12 bg-cyan-500 rounded-lg mb-3 flex items-center justify-center">
+                        <span className="text-white font-semibold text-sm">Booking Confirmed</span>
                       </div>
-                      <div className="flex-1 bg-gradient-to-br from-cyan-50 to-white rounded-lg p-4 flex flex-col items-center justify-center">
-                        <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-4">
-                          <span className="text-white text-3xl">✓</span>
+                      <div className="flex-1 bg-gradient-to-br from-cyan-50 to-white rounded-lg p-3 flex flex-col items-center justify-center">
+                        <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-3">
+                          <span className="text-white text-2xl">✓</span>
                         </div>
-                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                        <div className="h-3 bg-gray-200 rounded w-3/4 mb-2"></div>
+                        <div className="h-3 bg-gray-200 rounded w-1/2"></div>
                       </div>
                     </div>
                   </div>
@@ -176,23 +173,22 @@ const ServiceShowcase = () => {
 
               {/* Phone 3 - Right */}
               <motion.div
-                initial={{ opacity: 0, y: 50, rotate: 10 }}
-                animate={isInView ? { opacity: 1, y: 0, rotate: 10 } : { opacity: 0, y: 50, rotate: 10 }}
+                initial={{ opacity: 0, y: 50, rotate: 8 }}
+                animate={isInView ? { opacity: 1, y: 0, rotate: 8 } : { opacity: 0, y: 50, rotate: 8 }}
                 transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
                 className="relative z-10"
               >
-                <div className="w-48 md:w-56 h-[500px] md:h-[600px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-[2.5rem] p-3 shadow-2xl border-8 border-gray-900">
-                  <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
-                    {/* Phone Screen Content */}
-                    <div className="p-4 h-full flex flex-col">
-                      <div className="h-12 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                        <span className="text-white font-semibold text-sm">Profile</span>
+                <div className="w-32 md:w-40 h-[400px] md:h-[480px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-[2rem] p-2 shadow-2xl border-6 border-gray-900">
+                  <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
+                    <div className="p-3 h-full flex flex-col">
+                      <div className="h-10 bg-gray-800 rounded-lg mb-3 flex items-center justify-center">
+                        <span className="text-white font-semibold text-xs">Profile</span>
                       </div>
-                      <div className="flex-1 space-y-4">
-                        <div className="h-24 bg-gray-100 rounded-lg"></div>
+                      <div className="flex-1 space-y-3">
+                        <div className="h-20 bg-gray-100 rounded-lg"></div>
                         <div className="space-y-2">
                           {[1, 2, 3].map((i) => (
-                            <div key={i} className="h-12 bg-gray-100 rounded-lg"></div>
+                            <div key={i} className="h-10 bg-gray-100 rounded-lg"></div>
                           ))}
                         </div>
                       </div>
@@ -201,10 +197,40 @@ const ServiceShowcase = () => {
                 </div>
               </motion.div>
             </div>
+          </motion.div>
 
-            {/* Decorative Elements */}
-            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary-200 rounded-full blur-3xl opacity-30"></div>
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent-200 rounded-full blur-3xl opacity-30"></div>
+          {/* Right Side - Features */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.3, ease: 'easeIn' }}
+            className="space-y-4 order-3"
+          >
+            {features.slice(4).map((feature, index) => (
+              <motion.div
+                key={index + 4}
+                initial={{ opacity: 0, x: 30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                transition={{ duration: 0.3, delay: 0.2 + index * 0.1, ease: 'easeIn' }}
+                whileHover={{ x: -8, scale: 1.02 }}
+                className="group flex items-start gap-3 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-0"
+              >
+                {/* Icon */}
+                <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform duration-0 flex-shrink-0`}>
+                  {feature.icon}
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors duration-0">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>

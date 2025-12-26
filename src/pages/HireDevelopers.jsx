@@ -139,9 +139,9 @@ const HireDevelopers = () => {
   }
 
   return (
-    <div className="pt-20 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
+    <div className="pt-20 bg-gradient-to-br from-gray-50 via-white to-sky-50">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -190,7 +190,7 @@ const HireDevelopers = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section ref={ref} className="py-24 bg-white">
+      <section ref={ref} className="py-16 md:py-20 bg-white">
         <div className="container-custom">
           <motion.div
             initial="hidden"
@@ -246,7 +246,7 @@ const HireDevelopers = () => {
       </section>
 
       {/* Engagement Models */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container-custom">
           <motion.div
             initial="hidden"
@@ -328,7 +328,7 @@ const HireDevelopers = () => {
       </section>
 
       {/* Technology Expertise */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container-custom">
           <motion.div
             initial="hidden"
@@ -349,9 +349,12 @@ const HireDevelopers = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {['Frontend', 'Backend', 'Cloud', 'DevOps', 'Database', 'CMS', 'Framework', 'API', 'Language'].map((category, catIndex) => {
+            {(() => {
+              // Get unique categories that actually have technologies
+              const categories = [...new Set(technologies.map(tech => tech.category))]
+              return categories.map((category, catIndex) => {
               const categoryTechs = technologies.filter(tech => tech.category === category)
               if (categoryTechs.length === 0) return null
               
@@ -386,13 +389,13 @@ const HireDevelopers = () => {
                   </div>
                 </motion.div>
               )
-            })}
+            })})()}
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>

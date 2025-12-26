@@ -109,8 +109,8 @@ const Features = () => {
                 {feature.description}
               </p>
 
-              {/* Hover Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-accent-50/0 group-hover:from-primary-50/50 group-hover:to-accent-50/50 transition-all duration-0 rounded-2xl"></div>
+              {/* Hover Effect - Subtle */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-0 rounded-2xl pointer-events-none`}></div>
             </motion.div>
           ))}
         </div>

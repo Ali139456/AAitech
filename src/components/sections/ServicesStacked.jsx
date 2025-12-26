@@ -93,29 +93,31 @@ const ServicesStacked = () => {
       bgColor: 'from-indigo-50 to-purple-50',
     },
     {
-      category: 'Enterprise Platforms',
+      category: 'CMS & DXP Platforms',
       slug: 'enterprise-platforms',
-      description: 'Leverage industry-leading enterprise platforms to streamline operations, enhance customer relationships, and drive organizational efficiency.',
-      subcategories: [
-        {
-          name: 'CMS & DXP Platforms',
-          items: ['Sitecore', 'AEM', 'Umbraco', 'WordPress'],
-        },
-        {
-          name: 'CRM Platforms',
-          items: ['Salesforce', 'HubSpot', 'Microsoft Dynamics', 'Zoho'],
-        },
-        {
-          name: 'Service Management',
-          items: ['ServiceNow'],
-        },
-        {
-          name: 'ERP & Business Systems',
-          items: [],
-        },
+      description: 'Leverage industry-leading CMS and DXP platforms to streamline content operations and enhance customer experiences.',
+      services: [
+        'Sitecore',
+        'AEM (Adobe Experience Manager)',
+        'Umbraco',
+        'WordPress',
       ],
       color: 'from-teal-500 to-cyan-500',
       bgColor: 'from-teal-50 to-cyan-50',
+    },
+    {
+      category: 'CRM & Business Platforms',
+      slug: 'enterprise-platforms',
+      description: 'Enhance customer relationships and drive organizational efficiency with leading CRM and business systems.',
+      services: [
+        'Salesforce',
+        'HubSpot',
+        'Microsoft Dynamics',
+        'ServiceNow',
+        'ERP & Business Systems',
+      ],
+      color: 'from-indigo-500 to-purple-500',
+      bgColor: 'from-indigo-50 to-purple-50',
     },
   ]
 
@@ -159,65 +161,65 @@ const ServicesStacked = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ 
-                  duration: 0.3, 
+                  duration: 0.4, 
                   delay: categoryIndex * 0.1,
                   ease: 'easeIn'
                 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0 }}
-                className={`relative bg-gradient-to-br ${category.bgColor || 'from-white to-gray-50'} rounded-2xl p-6 border-2 border-gray-200 hover:border-primary-300 hover:shadow-2xl transition-all duration-0 group overflow-hidden cursor-pointer h-full`}
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.4 } }}
+                className={`relative bg-gradient-to-br ${category.bgColor || 'from-white to-gray-50'} rounded-2xl p-6 border-2 border-gray-200 hover:border-primary-300 hover:shadow-2xl transition-all duration-[0.4s] group overflow-hidden cursor-pointer h-full`}
               >
               {/* Left Border - Colorful */}
               <motion.div
-                className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-100 transition-opacity duration-0`}
+                className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-100 transition-opacity duration-[0.4s]`}
                 initial={{ scaleY: 0 }}
                 whileHover={{ scaleY: 1 }}
-                transition={{ duration: 0 }}
+                transition={{ duration: 0.4 }}
               />
 
               {/* Top Border Accent */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-100 transition-opacity duration-0 rounded-t-2xl`}></div>
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-100 transition-opacity duration-[0.4s] rounded-t-2xl`}></div>
 
               {/* Animated Background Gradient on Hover */}
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-10 transition-opacity duration-0`}
+                className={`absolute inset-0 bg-gradient-to-br ${category.color || 'from-primary-500 to-accent-500'} opacity-0 group-hover:opacity-10 transition-opacity duration-[0.4s]`}
               />
 
               {/* Shine Effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-0"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.4s]"
               />
 
               {/* Category Title */}
               <div className="relative z-10">
                 <div className="flex items-start gap-3 mb-3">
                   {/* Colorful Icon Badge */}
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color || 'from-primary-500 to-accent-500'} flex items-center justify-center text-white text-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-0`}>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color || 'from-primary-500 to-accent-500'} flex items-center justify-center text-white text-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-[0.4s]`}>
                     {category.category === 'Product Development' && '🚀'}
                     {category.category === 'Software Engineering' && '⚙️'}
                     {category.category === 'Cloud & DevOps' && '☁️'}
                     {category.category === 'Data & AI' && '🤖'}
                     {category.category === 'Digital Growth' && '📈'}
                     {category.category === 'Managed Services' && '🛠️'}
-                    {category.category === 'Enterprise Platforms' && '🏢'}
+                    {category.category === 'CMS & DXP Platforms' && '🏢'}
+                    {category.category === 'CRM & Business Platforms' && '💼'}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-0 flex items-center gap-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-[0.4s] flex items-center gap-2">
                       <motion.span
                         className="inline-block"
                         whileHover={{ x: 5 }}
-                        transition={{ duration: 0 }}
+                        transition={{ duration: 0.4 }}
                       >
                         {category.category}
                       </motion.span>
                       <motion.svg
-                        className="w-5 h-5 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-0"
+                        className="w-5 h-5 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-[0.4s]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         initial={{ x: -10 }}
                         whileHover={{ x: 0 }}
-                        transition={{ duration: 0 }}
+                        transition={{ duration: 0.4 }}
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </motion.svg>

@@ -309,6 +309,8 @@ const Header = () => {
                           ? (key === 'products' || key === 'partner-success' 
                               ? 'right-0 w-80' 
                               : 'left-0 w-80')
+                          : key === 'hire-developers'
+                          ? 'left-0 w-[400px] md:w-[500px]'
                           : 'left-0 w-[600px] lg:w-[800px] xl:w-[900px]'
                       } bg-white text-gray-900 shadow-2xl py-6 z-[100] border border-primary-200 rounded-lg`}
                     >
@@ -316,6 +318,8 @@ const Header = () => {
                         <div className={`grid ${
                           item.columns.length === 1 
                             ? 'grid-cols-1' 
+                            : key === 'hire-developers'
+                            ? 'grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'
                             : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8'
                         }`}>
                         {item.columns.map((column, colIndex) => (
