@@ -6,20 +6,10 @@ const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [showText, setShowText] = useState(false)
   const [startAnimations, setStartAnimations] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const heroRef = useRef(null)
   const typeItRef = useRef(null)
   const typeItInstanceRef = useRef(null)
   const heroInView = useInView(heroRef, { once: true, amount: 0.3 })
-  
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
@@ -49,59 +39,16 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
-  // Start animations when hero is in view - faster on mobile
+  // Start animations when hero is in view
   useEffect(() => {
-    // Start immediately on mobile, with delay on desktop
-    const delay = isMobile ? 100 : 500
     if (heroInView) {
+      // Start animations after a short delay to ensure smooth rendering
       const timer = setTimeout(() => {
         setStartAnimations(true)
-      }, delay)
-      return () => clearTimeout(timer)
-    } else {
-      // If not in view yet, start anyway after a short delay (for mobile)
-      const timer = setTimeout(() => {
-        setStartAnimations(true)
-      }, delay)
-      return () => clearTimeout(timer)
-    }
-  }, [heroInView, isMobile])
-  
-  // Fallback: Show text immediately on mobile
-  useEffect(() => {
-    if (isMobile && typeItRef.current && !showText) {
-      // Set initial content for mobile immediately
-      typeItRef.current.innerHTML = "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
-      setShowText(true)
-      
-      // Still try to initialize TypeIt for animation effect
-      const timer = setTimeout(() => {
-        if (startAnimations && typeItRef.current && !typeItInstanceRef.current) {
-          const initTypeIt = async () => {
-            try {
-              const TypeIt = (await import('typeit')).default
-              typeItInstanceRef.current = new TypeIt(typeItRef.current, {
-                strings: [
-                  "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
-                ],
-                speed: 100,
-                waitUntilVisible: true,
-                cursor: false,
-                deleteSpeed: 50,
-                lifeLike: true,
-                breakLines: false,
-                html: true,
-              }).go()
-            } catch (error) {
-              console.error('TypeIt error:', error)
-            }
-          }
-          initTypeIt()
-        }
       }, 500)
       return () => clearTimeout(timer)
     }
-  }, [isMobile, showText, startAnimations])
+  }, [heroInView])
 
   // TypeIt effect - starts when animations are triggered
   useEffect(() => {
@@ -161,8 +108,8 @@ const Hero = () => {
 
 
 
-  // Animated particles - fewer on mobile for performance
-  const particles = Array.from({ length: isMobile ? 8 : 15 }, (_, i) => ({
+  // Animated particles
+  const particles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     size: Math.random() * 4 + 2,
     x: Math.random() * 100,
@@ -186,8 +133,7 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative pt-24 pb-20 md:pb-32 overflow-hidden bg-gradient-to-br from-sky-900 via-sky-800 to-blue-900 min-h-screen flex items-center"
-      style={{ backgroundColor: '#0c4a6e' }}
+      className="relative pt-20 pb-32 overflow-hidden bg-gray-900 min-h-screen flex items-center"
     >
       {/* Gradient Background - Skyish Blue */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -249,39 +195,39 @@ const Hero = () => {
       {/* Main Content */}
       <motion.div 
         style={{ y, opacity, scale }}
-        className="container-custom relative z-20 px-4 sm:px-6"
+        className="container-custom relative z-20"
       >
         <div className="max-w-4xl mx-auto text-center">
           {/* Text Content */}
           <motion.div
-            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.3 : 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative z-10"
           >
               {/* Badge */}
               <motion.div
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 rounded-full bg-primary-500/20 border border-primary-400/30 mb-4 sm:mb-6"
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/20 border border-primary-400/30 mb-6"
               >
                 <motion.div
                   className="w-2 h-2 rounded-full bg-primary-400"
                   animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-[10px] sm:text-xs font-medium text-primary-300 uppercase tracking-wider">
+                <span className="text-xs font-medium text-primary-300 uppercase tracking-wider">
                   AI-Powered Solutions
                 </span>
               </motion.div>
 
               {/* Main Heading with TypeIt */}
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-4 sm:mb-6 leading-[1.1] sm:leading-tight px-2"
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white mb-6 leading-tight"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <motion.span
                   ref={typeItRef}
@@ -289,40 +235,35 @@ const Hero = () => {
                   style={{
                     x: useTransform(x, (val) => val * 0.3),
                     y: useTransform(yMouse, (val) => val * 0.3),
-                    opacity: showText || isMobile ? 1 : 0,
+                    opacity: showText ? 1 : 0,
                   }}
                 />
               </motion.h1>
               
               {/* Description */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed px-3 sm:px-4"
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 When you combine that{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-sm sm:text-base">AI firepower</span> with{' '}
-                <span className="font-semibold text-accent-400 bg-accent-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-sm sm:text-base">industry-specific expertise</span>, 
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">AI firepower</span> with{' '}
+                <span className="font-semibold text-accent-400 bg-accent-400/10 px-2 py-1 rounded">industry-specific expertise</span>, 
                 you get a fully integrated engine for transformation across the entire AI value chain.
               </motion.p>
               
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col gap-3 sm:gap-4 justify-center items-center px-4 sm:px-2 w-full sm:w-auto sm:flex-row"
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.8, delay: 0.7 }}
               >
-                <motion.div 
-                  whileHover={{ scale: 1.02 }} 
-                  whileTap={{ scale: 0.97 }} 
-                  transition={{ duration: 0 }}
-                  className="w-full sm:w-auto"
-                >
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/contact"
-                    className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-sm sm:text-base"
+                    className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0"
                   >
                     <span className="relative z-10">Start a Project</span>
                     <motion.div
@@ -332,7 +273,7 @@ const Hero = () => {
                       transition={{ duration: 0 }}
                     />
                     <motion.svg
-                      className="relative z-10 ml-2 w-4 h-4 sm:w-5 sm:h-5"
+                      className="relative z-10 ml-2 w-5 h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -344,18 +285,13 @@ const Hero = () => {
                     </motion.svg>
                   </Link>
                 </motion.div>
-                <motion.div 
-                  whileHover={{ scale: 1.02 }} 
-                  whileTap={{ scale: 0.97 }} 
-                  transition={{ duration: 0 }}
-                  className="w-full sm:w-auto"
-                >
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/partner-success"
-                    className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-sm sm:text-base"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0"
                   >
                     View Our Work
-                    <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -368,7 +304,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
@@ -382,17 +318,17 @@ const Hero = () => {
               window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
             }
           }}
-          className="flex flex-col items-center gap-1.5 sm:gap-2 cursor-pointer group"
-          animate={{ y: [0, 6, 0] }}
+          className="flex flex-col items-center gap-2 cursor-pointer group"
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <span className="text-[10px] sm:text-xs text-gray-400 font-medium uppercase tracking-wider group-hover:text-primary-400 transition-colors">Scroll</span>
-          <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-300 rounded-full flex justify-center p-1.5 sm:p-2 group-hover:border-primary-400 transition-colors">
+          <span className="text-xs text-gray-400 font-medium uppercase tracking-wider group-hover:text-primary-400 transition-colors">Scroll</span>
+          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-2 group-hover:border-primary-400 transition-colors">
             <motion.div
-              className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary-500 rounded-full"
-              animate={{ y: [0, 10, 0] }}
+              className="w-1.5 h-1.5 bg-primary-500 rounded-full"
+              animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
