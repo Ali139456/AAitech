@@ -49,16 +49,59 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
-  // Start animations when hero is in view
+  // Start animations when hero is in view - faster on mobile
   useEffect(() => {
+    // Start immediately on mobile, with delay on desktop
+    const delay = isMobile ? 100 : 500
     if (heroInView) {
-      // Start animations after a short delay to ensure smooth rendering
       const timer = setTimeout(() => {
         setStartAnimations(true)
+      }, delay)
+      return () => clearTimeout(timer)
+    } else {
+      // If not in view yet, start anyway after a short delay (for mobile)
+      const timer = setTimeout(() => {
+        setStartAnimations(true)
+      }, delay)
+      return () => clearTimeout(timer)
+    }
+  }, [heroInView, isMobile])
+  
+  // Fallback: Show text immediately on mobile
+  useEffect(() => {
+    if (isMobile && typeItRef.current && !showText) {
+      // Set initial content for mobile immediately
+      typeItRef.current.innerHTML = "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
+      setShowText(true)
+      
+      // Still try to initialize TypeIt for animation effect
+      const timer = setTimeout(() => {
+        if (startAnimations && typeItRef.current && !typeItInstanceRef.current) {
+          const initTypeIt = async () => {
+            try {
+              const TypeIt = (await import('typeit')).default
+              typeItInstanceRef.current = new TypeIt(typeItRef.current, {
+                strings: [
+                  "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
+                ],
+                speed: 100,
+                waitUntilVisible: true,
+                cursor: false,
+                deleteSpeed: 50,
+                lifeLike: true,
+                breakLines: false,
+                html: true,
+              }).go()
+            } catch (error) {
+              console.error('TypeIt error:', error)
+            }
+          }
+          initTypeIt()
+        }
       }, 500)
       return () => clearTimeout(timer)
     }
-  }, [heroInView])
+  }, [isMobile, showText, startAnimations])
 
   // TypeIt effect - starts when animations are triggered
   useEffect(() => {
@@ -143,7 +186,8 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative pt-24 pb-20 md:pb-32 overflow-hidden bg-gray-900 min-h-screen flex items-center"
+      className="relative pt-24 pb-20 md:pb-32 overflow-hidden bg-gradient-to-br from-sky-900 via-sky-800 to-blue-900 min-h-screen flex items-center"
+      style={{ backgroundColor: '#0c4a6e' }}
     >
       {/* Gradient Background - Skyish Blue */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -210,16 +254,16 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: isMobile ? 0.3 : 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative z-10"
           >
               {/* Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 rounded-full bg-primary-500/20 border border-primary-400/30 mb-4 sm:mb-6"
               >
                 <motion.div
@@ -235,9 +279,9 @@ const Hero = () => {
               {/* Main Heading with TypeIt */}
               <motion.h1
                 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-4 sm:mb-6 leading-[1.1] sm:leading-tight px-2"
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <motion.span
                   ref={typeItRef}
@@ -245,7 +289,7 @@ const Hero = () => {
                   style={{
                     x: useTransform(x, (val) => val * 0.3),
                     y: useTransform(yMouse, (val) => val * 0.3),
-                    opacity: showText ? 1 : 0,
+                    opacity: showText || isMobile ? 1 : 0,
                   }}
                 />
               </motion.h1>
@@ -253,9 +297,9 @@ const Hero = () => {
               {/* Description */}
               <motion.p
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed px-3 sm:px-4"
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 When you combine that{' '}
                 <span className="font-semibold text-primary-400 bg-primary-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-sm sm:text-base">AI firepower</span> with{' '}
@@ -266,9 +310,9 @@ const Hero = () => {
               {/* CTA Buttons */}
               <motion.div
                 className="flex flex-col gap-3 sm:gap-4 justify-center items-center px-4 sm:px-2 w-full sm:w-auto sm:flex-row"
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <motion.div 
                   whileHover={{ scale: 1.02 }} 
