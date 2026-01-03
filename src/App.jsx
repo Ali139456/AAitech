@@ -5,12 +5,19 @@ import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
+import ServiceCategoryDetail from './pages/ServiceCategoryDetail'
 import Products from './pages/Products'
+import ProductDetail from './pages/ProductDetail'
+import Academy from './pages/Academy'
+import AcademyDetail from './pages/AcademyDetail'
+import Industries from './pages/Industries'
+import IndustryDetail from './pages/IndustryDetail'
 import HireDevelopers from './pages/HireDevelopers'
+import HireTalent from './pages/HireTalent'
 import PartnerSuccess from './pages/PartnerSuccess'
-import ManagedServices from './pages/ManagedServices'
 import Resources from './pages/Resources'
 import About from './pages/About'
+import Company from './pages/Company'
 import Contact from './pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsConditions from './pages/TermsConditions'
@@ -21,17 +28,26 @@ function App() {
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow" style={{ paddingTop: 'var(--header-height, 80px)' }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            {/* Services Routes */}
             <Route path="/services" element={<Services />} />
+            <Route path="/services/category/:slug" element={<ServiceCategoryDetail />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
+            {/* Main Navigation Routes */}
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
+            <Route path="/academy" element={<Academy />} />
+            <Route path="/academy/:slug" element={<AcademyDetail />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/industries/:slug" element={<IndustryDetail />} />
             <Route path="/hire-developers" element={<HireDevelopers />} />
+            <Route path="/hire-talent" element={<HireTalent />} />
             <Route path="/partner-success" element={<PartnerSuccess />} />
-            <Route path="/managed-services" element={<ManagedServices />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
+            <Route path="/company" element={<Company />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />

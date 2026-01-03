@@ -8,7 +8,7 @@ const ContactMarketing = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+    <section ref={ref} className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
       {/* Background Image/Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80')] bg-cover bg-center"></div>
@@ -52,11 +52,11 @@ const ContactMarketing = () => {
               <span className="text-xs font-semibold text-white uppercase tracking-wider">Get Started Today</span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
-              Ready to Transform Your Business?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
+              Ready to Transform Your Digital Strategy?
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Let's discuss how our AI-powered solutions can drive innovation and growth for your organization. Get in touch with our experts today.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Let's discuss how Aaitek's AI-powered platforms and enterprise-grade engineering can help you modernize systems, accelerate innovation, and drive measurable business outcomes.
             </p>
 
             <motion.div
@@ -70,7 +70,7 @@ const ContactMarketing = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-0"
                 >
-                  Contact Us Now
+                  Start a Conversation
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>

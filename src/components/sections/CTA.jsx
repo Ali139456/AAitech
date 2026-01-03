@@ -9,16 +9,16 @@ const CTA = () => {
           <h2 className="heading-2 text-white mb-6">
             Get Customized Solutions, Recommendations, and Estimates for Your Requirements
           </h2>
-          <p className="text-xl text-gray-200 mb-8">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8">
             Fill out the form and we will contact you
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-primary-500 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-primary-400 transition-all duration-0 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link to="/contact" className="bg-primary-500 text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold hover:bg-primary-400 transition-all duration-0 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base text-center">
               Book A Free Consultation
             </Link>
             <a
               href="mailto:office@aaitek.com"
-              className="bg-transparent text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-0 border-2 border-white shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="bg-transparent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-0 border-2 border-white shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base text-center"
             >
               Or Reach Out To Us At office@aaitek.com
             </a>

@@ -8,45 +8,45 @@ const Features = () => {
 
   const features = [
     {
-      title: 'AI-Powered Solutions',
-      description: 'Leverage cutting-edge artificial intelligence to automate processes and drive intelligent decision-making.',
+      title: 'AI-First Engineering',
+      description: 'AI is integrated into every stage of delivery — from design and development to automation and insights — helping organizations operate smarter and innovate with confidence.',
       icon: '🤖',
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      title: 'Enterprise-Grade Security',
-      description: 'Bank-level security protocols and compliance standards to protect your data and applications.',
+      title: 'Enterprise Security & Governance',
+      description: 'Security, compliance, and governance built into every layer — ensuring data protection, regulatory alignment, and enterprise-grade resilience.',
       icon: '🔒',
       color: 'from-green-500 to-emerald-500',
     },
     {
-      title: 'Scalable Architecture',
-      description: 'Build solutions that grow with your business, from startup to enterprise scale.',
-      icon: '📈',
+      title: 'Scalable, Cloud-Native Architecture',
+      description: 'Modern cloud architectures designed to scale reliably from pilot initiatives to global enterprise platforms across AWS, Azure, and hybrid environments.',
+      icon: '☁️',
       color: 'from-purple-500 to-pink-500',
     },
     {
-      title: '24/7 Support',
-      description: 'Round-the-clock technical support and monitoring to ensure your systems run smoothly.',
+      title: 'Agile, Outcome-Driven Delivery',
+      description: 'Iterative delivery models focused on speed, quality, and measurable business outcomes — without compromising stability or security.',
+      icon: '⚡',
+      color: 'from-yellow-500 to-orange-500',
+    },
+    {
+      title: 'Continuous Support & Optimisation',
+      description: 'Proactive monitoring, platform support, and continuous optimisation to ensure long-term reliability, performance, and business continuity.',
       icon: '🛠️',
       color: 'from-orange-500 to-red-500',
     },
     {
-      title: 'Cloud-Native',
-      description: 'Fully cloud-native solutions built for modern infrastructure and deployment models.',
-      icon: '☁️',
-      color: 'from-sky-500 to-blue-500',
-    },
-    {
-      title: 'Agile Development',
-      description: 'Rapid iteration and delivery cycles with continuous integration and deployment.',
-      icon: '⚡',
-      color: 'from-yellow-500 to-orange-500',
+      title: 'Built for Growth',
+      description: 'Solutions architected to evolve with your business — supporting expansion, new markets, and changing customer expectations.',
+      icon: '📈',
+      color: 'from-indigo-500 to-purple-500',
     },
   ]
 
   return (
-    <section id="features" ref={ref} className="py-24 bg-white relative overflow-hidden">
+    <section id="features" ref={ref} className="py-12 sm:py-16 lg:py-24 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
@@ -62,18 +62,18 @@ const Features = () => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
-            <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Features</span>
+            <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Why Aaitek</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
-            Why Choose Our Solutions
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
+            Why Enterprises Choose Aaitek
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Powerful features designed to accelerate your digital transformation
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Capabilities and principles that power secure, scalable, and future-ready digital transformation.
           </p>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -86,7 +86,7 @@ const Features = () => {
                 ease: [0.25, 0.1, 0.25, 1]
               }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200 hover:border-primary-300 hover:shadow-2xl transition-all duration-0 group overflow-hidden"
+              className="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-primary-300 hover:shadow-2xl transition-all duration-0 group overflow-hidden"
             >
               {/* Left Border on Hover */}
               <motion.div
@@ -102,10 +102,10 @@ const Features = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
 

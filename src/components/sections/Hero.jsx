@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView }
 import { useEffect, useRef, useState } from 'react'
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [showText, setShowText] = useState(false)
   const [startAnimations, setStartAnimations] = useState(false)
   const heroRef = useRef(null)
@@ -33,7 +32,6 @@ const Hero = () => {
       const yPos = (clientY / innerHeight - 0.5) * 20
       mouseX.set(xPos)
       mouseY.set(yPos)
-      setMousePosition({ x: xPos, y: yPos })
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
@@ -67,9 +65,9 @@ const Hero = () => {
           
           typeItInstanceRef.current = new TypeIt(typeItRef.current, {
             strings: [
-              "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
+              '<span class="text-white">AI-</span><span style="color: #0ea5e9">Powered</span> <span style="color: #FC923C">Digital Transformation</span> <span class="text-white">for Modern</span> <span style="color: #0ea5e9">Enterprises</span>'
             ],
-            speed: 100,
+            speed: 50,
             waitUntilVisible: true,
             cursor: false,
             deleteSpeed: 50,
@@ -80,10 +78,10 @@ const Hero = () => {
           
           setShowText(true)
         } catch (error) {
-          console.error('TypeIt error:', error)
           // Fallback: just set the text directly with colored spans
+          // TypeIt failed to load, use static text instead
           if (typeItRef.current) {
-            typeItRef.current.innerHTML = "We're a <span style='color: #fb923c;'>Full Stack</span> <span style='color: #06b6d4;'>AI Hub</span>"
+            typeItRef.current.innerHTML = '<span class="text-white">AI-</span><span style="color: #0ea5e9">Powered</span> <span style="color: #FC923C">Digital Transformation</span> <span class="text-white">for Modern</span> <span style="color: #0ea5e9">Enterprises</span>'
             setShowText(true)
           }
         }
@@ -133,7 +131,12 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative pt-20 pb-32 overflow-hidden bg-gray-900 min-h-screen flex items-center"
+      className="relative pb-32 overflow-hidden bg-gray-900 flex items-center"
+      style={{ 
+        height: 'calc(100vh - var(--header-height, 80px))',
+        minHeight: 'calc(100vh - var(--header-height, 80px))',
+        paddingTop: 'var(--header-height, 80px)'
+      }}
     >
       {/* Gradient Background - Skyish Blue */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -224,7 +227,7 @@ const Hero = () => {
 
               {/* Main Heading with TypeIt */}
               <motion.h1
-                className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white mb-6 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -242,15 +245,15 @@ const Hero = () => {
               
               {/* Description */}
               <motion.p
-                className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                When you combine that{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">AI firepower</span> with{' '}
-                <span className="font-semibold text-accent-400 bg-accent-400/10 px-2 py-1 rounded">industry-specific expertise</span>, 
-                you get a fully integrated engine for transformation across the entire AI value chain.
+                We design, build, and scale intelligent digital platforms by combining{' '}
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">AI</span>,{' '}
+                <span className="font-semibold text-accent-400 bg-accent-400/10 px-2 py-1 rounded">cloud</span>, and{' '}
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">enterprise-grade engineering</span> — enabling organizations to innovate faster, operate smarter, and grow with confidence.
               </motion.p>
               
               {/* CTA Buttons */}
@@ -263,7 +266,7 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/contact"
-                    className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0"
+                    className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-sm sm:text-base"
                   >
                     <span className="relative z-10">Start a Project</span>
                     <motion.div
@@ -288,7 +291,7 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/partner-success"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0"
+                    className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-sm sm:text-base"
                   >
                     View Our Work
                     <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

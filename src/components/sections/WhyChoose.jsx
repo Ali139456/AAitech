@@ -3,33 +3,33 @@ import { motion } from 'framer-motion'
 const WhyChoose = () => {
   const features = [
     {
-      title: '20+ Years Experience',
-      description: 'Two decades of delivering successful digital transformation projects across industries.',
+      title: '18+ Years of Delivery Experience',
+      description: 'Over two decades of successfully delivering complex digital transformation initiatives across industries and geographies.',
       icon: '🎯',
     },
     {
-      title: 'Agile Development',
-      description: 'Flexible, iterative approach that adapts to your needs and delivers value quickly.',
+      title: 'Agile, Outcome-Driven Delivery',
+      description: 'Flexible and iterative delivery approaches focused on speed, quality, and measurable business outcomes.',
       icon: '⚡',
     },
     {
-      title: 'AI-First Approach',
-      description: 'Leveraging cutting-edge AI and automation to build smarter, more efficient solutions.',
+      title: 'AI-First by Design',
+      description: 'Artificial intelligence embedded across strategy, engineering, automation, and analytics to drive smarter, more efficient solutions.',
       icon: '🤖',
     },
     {
-      title: 'Fast Delivery',
-      description: 'Rapid development cycles without compromising on quality or security.',
+      title: 'Reliable, Fast Execution',
+      description: 'Accelerated delivery cycles without compromising security, scalability, or enterprise standards.',
       icon: '🚀',
     },
     {
-      title: 'Ongoing Support',
-      description: 'Dedicated support team ensures your systems run smoothly and evolve with your business.',
+      title: 'Long-Term Partnership & Support',
+      description: 'Ongoing support, optimisation, and evolution to ensure platforms remain stable, secure, and future-ready.',
       icon: '🛠️',
     },
     {
       title: 'Proven Track Record',
-      description: '200+ successful projects and 150+ satisfied clients worldwide.',
+      description: 'Trusted delivery partner with 200+ successful projects and long-standing client relationships worldwide.',
       icon: '⭐',
     },
   ]
@@ -50,8 +50,8 @@ const WhyChoose = () => {
           <h2 className="heading-2 mb-4 text-gray-900">
             Your Trusted IT Partner
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Aaitek is a powerhouse of digital transformation, bringing together top-tier experts with a diverse skillset to craft custom, world-class solutions for businesses of all sizes. From visionary digital product design to seamless development, we're dedicated to delivering transformative digital experiences that redefine success.
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+            Aaitek partners with organizations to design, build, and scale enterprise-grade digital platforms. By combining deep engineering expertise, AI-first thinking, and proven delivery models, we help businesses modernize systems, improve efficiency, and achieve sustainable growth.
           </p>
         </motion.div>
 

@@ -1,256 +1,220 @@
-import { motion } from 'framer-motion'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useParams, Link } from 'react-router-dom'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import { servicesData } from '../data/servicesData'
+import { fetchServiceBySlug } from '../utils/api'
 
 const ServiceDetail = () => {
   const { slug } = useParams()
-  const navigate = useNavigate()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const [service, setService] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [openFAQIndex, setOpenFAQIndex] = useState(null)
 
-  const serviceSlugs = [
-    'product-development',
-    'software-engineering',
-    'cloud-devops',
-    'data-ai',
-    'digital-growth',
-    'managed-services',
-    'enterprise-platforms',
-  ]
-
-  const currentIndex = serviceSlugs.indexOf(slug || 'product-development')
-  const nextSlug = currentIndex < serviceSlugs.length - 1 ? serviceSlugs[currentIndex + 1] : serviceSlugs[0]
-  const prevSlug = currentIndex > 0 ? serviceSlugs[currentIndex - 1] : serviceSlugs[serviceSlugs.length - 1]
-
-  const serviceData = {
-    'product-development': {
-      title: 'Product Development',
-      subtitle: 'Transform Ideas into Digital Products',
-      description: 'We help businesses transform innovative ideas into powerful digital products that engage users and drive business growth. From initial concept to market launch, our comprehensive product development services ensure your vision becomes reality.',
-      longDescription: 'Our product development approach combines user-centric design, cutting-edge technology, and agile methodologies to deliver products that not only meet but exceed market expectations. We work closely with you throughout the entire product lifecycle, from discovery and ideation to design, development, testing, and launch.',
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
-      icon: '🚀',
-      color: 'from-blue-500 to-cyan-500',
-      features: [
-        'End-to-end product development lifecycle',
-        'User research and market analysis',
-        'Agile and iterative development',
-        'Cross-platform compatibility',
-        'Performance optimization',
-        'Quality assurance and testing',
-      ],
-      benefits: [
-        'Faster time to market',
-        'Reduced development costs',
-        'Higher user satisfaction',
-        'Scalable architecture',
-        'Ongoing support and maintenance',
-      ],
-      services: [
-        'Website Development',
-        'Mobile App Development',
-        'eCommerce Experiences',
-        'UX/UI Design & Prototyping',
-        'Product Design & Discovery',
-        'Game & Interactive Experiences',
-      ],
-    },
-    'software-engineering': {
-      title: 'Software Engineering',
-      subtitle: 'Build Scalable, High-Performance Solutions',
-      description: 'Our software engineering expertise ensures you get robust, scalable solutions tailored to your unique business requirements. We build applications that perform flawlessly under any load.',
-      longDescription: 'With years of experience in software engineering, we deliver enterprise-grade applications that are secure, scalable, and maintainable. Our team follows industry best practices and modern development methodologies to ensure code quality and system reliability.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80',
-      icon: '</>',
-      color: 'from-purple-500 to-pink-500',
-      features: [
-        'Custom software architecture',
-        'API design and development',
-        'System integration',
-        'Legacy system modernization',
-        'Code quality and best practices',
-        'Performance optimization',
-      ],
-      benefits: [
-        'Tailored to your business needs',
-        'Improved operational efficiency',
-        'Enhanced security',
-        'Future-proof technology stack',
-        'Reduced technical debt',
-      ],
-      services: [
-        'Custom Software Development',
-        'API Design & Development',
-        'System Integration',
-        'Legacy Modernisation',
-        'Bespoke Application Development',
-      ],
-    },
-    'cloud-devops': {
-      title: 'Cloud & DevOps',
-      subtitle: 'Accelerate Your Digital Transformation',
-      description: 'Transform your infrastructure with cloud-native solutions and streamlined DevOps practices. Scale seamlessly and deploy faster with enterprise-grade cloud infrastructure.',
-      longDescription: 'Our cloud and DevOps services help you modernize your infrastructure, improve deployment speed, and reduce operational costs. We design and implement cloud architectures that scale with your business while maintaining security and compliance.',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80',
-      icon: '☁️',
-      color: 'from-green-500 to-emerald-500',
-      features: [
-        'Cloud architecture design',
-        'Infrastructure as code',
-        'CI/CD pipeline automation',
-        'Container orchestration',
-        'Monitoring and logging',
-        'Disaster recovery planning',
-      ],
-      benefits: [
-        'Reduced infrastructure costs',
-        'Faster deployment cycles',
-        'Improved scalability',
-        'Enhanced security posture',
-        '24/7 monitoring and support',
-      ],
-      services: [
-        'Cloud Architecture & Migration',
-        'Managed Cloud Hosting',
-        'DevOps & CI/CD Automation',
-        'Infrastructure & Server Support',
-        'Cloud Security & Governance',
-      ],
-    },
-    'data-ai': {
-      title: 'Data & AI',
-      subtitle: 'Unlock the Power of Your Data',
-      description: 'Leverage data science and artificial intelligence to unlock insights, automate processes, and drive intelligent decision-making that transforms your business.',
-      longDescription: 'Our data and AI solutions help you harness the power of your data to make informed decisions, automate repetitive tasks, and create intelligent systems that learn and adapt. From data engineering to machine learning, we provide end-to-end AI solutions.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
-      icon: '🤖',
-      color: 'from-orange-500 to-red-500',
-      features: [
-        'Data pipeline development',
-        'Machine learning models',
-        'AI-powered automation',
-        'Predictive analytics',
-        'Natural language processing',
-        'Computer vision solutions',
-      ],
-      benefits: [
-        'Data-driven decision making',
-        'Automated business processes',
-        'Improved customer experience',
-        'Reduced operational costs',
-        'Competitive advantage',
-      ],
-      services: [
-        'Data Engineering',
-        'AI & Machine Learning Solutions',
-        'Intelligent Automation',
-        'Analytics & Business Insights',
-      ],
-    },
-    'digital-growth': {
-      title: 'Digital Growth',
-      subtitle: 'Amplify Your Online Presence',
-      description: 'Accelerate your online presence and customer acquisition through strategic digital marketing and optimization. Reach the right audience and convert leads into customers.',
-      longDescription: 'Our digital growth services combine data-driven strategies with creative execution to help you attract, engage, and convert customers. We optimize every touchpoint of your customer journey to maximize ROI.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-      icon: '📈',
-      color: 'from-indigo-500 to-blue-500',
-      features: [
-        'SEO optimization',
-        'Performance marketing',
-        'Social media strategy',
-        'Content marketing',
-        'Conversion rate optimization',
-        'Analytics and reporting',
-      ],
-      benefits: [
-        'Increased online visibility',
-        'Higher conversion rates',
-        'Better ROI on marketing spend',
-        'Improved brand awareness',
-        'Data-driven marketing decisions',
-      ],
-      services: [
-        'Search Engine Optimization',
-        'Performance Marketing',
-        'Social Media Marketing',
-        'Online Reputation Management',
-        'Conversion & Performance Optimisation',
-      ],
-    },
-    'managed-services': {
-      title: 'Managed Services',
-      subtitle: 'Focus on Your Business, We Handle the Tech',
-      description: 'Ensure continuous performance and reliability with our comprehensive managed services. Focus on growing your business while we handle all technical operations.',
-      longDescription: 'Our managed services provide round-the-clock support, monitoring, and optimization for your applications and infrastructure. We ensure your systems run smoothly, securely, and efficiently so you can focus on what matters most - your business.',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
-      icon: '🛠️',
-      color: 'from-teal-500 to-cyan-500',
-      features: [
-        '24/7 monitoring and support',
-        'Proactive issue resolution',
-        'Performance optimization',
-        'Security management',
-        'Regular updates and patches',
-        'Disaster recovery',
-      ],
-      benefits: [
-        'Reduced downtime',
-        'Lower operational costs',
-        'Expert technical support',
-        'Improved system reliability',
-        'Peace of mind',
-      ],
-      services: [
-        'Application Support',
-        'Platform Support & Optimisation',
-        'Development Support',
-        'Digital Fulfilment',
-        'IT Support Services',
-      ],
-    },
-    'enterprise-platforms': {
-      title: 'Enterprise Platforms',
-      subtitle: 'Streamline Operations with Enterprise Solutions',
-      description: 'Leverage industry-leading enterprise platforms to streamline operations, enhance customer relationships, and drive organizational efficiency.',
-      longDescription: 'We specialize in implementing and customizing enterprise platforms that integrate seamlessly with your existing systems. Our expertise spans CMS, CRM, ERP, and service management platforms to help you achieve operational excellence.',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
-      icon: '🏢',
-      color: 'from-gray-600 to-gray-800',
-      features: [
-        'Platform implementation',
-        'Custom integrations',
-        'Workflow automation',
-        'User training and support',
-        'Data migration',
-        'Ongoing maintenance',
-      ],
-      benefits: [
-        'Streamlined operations',
-        'Improved collaboration',
-        'Better data management',
-        'Enhanced customer relationships',
-        'Scalable solutions',
-      ],
-      services: [
-        'CMS & DXP Platforms',
-        'CRM Platforms',
-        'Service Management',
-        'ERP & Business Systems',
-      ],
-    },
+  // Map category to color gradient
+  const getCategoryColor = (category) => {
+    const categoryColors = {
+      'Product & Experience': 'from-blue-500 to-cyan-500',
+      'Software Engineering': 'from-purple-500 to-pink-500',
+      'Cloud & DevOps': 'from-green-500 to-emerald-500',
+      'Data & AI': 'from-orange-500 to-red-500',
+      'Digital Growth': 'from-indigo-500 to-blue-500',
+      'Managed Services': 'from-teal-500 to-cyan-500',
+      'Enterprise Platforms': 'from-gray-600 to-gray-800',
+      'Experience & Product': 'from-blue-500 to-cyan-500',
+      'Cloud, Data & AI': 'from-green-500 to-emerald-500',
+    }
+    return categoryColors[category] || 'from-gray-500 to-gray-700'
   }
 
-  const service = serviceData[slug] || serviceData['product-development']
+  // Get image based on category or from API
+  const getImage = () => {
+    // Try to get image from API response
+    if (service?.image) {
+      let imageUrl = null
+      
+      // Handle different Strapi response formats
+      if (service.image.url) {
+        imageUrl = service.image.url
+      } else if (service.image.data?.attributes?.url) {
+        imageUrl = service.image.data.attributes.url
+      } else if (service.image.attributes?.url) {
+        imageUrl = service.image.attributes.url
+      }
+      
+      if (imageUrl) {
+        // If URL is absolute, return as is; otherwise prepend base URL
+        if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+          return imageUrl
+        }
+        const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:1337'
+        return `${baseUrl}${imageUrl}`
+      }
+    }
+    
+    // Fallback to category-based images
+    const categoryImages = {
+      'Product & Experience': 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
+      'Experience & Product': 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
+      'Software Engineering': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80',
+      'Cloud & DevOps': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80',
+      'Cloud, Data & AI': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80',
+      'Data & AI': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80',
+      'Digital Growth': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+      'Managed Services': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
+      'Enterprise Platforms': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
+    }
+    return categoryImages[service?.category] || 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80'
+  }
+
+  useEffect(() => {
+    const loadService = async () => {
+      setLoading(true)
+      setError(null)
+      
+      try {
+        // Try to fetch from API
+        const response = await fetchServiceBySlug(slug)
+        
+        if (response?.data && response.data.length > 0) {
+          const serviceData = response.data[0]
+          const attributes = serviceData.attributes || serviceData
+          
+          // Parse features if it's a JSON string
+          let features = []
+          if (attributes.features) {
+            try {
+              features = typeof attributes.features === 'string' 
+                ? JSON.parse(attributes.features) 
+                : attributes.features
+              if (!Array.isArray(features)) {
+                features = []
+              }
+            } catch (e) {
+              features = []
+            }
+          }
+          
+          // Parse FAQs if available
+          let faqs = []
+          if (attributes.faqs) {
+            try {
+              faqs = typeof attributes.faqs === 'string' 
+                ? JSON.parse(attributes.faqs) 
+                : attributes.faqs
+              if (!Array.isArray(faqs)) {
+                faqs = []
+              }
+            } catch (e) {
+              faqs = []
+            }
+          }
+          
+          // Extract image data
+          let imageData = null
+          if (attributes.image) {
+            if (attributes.image.data) {
+              // Strapi v4 format with data wrapper
+              imageData = attributes.image.data.attributes || attributes.image.data
+            } else {
+              // Direct image object
+              imageData = attributes.image.attributes || attributes.image
+            }
+          }
+          
+          // Map API data to component format
+          setService({
+            title: attributes.title || 'Service',
+            subtitle: attributes.shortDescription || attributes.description || '',
+            description: attributes.description || '',
+            longDescription: attributes.description || '',
+            icon: attributes.icon || '🚀',
+            color: getCategoryColor(attributes.category),
+            category: attributes.category || 'Service',
+            features: features,
+            benefits: [], // Benefits not in backend schema, can be added later
+            image: imageData,
+            faqs: faqs,
+          })
+        } else {
+          // Fallback to static data
+          throw new Error('Service not found in API')
+        }
+      } catch (err) {
+        console.warn('Failed to fetch service from API, using fallback data:', err)
+        // Fallback to static data
+        const fallbackService = servicesData[slug] || {
+          title: 'Service Not Found',
+          subtitle: 'The requested service could not be found',
+          description: 'Please check the URL or return to our services page.',
+          longDescription: 'The service you are looking for does not exist. Please visit our services page to see all available services.',
+          icon: '❓',
+          color: 'from-gray-500 to-gray-700',
+          category: 'Unknown',
+          features: [],
+          benefits: [],
+          faqs: [],
+        }
+        setService(fallbackService)
+        if (!servicesData[slug]) {
+          setError('Service not found')
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    if (slug) {
+      loadService()
+    }
+  }, [slug])
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mb-4"></div>
+          <p className="text-gray-600">Loading service...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Error state (only if service is truly not found)
+  if (error && !service) {
+    return (
+      <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Service Not Found</h1>
+          <p className="text-gray-600 mb-8">{error}</p>
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+          >
+            View All Services
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  // Default service data if still null
+  if (!service) {
+    return null
+  }
+
 
   return (
-    <div className="pt-20 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
+    <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
       {/* Hero Section with Image */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={service.image} 
+            src={getImage()} 
             alt={service.title}
             className="w-full h-full object-cover"
           />
@@ -267,10 +231,10 @@ const ServiceDetail = () => {
               <span className="text-2xl">{service.icon}</span>
               <span className="text-xs font-semibold text-white uppercase tracking-wider">Service</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
               {service.title}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8">
               {service.subtitle}
             </p>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
@@ -281,7 +245,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* Content Section */}
-      <section ref={ref} className="py-24">
+      <section ref={ref} className="py-12 sm:py-16 lg:py-24">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             {/* Long Description */}
@@ -294,11 +258,11 @@ const ServiceDetail = () => {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About This Service</h2>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                {service.longDescription}
+                {service.longDescription || service.description}
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className={`grid grid-cols-1 ${service.benefits && service.benefits.length > 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} gap-12 mb-16`}>
               {/* Features */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -307,90 +271,204 @@ const ServiceDetail = () => {
                 transition={{ duration: 0.6 }}
               >
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h3>
-                <ul className="space-y-4">
-                  {service.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 text-lg">{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                {service.features && service.features.length > 0 ? (
+                  <ul className="space-y-4">
+                    {service.features.map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        className="flex items-start gap-3"
+                      >
+                        <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-700 text-lg">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-600">No features listed.</p>
+                )}
               </motion.div>
 
-              {/* Benefits */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Benefits</h3>
-                <ul className="space-y-4">
-                  {service.benefits.map((benefit, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 text-lg">{benefit}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+              {/* Benefits - Only show if benefits exist */}
+              {service.benefits && service.benefits.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Benefits</h3>
+                  <ul className="space-y-4">
+                    {service.benefits.map((benefit, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: 10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        className="flex items-start gap-3"
+                      >
+                        <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-700 text-lg">{benefit}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
             </div>
 
-            {/* Services Included */}
+            {/* Category Badge */}
+            {service.category && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-8"
+              >
+                <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 font-semibold text-sm">
+                  {service.category}
+                </span>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      {service.faqs && service.faqs.length > 0 && (
+        <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-400 rounded-full blur-3xl"></div>
+          </div>
+          <div className="container-custom relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg"
+              className="text-center mb-12"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Services Included</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {service.services.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-primary-50 transition-colors"
-                  >
-                    <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                    <span className="text-gray-700 font-medium">{item}</span>
-                  </motion.div>
-                ))}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
+                <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">FAQ</span>
               </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Common questions about {service.title}
+              </p>
             </motion.div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              {service.faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.01 }}
+                  className={`group relative bg-white rounded-2xl border-2 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ${
+                    openFAQIndex === index 
+                      ? `border-primary-400 shadow-xl shadow-primary-500/20` 
+                      : 'border-gray-200 hover:border-primary-300'
+                  }`}
+                >
+                  {/* Gradient Accent Bar */}
+                  {openFAQIndex === index && (
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`}
+                    />
+                  )}
+                  
+                  {/* Question Button */}
+                  <button
+                    onClick={() => setOpenFAQIndex(openFAQIndex === index ? null : index)}
+                    className={`w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between transition-all duration-300 ${
+                      openFAQIndex === index
+                        ? 'bg-gradient-to-r from-primary-50/50 to-accent-50/50'
+                        : 'hover:bg-gradient-to-r hover:from-primary-50/30 hover:to-accent-50/30'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4 flex-1">
+                      {/* Question Number Badge */}
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                        openFAQIndex === index
+                          ? `bg-gradient-to-br ${service.color} text-white shadow-lg`
+                          : 'bg-gradient-to-br from-gray-100 to-gray-200 text-gray-600 group-hover:from-primary-100 group-hover:to-accent-100 group-hover:text-primary-600'
+                      }`}>
+                        {index + 1}
+                      </div>
+                      <span className={`text-base sm:text-lg font-bold pr-4 transition-colors duration-300 ${
+                        openFAQIndex === index ? 'text-gray-900' : 'text-gray-800 group-hover:text-primary-600'
+                      }`}>
+                        {faq.question}
+                      </span>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: openFAQIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        openFAQIndex === index
+                          ? `bg-gradient-to-br ${service.color} text-white shadow-lg`
+                          : 'bg-gray-100 text-gray-600 group-hover:bg-primary-100 group-hover:text-primary-600'
+                      }`}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </motion.div>
+                  </button>
+                  
+                  {/* Answer Content */}
+                  <AnimatePresence>
+                    {openFAQIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 sm:px-8 py-6 text-base sm:text-lg text-gray-700 leading-relaxed bg-gradient-to-br from-gray-50/50 to-white border-t-2 border-gray-100">
+                          <div className="flex items-start gap-4">
+                            <div className={`flex-shrink-0 w-1.5 h-full bg-gradient-to-b ${service.color} rounded-full mt-1`}></div>
+                            <p className="flex-1">{faq.answer}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>

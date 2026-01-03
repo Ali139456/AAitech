@@ -7,88 +7,90 @@ const Technologies = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   const meanCapabilities = {
-    angular: {
-      title: 'Angular Capabilities',
-      icon: 'A',
-      color: 'from-red-500 to-red-600',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
+    nextjs: {
+      title: 'Next.js Capabilities (Frontend & Experience Layer)',
+      icon: 'N',
+      color: 'from-gray-800 to-gray-900',
+      bgColor: 'bg-gray-50',
+      borderColor: 'border-gray-200',
+      description: 'Modern, high-performance frontend engineering focused on speed, SEO, and scalable user experiences.',
       capabilities: [
-        'Developed role-based admin dashboards with advanced data visualization',
-        'Built enterprise-grade healthcare applications with HIPAA compliance',
-        'Migrated large-scale legacy Angular.js apps to the latest Angular versions',
-        'Optimized Angular apps reducing bundle size by 50%',
+        'Enterprise-grade web applications using Next.js with SSR, SSG, and ISR',
+        'High-performance, SEO-optimized websites and digital platforms',
+        'Headless architecture integrations with CMS, DXP, and API-driven backends',
+        'Performance optimisation for Core Web Vitals, accessibility, and load times',
       ],
     },
     nodejs: {
-      title: 'Node.js Capabilities',
+      title: 'Node.js Capabilities (Backend & Platform Layer)',
       icon: 'JS',
       color: 'from-green-500 to-emerald-600',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200',
+      description: 'Scalable, cloud-native backend systems designed for high concurrency and global reach.',
       capabilities: [
-        'Designed serverless microservices architectures on Azure Functions, AWS Lambda, Google Cloud Functions',
-        'Built real-time chat applications handling 500K+ concurrent users using Socket.io',
-        'Implemented multi-region REST & GraphQL APIs for global web apps',
-        'Optimized Node.js applications reducing server response time by 40%',
+        'Cloud-native microservices and serverless architectures across AWS, Azure, and Google Cloud',
+        'Secure, scalable REST and GraphQL APIs for distributed, multi-region platforms',
+        'Real-time applications and event-driven systems built for reliability at scale',
+        'Backend performance optimisation to improve response times and operational efficiency',
       ],
     },
   }
 
   const domainStacks = [
     {
-      domain: 'SaaS & Enterprise Solutions',
+      domain: 'SaaS & Enterprise Platforms',
       icon: '☁️',
-      useCase: 'Created data-based CRMs for customer-driven lead nurturing and customer engagement',
+      useCase: 'Designed and delivered data-driven CRM platforms to support customer engagement, lead nurturing, and enterprise workflows',
       techStack: ['Angular', 'TypeScript', 'GraphQL', 'Prisma', 'AWS Amplify'],
-      experts: '10+',
+      experts: '10+ specialists',
       color: 'from-blue-500 to-cyan-500',
       bgGradient: 'from-blue-50 to-cyan-50',
     },
     {
       domain: 'Fintech & Banking',
       icon: '🏦',
-      useCase: 'Implemented secure digital wallet with real-time transaction processing and fraud detection',
+      useCase: 'Implemented secure digital wallet platforms with real-time transaction processing, compliance controls, and fraud detection',
       techStack: ['React', 'Node.js', 'MongoDB', 'Kafka', 'AWS Kubernetes'],
-      experts: '8+',
+      experts: '8+ specialists',
       color: 'from-green-500 to-emerald-500',
       bgGradient: 'from-green-50 to-emerald-50',
     },
     {
       domain: 'E-Commerce & Retail',
       icon: '🛒',
-      useCase: 'Developed scalable multi-vendor marketplace with inventory management and AI-based product recommendations',
+      useCase: 'Built scalable multi-vendor marketplaces with inventory management and AI-driven product recommendations',
       techStack: ['Next.js', 'Express', 'PostgreSQL', 'Redis'],
-      experts: '15+',
+      experts: '15+ specialists',
       color: 'from-purple-500 to-pink-500',
       bgGradient: 'from-purple-50 to-pink-50',
     },
     {
       domain: 'Travel & Hospitality',
       icon: '✈️',
-      useCase: 'Built high-performance travel booking platforms with dynamic pricing & real-time availability',
-      techStack: ['Vue.js', 'Nest.js', 'MySQL', 'RabbitMQ', 'Azure Functions'],
-      experts: '7+',
+      useCase: 'Delivered high-performance booking platforms with dynamic pricing, real-time availability, and global scalability',
+      techStack: ['Vue.js', 'NestJS', 'MySQL', 'RabbitMQ', 'Azure Functions'],
+      experts: '7+ specialists',
       color: 'from-orange-500 to-red-500',
       bgGradient: 'from-orange-50 to-red-50',
     },
     {
       domain: 'Real Estate Platforms',
       icon: '🏠',
-      useCase: 'Developed dynamic real estate listing platforms with property search filters & virtual tours',
+      useCase: 'Developed property platforms with advanced search, intelligent filtering, and immersive virtual tour experiences',
       techStack: ['Angular', 'Django', 'MongoDB', 'AWS S3', 'ElasticSearch'],
-      experts: '9+',
+      experts: '9+ specialists',
       color: 'from-indigo-500 to-blue-500',
       bgGradient: 'from-indigo-50 to-blue-50',
     },
     {
-      domain: 'Recruitment Portals',
+      domain: 'Recruitment & HR Platforms',
       icon: '👥',
-      useCase: 'Built smart recruitment platforms with automated resume parsing & candidate matching',
+      useCase: 'Built intelligent recruitment systems with automated resume parsing and AI-powered candidate matching.',
       techStack: ['React', 'Node.js', 'PostgreSQL', 'AWS Textract', 'Machine Learning'],
-      experts: '6+',
-      color: 'from-teal-500 to-cyan-500',
-      bgGradient: 'from-teal-50 to-cyan-50',
+      experts: '6+ specialists',
+      color: 'from-blue-500 to-purple-500',
+      bgGradient: 'from-blue-50 to-purple-50',
     },
   ]
 
@@ -127,7 +129,7 @@ const Technologies = () => {
   }
 
   return (
-    <section id="technologies" ref={ref} className="py-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
+    <section id="technologies" ref={ref} className="section-padding bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
@@ -140,7 +142,7 @@ const Technologies = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-16 lg:mb-20"
         >
           <motion.div
             variants={fadeInUp}
@@ -150,15 +152,15 @@ const Technologies = () => {
           </motion.div>
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4"
           >
-            Our Capabilities in MEAN Stack Development
+            Our Capabilities in Modern Full-Stack Development
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            End-to-End Solutions for Web, Mobile, and Cloud
+            End-to-end solutions for web, mobile, and cloud — built for performance, scalability, and enterprise reliability.
           </motion.p>
         </motion.div>
 
@@ -167,23 +169,23 @@ const Technologies = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24 max-w-6xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-24 max-w-6xl mx-auto"
         >
           {Object.entries(meanCapabilities).map(([key, capability], index) => (
             <motion.div
               key={key}
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="relative group"
+              className="relative group h-full"
             >
-              <div className={`relative bg-gradient-to-br ${capability.bgColor} rounded-3xl p-8 border-2 ${capability.borderColor} hover:border-primary-400 transition-all duration-0 overflow-hidden`}>
+              <div className={`relative bg-gradient-to-br ${capability.bgColor} rounded-3xl p-8 border-2 ${capability.borderColor} hover:border-primary-400 transition-all duration-0 overflow-hidden h-full flex flex-col`}>
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-10">
                   <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${capability.color} rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000`}></div>
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10">
+                <div className="relative z-10 flex-1 flex flex-col">
                   {/* Icon Badge */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0 }}
@@ -199,13 +201,25 @@ const Technologies = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
-                    className="text-2xl font-bold text-gray-900 mb-8 group-hover:text-primary-700 transition-colors duration-0"
+                    className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-700 transition-colors duration-0"
                   >
                     {capability.title}
                   </motion.h3>
 
+                  {/* Description */}
+                  {capability.description && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.2 + 0.15 }}
+                      className="text-sm text-gray-600 mb-6 leading-relaxed"
+                    >
+                      {capability.description}
+                    </motion.p>
+                  )}
+
                   {/* Capabilities List with Stagger */}
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 flex-1">
                     {capability.capabilities.map((cap, capIndex) => (
                       <motion.li
                         key={capIndex}
@@ -240,15 +254,21 @@ const Technologies = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4"
           >
-            Tailored Tech Stacks for Every Domain
+            Industries & Solutions
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            Industry-specific solutions with proven expertise and cutting-edge technology
+            <span className="font-bold">Tailored Technology Stacks for Every Industry</span>
+          </motion.p>
+          <motion.p
+            variants={fadeInUp}
+            className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mt-2"
+          >
+            Industry-specific digital solutions delivered using proven architectures, modern platforms, and deep domain expertise.
           </motion.p>
         </motion.div>
 

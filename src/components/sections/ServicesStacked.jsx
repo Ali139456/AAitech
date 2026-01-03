@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { getServiceSlug } from '../../utils/slugHelper'
 
 const ServicesStacked = () => {
   const ref = useRef(null)
@@ -9,16 +10,16 @@ const ServicesStacked = () => {
 
   const serviceCategories = [
     {
-      category: 'Product Development',
-      slug: 'product-development',
-      description: 'Transform your ideas into powerful digital products that engage users and drive business growth. From concept to launch, we deliver innovative solutions.',
+      category: 'Product & Experience',
+      slug: 'product-experience',
+      description: 'Transform your ideas into powerful digital products that engage users and drive business growth.',
       services: [
-        'Website Development',
-        'Mobile App Development',
-        'eCommerce Experiences',
-        'UX/UI Design & Prototyping',
-        'Product Design & Discovery',
-        'Game & Interactive Experiences',
+        'UX & UI Design',
+        'Web Platform Development',
+        'Mobile Application Development',
+        'eCommerce Solutions',
+        'Product Discovery & Strategy',
+        'Interactive & Immersive Experiences',
       ],
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'from-blue-50 to-cyan-50',
@@ -26,11 +27,11 @@ const ServicesStacked = () => {
     {
       category: 'Software Engineering',
       slug: 'software-engineering',
-      description: 'Build robust, scalable software solutions tailored to your business needs. Our engineering expertise ensures reliable, high-performance applications.',
+      description: 'Build robust, scalable software solutions tailored to your business needs.',
       services: [
         'Custom Software Development',
-        'API Design & Development',
-        'System Integration',
+        'API & Integration Engineering',
+        'Enterprise System Integration',
         'Legacy Modernisation',
         'Bespoke Application Development',
       ],
@@ -40,12 +41,12 @@ const ServicesStacked = () => {
     {
       category: 'Cloud & DevOps',
       slug: 'cloud-devops',
-      description: 'Accelerate your digital transformation with cloud-native solutions and automated DevOps practices. Scale seamlessly with enterprise-grade infrastructure.',
+      description: 'Accelerate your digital transformation with cloud-native solutions and automated DevOps practices.',
       services: [
-        'Cloud Architecture & Migration',
+        'Cloud Architecture & Strategy',
+        'Cloud Migration & Modernisation',
         'Managed Cloud Hosting',
         'DevOps & CI/CD Automation',
-        'Infrastructure & Server Support',
         'Cloud Security & Governance',
       ],
       color: 'from-green-500 to-emerald-500',
@@ -54,12 +55,13 @@ const ServicesStacked = () => {
     {
       category: 'Data & AI',
       slug: 'data-ai',
-      description: 'Unlock the power of your data with intelligent AI solutions. Drive insights, automate processes, and make data-driven decisions that transform your business.',
+      description: 'Unlock the power of your data with intelligent AI solutions.',
       services: [
-        'Data Engineering',
+        'Data Engineering & Pipelines',
         'AI & Machine Learning Solutions',
         'Intelligent Automation',
-        'Analytics & Business Insights',
+        'Advanced Analytics & Insights',
+        'AI Governance & Responsible AI',
       ],
       color: 'from-orange-500 to-red-500',
       bgColor: 'from-orange-50 to-red-50',
@@ -67,62 +69,48 @@ const ServicesStacked = () => {
     {
       category: 'Digital Growth',
       slug: 'digital-growth',
-      description: 'Amplify your online presence and drive measurable growth. Our digital marketing strategies help you reach the right audience and convert leads into customers.',
+      description: 'Amplify your online presence and drive measurable growth.',
       services: [
-        'Search Engine Optimization',
-        'Performance Marketing',
-        'Social Media Marketing',
+        'Search & AI-Driven Optimisation',
+        'Performance & Paid Marketing',
+        'Social & Brand Growth',
         'Online Reputation Management',
-        'Conversion & Performance Optimisation',
+        'Conversion Optimisation (CRO)',
       ],
-      color: 'from-yellow-500 to-amber-500',
-      bgColor: 'from-yellow-50 to-amber-50',
+      color: 'from-indigo-500 to-blue-500',
+      bgColor: 'from-indigo-50 to-blue-50',
     },
     {
       category: 'Managed Services',
       slug: 'managed-services',
-      description: 'Ensure continuous performance and reliability with our comprehensive managed services. Focus on your business while we handle the technical operations.',
+      description: 'Ensure continuous performance and reliability with our comprehensive managed services.',
       services: [
-        'Application Support',
-        'Platform Support & Optimisation',
-        'Development Support',
-        'Digital Fulfilment',
-        'IT Support Services',
-      ],
-      color: 'from-indigo-500 to-purple-500',
-      bgColor: 'from-indigo-50 to-purple-50',
-    },
-    {
-      category: 'CMS & DXP Platforms',
-      slug: 'enterprise-platforms',
-      description: 'Leverage industry-leading CMS and DXP platforms to streamline content operations and enhance customer experiences.',
-      services: [
-        'Sitecore',
-        'AEM (Adobe Experience Manager)',
-        'Umbraco',
-        'WordPress',
+        'Application Support & Maintenance',
+        'Platform Optimisation',
+        'Development Support Services',
+        'Digital Operations & Delivery',
+        'IT Support & Managed Services',
       ],
       color: 'from-teal-500 to-cyan-500',
       bgColor: 'from-teal-50 to-cyan-50',
     },
     {
-      category: 'CRM & Business Platforms',
+      category: 'Enterprise Platforms',
       slug: 'enterprise-platforms',
-      description: 'Enhance customer relationships and drive organizational efficiency with leading CRM and business systems.',
+      description: 'Leverage industry-leading enterprise platforms to streamline operations.',
       services: [
-        'Salesforce',
-        'HubSpot',
-        'Microsoft Dynamics',
-        'ServiceNow',
-        'ERP & Business Systems',
+        'CMS & Digital Experience Platforms',
+        'CRM Platforms',
+        'ServiceNow Solutions',
+        'ERP & Enterprise Systems',
       ],
-      color: 'from-indigo-500 to-purple-500',
-      bgColor: 'from-indigo-50 to-purple-50',
+      color: 'from-gray-600 to-gray-800',
+      bgColor: 'from-gray-50 to-gray-100',
     },
   ]
 
   return (
-    <section id="services" ref={ref} className="py-24 bg-white relative overflow-hidden">
+    <section id="services" ref={ref} className="py-12 sm:py-16 lg:py-24 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
@@ -140,11 +128,11 @@ const ServicesStacked = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
             <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Services</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
-            SERVICES
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
+            End-to-End Digital & AI Services
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive technology solutions designed to transform your business. From product development to enterprise platforms, we deliver end-to-end services that drive innovation and growth.
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            We deliver comprehensive technology solutions across the full digital lifecycle — from product strategy and engineering to cloud platforms, AI, and enterprise systems — helping organizations transform, scale, and stay competitive.
           </p>
         </motion.div>
 
@@ -153,7 +141,7 @@ const ServicesStacked = () => {
           {serviceCategories.map((category, categoryIndex) => (
             <Link
               key={categoryIndex}
-              to={`/services/${category.slug}`}
+              to={`/services/category/${category.slug}`}
               className="block"
             >
               <motion.div
@@ -194,14 +182,13 @@ const ServicesStacked = () => {
                 <div className="flex items-start gap-3 mb-3">
                   {/* Colorful Icon Badge */}
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color || 'from-primary-500 to-accent-500'} flex items-center justify-center text-white text-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-[0.4s]`}>
-                    {category.category === 'Product Development' && '🚀'}
-                    {category.category === 'Software Engineering' && '⚙️'}
+                    {category.category === 'Product & Experience' && '🚀'}
+                    {category.category === 'Software Engineering' && '</>'}
                     {category.category === 'Cloud & DevOps' && '☁️'}
                     {category.category === 'Data & AI' && '🤖'}
                     {category.category === 'Digital Growth' && '📈'}
                     {category.category === 'Managed Services' && '🛠️'}
-                    {category.category === 'CMS & DXP Platforms' && '🏢'}
-                    {category.category === 'CRM & Business Platforms' && '💼'}
+                    {category.category === 'Enterprise Platforms' && '🏢'}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-[0.4s] flex items-center gap-2">
@@ -245,37 +232,44 @@ const ServicesStacked = () => {
               <div className="relative z-10">
                 {category.services ? (
                   <ul className="space-y-3">
-                    {category.services.map((service, serviceIndex) => (
-                      <motion.li
-                        key={serviceIndex}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                        transition={{ duration: 0.4, delay: categoryIndex * 0.1 + serviceIndex * 0.05 }}
-                        whileHover={{ x: 5 }}
-                        className="flex items-start gap-3 text-gray-700 hover:text-primary-600 transition-colors duration-0 group/item"
-                      >
-                        <motion.div
-                          className="mt-1.5"
-                          whileHover={{ scale: 1.2, rotate: 90 }}
-                          transition={{ duration: 0 }}
+                    {category.services.map((service, serviceIndex) => {
+                      const serviceSlug = getServiceSlug(service)
+                      return (
+                        <Link
+                          key={serviceIndex}
+                          to={`/services/${serviceSlug}`}
                         >
-                          <svg
-                            className="w-4 h-4 text-primary-500 flex-shrink-0 group-hover/item:text-primary-600 transition-colors duration-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                          <motion.li
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                            transition={{ duration: 0.4, delay: categoryIndex * 0.1 + serviceIndex * 0.05 }}
+                            whileHover={{ x: 5 }}
+                            className="flex items-start gap-3 text-gray-700 hover:text-primary-600 transition-colors duration-0 group/item cursor-pointer"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2.5}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </motion.div>
-                        <span className="text-sm font-medium group-hover/item:font-semibold transition-all duration-0">{service}</span>
-                      </motion.li>
-                    ))}
+                            <motion.div
+                              className="mt-1.5"
+                              whileHover={{ scale: 1.2, rotate: 90 }}
+                              transition={{ duration: 0 }}
+                            >
+                              <svg
+                                className="w-4 h-4 text-primary-500 flex-shrink-0 group-hover/item:text-primary-600 transition-colors duration-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2.5}
+                                  d="M9 5l7 7-7 7"
+                                />
+                              </svg>
+                            </motion.div>
+                            <span className="text-sm font-medium group-hover/item:font-semibold transition-all duration-0">{service}</span>
+                          </motion.li>
+                        </Link>
+                      )
+                    })}
                   </ul>
                 ) : (
                   <div className="space-y-4">

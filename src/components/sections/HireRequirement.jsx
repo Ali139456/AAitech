@@ -100,13 +100,13 @@ const HireRequirement = () => {
             </motion.div>
             <motion.h2
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
             >
               Get Our Assistance for Your Business Needs
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
             >
               At Aaitek, we provide flexible options for accessing our developers' time, allowing you to choose the duration and frequency of their availability based on your specific requirements.
             </motion.p>
@@ -115,7 +115,7 @@ const HireRequirement = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="bg-gradient-to-b from-white to-gray-50 py-24">
+      <div className="bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 lg:py-24">
         <div className="container-custom">
           <motion.div
             variants={containerVariants}

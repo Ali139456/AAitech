@@ -42,5 +42,10 @@ export const fetchManagedServices = async () => {
   return response.data
 }
 
+export const fetchServiceBySlug = async (slug) => {
+  const response = await api.get(`/services?filters[slug][$eq]=${slug}&populate=*`)
+  return response.data
+}
+
 export default api
 

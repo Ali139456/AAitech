@@ -55,10 +55,13 @@ const Industries = () => {
             Industries We Serve
           </div>
           <h2 className="heading-2 mb-4 text-white">
-            Solutions Tailored to Your Industry
+            Industries & Solutions
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            We understand the unique challenges of different industries and deliver solutions that drive real business value.
+            Tailored Technology Stacks for Every Industry
+          </p>
+          <p className="text-base text-gray-400 max-w-3xl mx-auto mt-2">
+            Industry-specific digital solutions delivered using proven architectures, modern platforms, and deep domain expertise.
           </p>
         </motion.div>
 

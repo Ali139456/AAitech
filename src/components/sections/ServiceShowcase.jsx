@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const ServiceShowcase = () => {
   const ref = useRef(null)
@@ -8,44 +9,44 @@ const ServiceShowcase = () => {
 
   const features = [
     {
-      title: 'Mobile Booking Engine',
-      description: 'Seamless booking experience with real-time availability and instant confirmations.',
+      title: 'Intelligent Booking Engine',
+      description: 'Real-time availability and instant confirmations for high-volume, mission-critical use cases.',
       icon: '📱',
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      title: 'Itinerary Management',
-      description: 'Comprehensive itinerary tracking with automatic updates and synchronization.',
+      title: 'Centralized Itinerary Management',
+      description: 'Unified itinerary tracking with automatic updates and real-time synchronization.',
       icon: '📋',
       color: 'from-purple-500 to-pink-500',
     },
     {
-      title: 'Real-Time Notifications',
-      description: 'Instant alerts for bookings, changes, and important travel updates.',
+      title: 'Real-Time Notifications & Alerts',
+      description: 'Event-driven communication for bookings, changes, and critical updates.',
       icon: '🔔',
       color: 'from-green-500 to-emerald-500',
     },
     {
-      title: 'GPS-Enabled Services',
-      description: 'Location-based services for finding nearby attractions and services.',
+      title: 'Location-Aware Services',
+      description: 'GPS-enabled features delivering contextual and location-based experiences.',
       icon: '📍',
       color: 'from-orange-500 to-red-500',
     },
     {
       title: 'Secure Payments',
-      description: 'Multiple payment options with bank-level security and encryption.',
+      description: 'Multiple payment options with enterprise-grade security and encryption.',
       icon: '💳',
       color: 'from-indigo-500 to-purple-500',
     },
     {
-      title: 'User Reviews',
-      description: 'Community-driven reviews and ratings to help make informed decisions.',
+      title: 'Customer Feedback & Reviews',
+      description: 'Integrated ratings and feedback to support informed decision-making.',
       icon: '⭐',
       color: 'from-yellow-500 to-orange-500',
     },
     {
-      title: 'Travel Guides',
-      description: 'Curated travel guides and recommendations from local experts.',
+      title: 'Curated Content & Guides',
+      description: 'Personalized recommendations to enhance user engagement and experience.',
       icon: '🗺️',
       color: 'from-teal-500 to-cyan-500',
     },
@@ -70,16 +71,16 @@ const ServiceShowcase = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
             <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Our Solutions</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Enterprise Mobile Application
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Enterprise Mobile Experience Platform
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            A comprehensive mobile solution that provides real-time updates on booking and management services, delivering seamless experiences across iOS and Android platforms.
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            A scalable, enterprise-grade mobile platform designed to support complex booking, operations, and customer engagement workflows. Built for performance, security, and reliability, it delivers seamless experiences across iOS and Android.
           </p>
         </motion.div>
 
         {/* Three Column Layout: Features Left | Phones Center | Features Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Side - Features */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -233,6 +234,36 @@ const ServiceShowcase = () => {
             ))}
           </motion.div>
         </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-12 sm:mt-16"
+        >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              to="/services"
+              className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-primary-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+            >
+              Explore Our Solutions
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link
+              to="/partner-success"
+              className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-transparent text-primary-600 font-semibold rounded-xl border-2 border-primary-300 hover:border-primary-500 hover:bg-primary-50 transition-all duration-300 text-sm sm:text-base"
+            >
+              View Case Studies
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

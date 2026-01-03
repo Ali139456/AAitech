@@ -8,86 +8,90 @@ const Process = () => {
     {
       number: '1',
       title: 'Planning & Consultation',
-      description: 'Understanding objectives, creating a roadmap, and defining outcomes.',
+      description: 'We work closely with stakeholders to understand objectives, assess requirements, and define a clear roadmap with measurable outcomes.',
       icon: '📋',
       color: 'from-blue-500 to-blue-600',
+      phaseTitle: 'Strategic Alignment & Roadmap Definition',
+      phaseDescription: 'We begin by gaining a deep understanding of your business objectives, technical landscape, and success criteria. This phase ensures strategic alignment and establishes a clear, executable roadmap before delivery begins.',
       details: [
         {
-          title: 'Planning & Consultation',
-          description: 'We analyze your business needs, goals, and technical requirements to create a comprehensive roadmap that aligns with your strategic objectives.',
+          title: 'Business Vision & Objectives',
+          description: 'We collaborate with key stakeholders to clarify goals, define success metrics, and align the initiative with your broader business and customer strategy.',
         },
         {
-          title: 'Vision and Goals Definition',
-          description: 'We work closely with you to define clear objectives, identify your target audience, and establish measurable outcomes for success.',
+          title: 'Delivery Roadmap & Milestones',
+          description: 'A structured roadmap outlining scope, timelines, milestones, and dependencies — providing transparency and predictability throughout the engagement.',
         },
         {
-          title: 'Project Roadmap Creation',
-          description: 'Together, we create a detailed project plan with milestones, timelines, and resource allocation to ensure smooth execution.',
+          title: 'Scope & Requirements Definition',
+          description: 'Clear definition of functional scope, technical requirements, and success criteria to ensure alignment, manage expectations, and prevent scope drift.',
         },
         {
-          title: 'Scope Definition',
-          description: 'We clearly define project boundaries, deliverables, and success criteria to prevent scope creep and ensure alignment.',
-        },
-        {
-          title: 'Resource Allocation',
-          description: 'We identify and allocate the right talent, tools, and technologies needed to deliver exceptional results.',
+          title: 'Resourcing & Capability Planning',
+          description: 'Identification and allocation of the right expertise, tools, and technologies to ensure efficient execution and high-quality outcomes.',
         },
       ],
     },
     {
       number: '2',
-      title: 'Design',
-      description: 'Creating user-centric designs and prototypes to visualize solutions.',
+      title: 'Experience & Design',
+      description: 'User-centric design and prototyping to validate ideas early, align stakeholders, and ensure intuitive, scalable experiences.',
       icon: '🎨',
       color: 'from-purple-500 to-pink-500',
+      phaseTitle: 'User-Centred Experience Design & Validation',
+      phaseDescription: 'This phase transforms strategic intent into intuitive, scalable experiences. We design with users in mind while ensuring alignment with business objectives, technical feasibility, and long-term scalability.',
       details: [
         {
-          title: 'User Research & Analysis',
-          description: 'We conduct in-depth user research to understand behaviors, needs, and pain points that inform our design decisions.',
+          title: 'User Research & Experience Analysis',
+          description: 'We conduct structured user research and stakeholder analysis to understand user behaviours, needs, and pain points — ensuring design decisions are grounded in real-world insights.',
         },
         {
           title: 'Wireframing & Prototyping',
-          description: 'We create low and high-fidelity prototypes to visualize user flows and validate concepts before development.',
+          description: 'Interactive wireframes and prototypes are created to visualise user journeys, validate concepts early, and align stakeholders before engineering begins.',
         },
         {
           title: 'UI/UX Design',
-          description: 'Our designers craft beautiful, intuitive interfaces that provide exceptional user experiences across all devices.',
+          description: 'We design clean, intuitive, and accessible interfaces that balance aesthetics with usability — delivering consistent experiences across devices and platforms.',
         },
         {
-          title: 'Design System Creation',
-          description: 'We establish consistent design patterns, components, and guidelines to ensure cohesive experiences.',
+          title: 'Design Systems & Standards',
+          description: 'Reusable design systems, components, and guidelines are established to ensure visual consistency, faster delivery, and long-term maintainability.',
         },
       ],
+      outcome: 'Validated designs, aligned stakeholders, and a clear blueprint ready for development.',
     },
     {
       number: '3',
-      title: 'Development',
-      description: 'Building robust solutions using modern technologies and best practices.',
+      title: 'Engineering & Development',
+      description: 'Robust, secure, and scalable solutions built using modern architectures, best practices, and enterprise-grade technologies.',
       icon: '⚙️',
       color: 'from-green-500 to-emerald-500',
+      phaseTitle: 'Engineering Robust, Scalable Solutions',
+      phaseDescription: 'In this phase, approved designs are built into secure, high-quality solutions using modern technologies and proven engineering practices.',
       details: [
         {
           title: 'Architecture Planning',
-          description: 'We design scalable, maintainable architectures that support current needs and future growth.',
+          description: 'We design scalable and maintainable system architectures that support current requirements while allowing for future growth and evolution.',
         },
         {
           title: 'Agile Development',
-          description: 'We follow agile methodologies with sprints, daily standups, and continuous integration for rapid delivery.',
+          description: 'Development is delivered through structured agile sprints with regular collaboration, continuous integration, and incremental releases.',
         },
         {
           title: 'Code Quality & Standards',
-          description: 'We maintain high code quality through code reviews, testing, and adherence to industry best practices.',
+          description: 'High code quality is ensured through peer reviews, automated testing, and adherence to established industry standards.',
         },
         {
           title: 'Integration & APIs',
-          description: 'We seamlessly integrate with existing systems and third-party services through well-designed APIs.',
+          description: 'We integrate seamlessly with existing systems and third-party services using secure, well-designed APIs.',
         },
       ],
+      outcome: 'A stable, scalable, and production-ready solution built to enterprise standards.',
     },
     {
       number: '4',
-      title: 'Testing',
-      description: 'Rigorous testing ensures quality and reliability before launch.',
+      title: 'Quality Assurance & Testing',
+      description: 'Comprehensive testing across functionality, performance, and security to ensure reliability and readiness for production.',
       icon: '🧪',
       color: 'from-orange-500 to-red-500',
       details: [
@@ -111,8 +115,8 @@ const Process = () => {
     },
     {
       number: '5',
-      title: 'Deployment',
-      description: 'Smooth launch with minimal disruption to your operations.',
+      title: 'Deployment & Release',
+      description: 'Controlled, seamless deployment with minimal disruption, supported by automation and proven release practices.',
       icon: '🚀',
       color: 'from-cyan-500 to-blue-500',
       details: [
@@ -136,8 +140,8 @@ const Process = () => {
     },
     {
       number: '6',
-      title: 'Maintenance',
-      description: 'Ongoing support and optimization to help you scale and adapt.',
+      title: 'Optimisation & Ongoing Support',
+      description: 'Continuous monitoring, support, and optimisation to help platforms evolve, scale, and deliver long-term value.',
       icon: '🔧',
       color: 'from-indigo-500 to-purple-500',
       details: [
@@ -175,10 +179,10 @@ const Process = () => {
             Our Methodology
           </div>
           <h2 className="heading-2 mb-4 text-gray-900">
-            Our Agile Development Process
+            A Proven, Agile Delivery Framework
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            A proven methodology that ensures your project is delivered on time, within budget, and exceeds expectations.
+            A structured, outcome-driven approach designed to deliver high-quality solutions on time, within budget, and aligned with your business objectives.
           </p>
         </motion.div>
 
@@ -197,7 +201,7 @@ const Process = () => {
           </div>
 
           {/* Steps Grid - 6 columns, 1 row */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-3 relative">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-2 relative">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -260,7 +264,7 @@ const Process = () => {
                   </div>
 
                   {/* Step Content Card - Smaller, Fixed Height */}
-                  <div className={`relative bg-white rounded-xl p-4 border-2 shadow-md transition-all duration-0 h-[140px] flex flex-col ${
+                  <div className={`relative bg-white rounded-xl p-3 sm:p-4 border-2 shadow-md transition-all duration-0 min-h-[160px] sm:min-h-[140px] flex flex-col overflow-hidden ${
                     activeStep === index
                       ? 'border-primary-500 bg-gradient-to-br from-primary-50 to-white shadow-lg shadow-primary-500/20'
                       : 'border-gray-200 hover:border-primary-300 hover:shadow-lg'
@@ -275,12 +279,12 @@ const Process = () => {
                       />
                     )}
 
-                    <h3 className={`text-sm font-bold mb-2 text-center transition-colors duration-0 flex-shrink-0 ${
+                    <h3 className={`text-xs sm:text-sm font-bold mb-2 text-center transition-colors duration-0 flex-shrink-0 line-clamp-2 ${
                       activeStep === index ? 'text-primary-600' : 'text-gray-800 group-hover:text-primary-600'
                     }`}>
                       {step.title}
                     </h3>
-                    <p className="text-xs text-gray-600 text-center leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-[10px] sm:text-xs text-gray-600 text-center leading-relaxed flex-grow line-clamp-4 overflow-hidden">
                       {step.description}
                     </p>
 
@@ -310,9 +314,22 @@ const Process = () => {
               <span className="text-2xl">{steps[activeStep].icon}</span>
               <h3 className="text-xl font-bold">Phase {steps[activeStep].number}: {steps[activeStep].title}</h3>
             </div>
-            <p className="text-gray-600 text-lg">
-              {steps[activeStep].description}
+            {steps[activeStep].phaseTitle && (
+              <h4 className="text-2xl font-bold text-gray-900 mb-3">
+                {steps[activeStep].phaseTitle}
+              </h4>
+            )}
+            <p className="text-gray-600 text-lg mb-4">
+              {steps[activeStep].phaseDescription || steps[activeStep].description}
             </p>
+            {steps[activeStep].outcome && (
+              <div className="mt-4 p-4 bg-primary-50 border-l-4 border-primary-500 rounded">
+                <p className="text-gray-700 font-semibold">
+                  <span className="text-primary-600">Outcome: </span>
+                  {steps[activeStep].outcome}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Details Grid */}

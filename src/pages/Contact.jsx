@@ -54,7 +54,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     // Handle form submission
-    console.log('Form submitted:', formData)
+    // TODO: Integrate with backend API
     alert('Thank you for your message! We\'ll get back to you soon.')
     setFormData({
       name: '',
@@ -73,9 +73,9 @@ const Contact = () => {
   }
 
   return (
-    <div className="pt-20 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
+    <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -90,10 +90,10 @@ const Contact = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6">
               <span className="text-xs font-semibold text-white uppercase tracking-wider">Get In Touch</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
               Contact Us
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto">
               Ready to transform your business? Let's discuss how we can help you achieve your goals.
             </p>
           </motion.div>
@@ -101,7 +101,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-24">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {contactMethods.map((method, index) => (
@@ -153,7 +153,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section ref={ref} className="py-24 bg-white">
+      <section ref={ref} className="py-12 sm:py-16 lg:py-24 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -293,7 +293,7 @@ const Contact = () => {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-24">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

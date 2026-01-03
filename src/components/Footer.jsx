@@ -6,29 +6,32 @@ const Footer = () => {
   const footerLinks = {
     company: [
       { label: 'About Us', path: '/about' },
+      { label: 'Company', path: '/company' },
       { label: 'Our Work', path: '/partner-success' },
       { label: 'Contact Us', path: '/contact' },
-      { label: 'Careers', path: '/careers' },
     ],
     services: [
       { label: 'All Services', path: '/services' },
-      { label: 'Product Development', path: '/services/product-development' },
-      { label: 'Software Engineering', path: '/services/software-engineering' },
-      { label: 'Cloud & DevOps', path: '/services/cloud-devops' },
-      { label: 'Data & AI', path: '/services/data-ai' },
-      { label: 'Digital Growth', path: '/services/digital-growth' },
-      { label: 'Managed Services', path: '/services/managed-services' },
-      { label: 'Enterprise Platforms', path: '/services/enterprise-platforms' },
+      { label: 'Product & Experience', path: '/services/category/product-experience' },
+      { label: 'Software Engineering', path: '/services/category/software-engineering' },
+      { label: 'Cloud & DevOps', path: '/services/category/cloud-devops' },
+      { label: 'Data & AI', path: '/services/category/data-ai' },
+      { label: 'Digital Growth', path: '/services/category/digital-growth' },
+      { label: 'Managed Services', path: '/services/category/managed-services' },
+      { label: 'Enterprise Platforms', path: '/services/category/enterprise-platforms' },
     ],
     products: [
       { label: 'All Products', path: '/products' },
-      { label: 'AI Sales Agent', path: '/products' },
-      { label: 'AI Booking Agent', path: '/products' },
-      { label: 'AI Trade Strategy Agent', path: '/products' },
+      { label: 'AI Sales Agent', path: '/products/ai-sales-agent' },
+      { label: 'AI Booking Agent', path: '/products/ai-booking-agent' },
+      { label: 'AI Trade Strategy Agent', path: '/products/ai-trade-strategy-agent' },
     ],
     resources: [
-      { label: 'Blogs & Insights', path: '/resources/blog' },
-      { label: 'Case Studies', path: '/partner-success' },
+      { label: 'Resources', path: '/resources' },
+      { label: 'Academy', path: '/academy' },
+      { label: 'Industries', path: '/industries' },
+      { label: 'Hire Talent', path: '/hire-talent' },
+      { label: 'Partner Success', path: '/partner-success' },
       { label: 'Privacy Policy', path: '/privacy-policy' },
       { label: 'Terms & Conditions', path: '/terms-conditions' },
     ],
@@ -37,7 +40,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-50 text-gray-800 border-t border-gray-200">
       <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Company Info */}
           <div>
             <div className="mb-4">
@@ -152,8 +155,8 @@ const Footer = () => {
           <div>
             <h4 className="text-gray-900 font-semibold mb-4">Products</h4>
             <ul className="space-y-2">
-              {footerLinks.products.map((link) => (
-                <li key={link.path}>
+              {footerLinks.products.map((link, index) => (
+                <li key={`${link.path}-${index}`}>
                   <Link
                     to={link.path}
                     className="text-sm hover:text-primary-400 transition-colors duration-0"
@@ -185,7 +188,7 @@ const Footer = () => {
 
         {/* Contact Information */}
         <div className="border-t border-primary-200 pt-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             <div>
               <h4 className="text-white font-semibold mb-3">Contact</h4>
               <p className="text-sm text-gray-600 mb-2">

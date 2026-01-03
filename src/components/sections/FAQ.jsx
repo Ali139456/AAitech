@@ -47,70 +47,129 @@ const FAQ = () => {
   }
 
   return (
-    <section id="faq" ref={ref} className="py-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-400 rounded-full blur-3xl"></div>
+    <section id="faq" ref={ref} className="section-padding bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+      {/* Enhanced Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-indigo-300 to-purple-300 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-cyan-200 to-blue-200 rounded-full blur-3xl opacity-10"></div>
       </div>
 
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: 'linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)',
+        backgroundSize: '50px 50px'
+      }}></div>
+
       <div className="container-custom relative z-10">
-        {/* Section Header */}
+        {/* Enhanced Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
-            <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">FAQ</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/30 mb-6"
+          >
+            <span className="text-xs font-bold text-white uppercase tracking-wider">FAQ</span>
+          </motion.div>
+          <h2 className="heading-2 mb-6 text-gray-900">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
             Find answers to common questions about our services and solutions
           </p>
         </motion.div>
 
-        {/* FAQ Items */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        {/* Enhanced FAQ Items */}
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-0"
+              whileHover={{ scale: 1.02 }}
+              className={`group relative bg-white rounded-2xl border-2 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 ${
+                openIndex === index 
+                  ? 'border-primary-400 shadow-xl shadow-primary-500/20' 
+                  : 'border-gray-200 hover:border-primary-300'
+              }`}
             >
+              {/* Gradient Accent Bar */}
+              {openIndex === index && (
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"
+                />
+              )}
+              
+              {/* Question Button */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-0"
+                className={`w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between transition-all duration-300 ${
+                  openIndex === index
+                    ? 'bg-gradient-to-r from-blue-50/50 to-cyan-50/50'
+                    : 'hover:bg-gradient-to-r hover:from-blue-50/30 hover:to-cyan-50/30'
+                }`}
               >
-                <span className="text-lg font-semibold text-gray-900 pr-8">{faq.question}</span>
-                <motion.svg
-                  className="w-6 h-6 text-primary-600 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <div className="flex items-start gap-4 flex-1">
+                  {/* Question Number Badge */}
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                    openIndex === index
+                      ? 'bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg'
+                      : 'bg-gradient-to-br from-gray-100 to-gray-200 text-gray-600 group-hover:from-blue-100 group-hover:to-cyan-100 group-hover:text-blue-600'
+                  }`}>
+                    {index + 1}
+                  </div>
+                  <span className={`text-base sm:text-lg font-bold pr-4 transition-colors duration-300 ${
+                    openIndex === index ? 'text-gray-900' : 'text-gray-800 group-hover:text-blue-600'
+                  }`}>
+                    {faq.question}
+                  </span>
+                </div>
+                <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
+                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    openIndex === index
+                      ? 'bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
+                  }`}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </motion.svg>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </motion.div>
               </button>
+              
+              {/* Answer Content */}
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-100">
-                      {faq.answer}
+                    <div className="px-6 sm:px-8 py-6 text-base sm:text-lg text-gray-700 leading-relaxed bg-gradient-to-br from-gray-50/50 to-white border-t-2 border-gray-100">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-1.5 h-full bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full mt-1"></div>
+                        <p className="flex-1">{faq.answer}</p>
+                      </div>
                     </div>
                   </motion.div>
                 )}

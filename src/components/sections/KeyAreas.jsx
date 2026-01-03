@@ -69,7 +69,7 @@ const KeyAreas = () => {
     <section className="section-padding bg-black relative overflow-hidden">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -83,7 +83,7 @@ const KeyAreas = () => {
           </p>
         </motion.div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

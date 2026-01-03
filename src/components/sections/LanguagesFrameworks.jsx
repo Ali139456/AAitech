@@ -47,11 +47,11 @@ const LanguagesFrameworks = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-200 mb-6">
             <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">Technologies</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
-            Languages & Frameworks
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
+            Modern, Enterprise-Ready Technology Stack
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Expertise across modern programming languages and frameworks
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            We work with a carefully selected set of proven languages and frameworks to build secure, scalable, and high-performance digital platforms for enterprise environments.
           </p>
         </motion.div>
 
@@ -63,6 +63,9 @@ const LanguagesFrameworks = () => {
           className="mb-12"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Programming Languages</h3>
+          <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
+            Languages chosen for performance, scalability, and long-term maintainability across web, mobile, and backend systems.
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
             {languages.map((lang, index) => (
               <motion.div
@@ -86,7 +89,10 @@ const LanguagesFrameworks = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Frameworks & Libraries</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Frameworks & Platforms</h3>
+          <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
+            Modern frameworks and platforms enabling cloud-native, API-driven, and enterprise-grade application development.
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
             {frameworks.map((framework, index) => (
               <motion.div
