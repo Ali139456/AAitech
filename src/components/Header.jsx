@@ -475,7 +475,7 @@ const Header = () => {
           : 'bg-[#13273D] backdrop-blur-md'
       }`}
     >
-      <nav className="mx-auto px-4 sm:px-8 md:px-16 lg:px-32 xl:px-[200px] relative w-full">
+      <nav className="mx-auto px-4 sm:px-8 md:px-16 lg:px-32 xl:px-[250px] relative w-full">
         <div className="flex items-center justify-between h-20 relative w-full">
           {/* Logo */}
             <motion.div

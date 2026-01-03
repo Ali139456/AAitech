@@ -167,7 +167,7 @@ const Process = () => {
 
   return (
     <section id="process" className="section-padding bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
-      <div className="mx-auto px-4 sm:px-8 md:px-16 lg:px-32 xl:px-[200px]">
+      <div className="mx-auto px-4 sm:px-8 md:px-16 lg:px-32 xl:px-[250px]">
         <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: -20 }}
