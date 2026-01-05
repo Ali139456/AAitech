@@ -341,7 +341,6 @@ const Process = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1, ease: 'easeIn' }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ duration: 0 }}
                 className="relative bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-0 group h-full flex flex-col"
               >
                 {/* Left Border Accent */}

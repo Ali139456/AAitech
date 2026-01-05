@@ -117,7 +117,6 @@ const Contact = () => {
                   ease: 'easeIn'
                 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0 }}
                 className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary-300 hover:shadow-2xl transition-all duration-0 group overflow-hidden block"
               >
                 {/* Left Border on Hover */}

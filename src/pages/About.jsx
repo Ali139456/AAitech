@@ -269,7 +269,6 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeIn' }}
                 whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ duration: 0 }}
                 className="px-6 py-3 bg-gradient-to-r from-primary-50 to-accent-50 border border-primary-200 rounded-full text-sm font-semibold text-primary-700 hover:from-primary-100 hover:to-accent-100 transition-all duration-0 cursor-default"
               >
                 {capability}
