@@ -256,14 +256,14 @@ const Academy = () => {
                   {/* Icon Section */}
                   <div className="flex-shrink-0">
                     <div className={`w-16 h-16 bg-gradient-to-br ${category.color} rounded-xl flex items-center justify-center text-3xl shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                      {category.icon}
-                    </div>
+                  {category.icon}
+                </div>
                   </div>
                   {/* Content Section */}
                   <div className="flex-1 min-w-0">
                     <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">{category.title}</h3>
                     <ul className="space-y-2">
-                      {category.items.map((item, itemIndex) => (
+                  {category.items.map((item, itemIndex) => (
                         <motion.li
                           key={itemIndex}
                           initial={{ opacity: 0, x: -10 }}
@@ -271,18 +271,18 @@ const Academy = () => {
                           viewport={{ once: true }}
                           transition={{ duration: 0.3, delay: itemIndex * 0.05 }}
                         >
-                          <Link
-                            to={item.path}
+                      <Link
+                        to={item.path}
                             className="group/link flex items-center gap-2 p-2 rounded-lg bg-white hover:bg-primary-50 border border-gray-100 hover:border-primary-200 transition-all duration-300"
-                          >
+                      >
                             <svg className="w-4 h-4 text-primary-500 group-hover/link:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                             <span className="text-gray-700 group-hover/link:text-primary-600 font-medium text-sm transition-colors truncate">{item.label}</span>
-                          </Link>
+                      </Link>
                         </motion.li>
-                      ))}
-                    </ul>
+                  ))}
+                </ul>
                   </div>
                 </div>
               </motion.div>

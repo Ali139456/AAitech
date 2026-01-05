@@ -170,49 +170,49 @@ const Services = () => {
                 .replace(/^-|-$/g, '') // Remove leading/trailing dashes
               
               return (
-                <motion.div
-                  key={categoryIndex}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              <motion.div
+                key={categoryIndex}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
                   className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <Link
                     to={`/services/category/${categorySlug}`}
                     className="block"
-                  >
+              >
                     <div className="flex items-center gap-4 mb-6 cursor-pointer group">
                       <div className={`w-14 h-14 bg-gradient-to-br ${category.color} rounded-xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform`}>
-                        {category.icon}
-                      </div>
+                    {category.icon}
+                  </div>
                       <div className="flex-1">
                         <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{category.title}</h3>
-                        <p className="text-gray-600 mt-1">{category.description}</p>
-                      </div>
+                    <p className="text-gray-600 mt-1">{category.description}</p>
+                  </div>
                       <svg className="w-6 h-6 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
-                    </div>
+                </div>
                   </Link>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {category.services.map((service, serviceIndex) => {
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {category.services.map((service, serviceIndex) => {
                       const serviceSlug = getServiceSlug(service)
-                      return (
-                        <Link
-                          key={serviceIndex}
+                    return (
+                <Link
+                        key={serviceIndex}
                           to={`/services/${serviceSlug}`}
                           className="group flex items-center gap-3 p-4 rounded-lg border border-gray-200 bg-gray-50 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200"
-                        >
+                >
                           <svg className="w-5 h-5 text-primary-600 flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                           <span className="text-gray-700 font-medium group-hover:text-primary-600 transition-colors">{service}</span>
-                        </Link>
-                      )
-                    })}
-                  </div>
+                </Link>
+                    )
+                  })}
+                </div>
                   
                   <div className="mt-6 pt-6 border-t border-gray-200">
                     <Link
@@ -472,8 +472,8 @@ const Services = () => {
                       </span>
                     ))}
                   </div>
-                </motion.div>
-              ))}
+              </motion.div>
+            ))}
             </div>
           </div>
         </div>

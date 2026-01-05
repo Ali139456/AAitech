@@ -243,8 +243,8 @@ const Resources = () => {
             <div className="flex items-center gap-2 mb-2 md:mb-0 md:mr-2">
               <span className="text-2xl">🔍</span>
               <span className="text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wider hidden sm:inline">Filter:</span>
-            </div>
-            
+        </div>
+
             {/* Content Type Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
@@ -275,10 +275,10 @@ const Resources = () => {
             {/* Industry Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-purple-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-purple-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/20 min-h-[44px]">
                 <select
                   value={filters.industry}
                   onChange={(e) => handleFilterChange('industry', e.target.value)}
@@ -290,15 +290,15 @@ const Resources = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     🏢
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-purple-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-purple-600 transition-colors duration-300 truncate min-w-0">
                     {filters.industry === 'all' ? 'Industry' : filterOptions.industry.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.industry) || 'Industry'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -316,10 +316,10 @@ const Resources = () => {
             {/* Service Area Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-green-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-green-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/20 min-h-[44px]">
                 <select
                   value={filters.serviceArea}
                   onChange={(e) => handleFilterChange('serviceArea', e.target.value)}
@@ -331,15 +331,15 @@ const Resources = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     ⚙️
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-green-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-green-600 transition-colors duration-300 truncate min-w-0">
                     {filters.serviceArea === 'all' ? 'Service Area' : filterOptions.serviceArea.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.serviceArea) || 'Service Area'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-green-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-green-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -357,10 +357,10 @@ const Resources = () => {
             {/* Technology Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-orange-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-orange-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 min-h-[44px]">
                 <select
                   value={filters.technology}
                   onChange={(e) => handleFilterChange('technology', e.target.value)}
@@ -372,15 +372,15 @@ const Resources = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     💻
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-orange-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-orange-600 transition-colors duration-300 truncate min-w-0">
                     {filters.technology === 'all' ? 'Technology' : filterOptions.technology.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.technology) || 'Technology'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-orange-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -398,10 +398,10 @@ const Resources = () => {
             {/* Audience Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-indigo-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-indigo-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 min-h-[44px]">
                 <select
                   value={filters.audience}
                   onChange={(e) => handleFilterChange('audience', e.target.value)}
@@ -413,15 +413,15 @@ const Resources = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     👥
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-indigo-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-indigo-600 transition-colors duration-300 truncate min-w-0">
                     {filters.audience === 'all' ? 'Audience' : filterOptions.audience.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.audience) || 'Audience'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-indigo-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -439,10 +439,10 @@ const Resources = () => {
             {/* Year Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[120px]"
+              className="group relative w-full sm:w-auto min-w-[100px] sm:min-w-[120px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-teal-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-teal-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20 min-h-[44px]">
                 <select
                   value={filters.year}
                   onChange={(e) => handleFilterChange('year', e.target.value)}
@@ -454,15 +454,15 @@ const Resources = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     📅
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-teal-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-teal-600 transition-colors duration-300 truncate min-w-0">
                     {filters.year === 'all' ? 'Year' : filters.year}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-teal-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-teal-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -763,7 +763,7 @@ const Resources = () => {
                   <div className="mb-3">
                     <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-lg">
                       {webinar.type}
-                    </span>
+                  </span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {webinar.title}
@@ -878,7 +878,7 @@ const Resources = () => {
               </svg>
             </Link>
           </motion.div>
-        </div>
+      </div>
       </section>
     </div>
   )

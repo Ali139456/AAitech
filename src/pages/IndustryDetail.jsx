@@ -129,14 +129,14 @@ const IndustryDetail = () => {
           }}></div>
           
           <div className="container-custom relative z-10">
-            <div className="max-w-6xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-center mb-16"
-              >
+              className="text-center mb-16"
+            >
                 <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                   What We've Built
                 </h2>
@@ -429,7 +429,7 @@ const IndustryDetail = () => {
                         ))}
                       </ul>
                     </div>
-                  </motion.div>
+            </motion.div>
                 )}
               </div>
             </div>

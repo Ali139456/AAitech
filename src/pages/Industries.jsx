@@ -121,20 +121,20 @@ const Industries = () => {
                 <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${industry.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="relative z-10">
                   <div className={`w-16 h-16 bg-gradient-to-br ${industry.color} rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                    {industry.icon}
-                  </div>
+                  {industry.icon}
+                </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">
-                    {industry.label}
-                  </h3>
-                  <Link
-                    to={industry.path}
-                    className="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors group/link"
-                  >
+                  {industry.label}
+                </h3>
+                <Link
+                  to={industry.path}
+                  className="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors group/link"
+                >
                     View Details
-                    <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
                 </div>
               </motion.div>
             ))}

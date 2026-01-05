@@ -220,10 +220,10 @@ const PartnerSuccess = () => {
             {/* Industry Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-blue-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-blue-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 min-h-[44px]">
                 {/* Select element - covers entire area */}
                 <select
                   value={filters.industry}
@@ -238,15 +238,15 @@ const PartnerSuccess = () => {
                 </select>
                 
                 {/* Visual content */}
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     🏢
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-blue-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-blue-600 transition-colors duration-300 truncate min-w-0">
                     {filters.industry === 'all' ? 'Industry' : filterOptions.industry.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.industry) || 'Industry'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -264,10 +264,10 @@ const PartnerSuccess = () => {
             {/* Service Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-purple-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-purple-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/20 min-h-[44px]">
                 <select
                   value={filters.service}
                   onChange={(e) => handleFilterChange('service', e.target.value)}
@@ -279,15 +279,15 @@ const PartnerSuccess = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     ⚙️
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-purple-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-purple-600 transition-colors duration-300 truncate min-w-0">
                     {filters.service === 'all' ? 'Service' : filterOptions.service.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.service) || 'Service'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -305,10 +305,10 @@ const PartnerSuccess = () => {
             {/* Technology Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-green-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-green-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/20 min-h-[44px]">
                 <select
                   value={filters.technology}
                   onChange={(e) => handleFilterChange('technology', e.target.value)}
@@ -320,15 +320,15 @@ const PartnerSuccess = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     💻
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-green-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-green-600 transition-colors duration-300 truncate min-w-0">
                     {filters.technology === 'all' ? 'Technology' : filterOptions.technology.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.technology) || 'Technology'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-green-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-green-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -346,10 +346,10 @@ const PartnerSuccess = () => {
             {/* Engagement Type Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-orange-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-orange-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 min-h-[44px]">
                 <select
                   value={filters.engagementType}
                   onChange={(e) => handleFilterChange('engagementType', e.target.value)}
@@ -361,15 +361,15 @@ const PartnerSuccess = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     🤝
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-orange-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-orange-600 transition-colors duration-300 truncate min-w-0">
                     {filters.engagementType === 'all' ? 'Engagement' : filterOptions.engagementType.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.engagementType) || 'Engagement'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-orange-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -387,10 +387,10 @@ const PartnerSuccess = () => {
             {/* Year Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[120px]"
+              className="group relative w-full sm:w-auto min-w-[100px] sm:min-w-[120px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-indigo-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-indigo-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 min-h-[44px]">
                 <select
                   value={filters.year}
                   onChange={(e) => handleFilterChange('year', e.target.value)}
@@ -402,15 +402,15 @@ const PartnerSuccess = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     📅
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-indigo-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-indigo-600 transition-colors duration-300 truncate min-w-0">
                     {filters.year === 'all' ? 'Year' : filters.year}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-indigo-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -428,10 +428,10 @@ const PartnerSuccess = () => {
             {/* Region Filter */}
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
-              className="group relative w-full sm:w-auto min-w-[140px]"
+              className="group relative w-full sm:w-auto min-w-[120px] sm:min-w-[140px]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-teal-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20">
+              <div className="relative bg-white rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 shadow-md border-2 border-gray-200 group-hover:border-teal-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20 min-h-[44px]">
                 <select
                   value={filters.region}
                   onChange={(e) => handleFilterChange('region', e.target.value)}
@@ -443,15 +443,15 @@ const PartnerSuccess = () => {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-2.5 pointer-events-none relative z-0 min-h-[44px]">
+                  <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-sm sm:text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     🌍
                   </div>
-                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-teal-600 transition-colors duration-300">
+                  <span className="flex-1 text-gray-700 font-semibold text-xs sm:text-sm group-hover:text-teal-600 transition-colors duration-300 truncate min-w-0">
                     {filters.region === 'all' ? 'Region' : filterOptions.region.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.region) || 'Region'}
                   </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-teal-500 transition-colors duration-300 flex-shrink-0" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-teal-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -502,10 +502,10 @@ const PartnerSuccess = () => {
               </div>
             </div>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
               <motion.div
-                key={index}
+              key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -545,7 +545,7 @@ const PartnerSuccess = () => {
       {/* Client Success Stories Section */}
       <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-green-50/30 to-white">
         <div className="container-custom">
-          <motion.div
+                <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -605,7 +605,7 @@ const PartnerSuccess = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {story.title}
-                  </h3>
+                </h3>
                 </div>
               </motion.div>
             ))}
@@ -667,12 +667,12 @@ const PartnerSuccess = () => {
                     </div>
                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 text-xs font-bold shadow-md border border-amber-200">
                       {migration.status}
-                    </span>
+                      </span>
                   </div>
                   <div className="mb-3">
                     <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs font-semibold rounded-lg">
                       {migration.type}
-                    </span>
+                      </span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {migration.title}
@@ -784,7 +784,7 @@ const PartnerSuccess = () => {
               </svg>
             </Link>
           </motion.div>
-        </div>
+      </div>
       </section>
     </div>
   )

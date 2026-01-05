@@ -302,8 +302,8 @@ const ServiceDetail = () => {
                   </div>
                 </div>
                 <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">
-                  {service.longDescription || service.description}
-                </p>
+                {service.longDescription || service.description}
+              </p>
               </div>
             </motion.div>
 
@@ -341,17 +341,17 @@ const ServiceDetail = () => {
                     </div>
                   </div>
                   {service.features && service.features.length > 0 ? (
-                    <ul className="space-y-4">
-                      {service.features.map((feature, index) => (
-                        <motion.li
-                          key={index}
+                <ul className="space-y-4">
+                  {service.features.map((feature, index) => (
+                    <motion.li
+                      key={index}
                           initial={{ opacity: 0, x: -30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           whileHover={{ x: 10 }}
                           className="group/item flex items-start gap-4 p-4 rounded-2xl bg-white/70 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg"
-                        >
+                    >
                           <motion.div 
                             className={`w-10 h-10 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300`}
                             whileHover={{ rotate: [0, -10, 10, 0] }}
@@ -359,12 +359,12 @@ const ServiceDetail = () => {
                           >
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
+                        </svg>
                           </motion.div>
                           <span className="text-gray-800 text-lg font-semibold leading-relaxed pt-1">{feature}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
+                    </motion.li>
+                  ))}
+                </ul>
                   ) : (
                     <p className="text-gray-600">No features listed.</p>
                   )}
@@ -373,10 +373,10 @@ const ServiceDetail = () => {
 
               {/* Benefits - Only show if benefits exist */}
               {service.benefits && service.benefits.length > 0 && (
-                <motion.div
+              <motion.div
                   initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className="group relative bg-gradient-to-br from-white via-white to-accent-50/40 rounded-3xl p-10 border-2 border-gray-200/60 hover:border-accent-400 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden"
@@ -404,17 +404,17 @@ const ServiceDetail = () => {
                         <div className={`h-1 w-20 bg-gradient-to-r ${service.color} rounded-full`}></div>
                       </div>
                     </div>
-                    <ul className="space-y-4">
-                      {service.benefits.map((benefit, index) => (
-                        <motion.li
-                          key={index}
+                <ul className="space-y-4">
+                  {service.benefits.map((benefit, index) => (
+                    <motion.li
+                      key={index}
                           initial={{ opacity: 0, x: 30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           whileHover={{ x: -10 }}
                           className="group/item flex items-start gap-4 p-4 rounded-2xl bg-white/70 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg"
-                        >
+                    >
                           <motion.div 
                             className={`w-10 h-10 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300`}
                             whileHover={{ rotate: [0, -10, 10, 0] }}
@@ -422,14 +422,14 @@ const ServiceDetail = () => {
                           >
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
+                        </svg>
                           </motion.div>
                           <span className="text-gray-800 text-lg font-semibold leading-relaxed pt-1">{benefit}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
+                    </motion.li>
+                  ))}
+                </ul>
                   </div>
-                </motion.div>
+              </motion.div>
               )}
             </div>
 

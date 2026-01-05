@@ -109,20 +109,20 @@ const Products = () => {
 
                 {/* CTA Button */}
                 {!product.comingSoon && (
-                  <Link
+                <Link
                     to={`/products/${product.slug}`}
                     className="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors duration-300 group/btn"
-                  >
+                >
                     View Details
-                    <svg 
+                  <svg 
                       className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
                 )}
               </motion.div>
             ))}
@@ -154,15 +154,15 @@ const Products = () => {
               Transform your business with AI-powered solutions that scale with your needs and deliver measurable results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                to="/contact"
+            <Link
+              to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-primary-700 transition-all duration-300 hover:scale-105"
-              >
+            >
                 Talk to an Expert
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"

@@ -252,7 +252,7 @@ const Contact = () => {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* Dropdown container */}
-                    <div className="relative bg-white rounded-xl border-2 border-gray-200 group-hover:border-primary-400 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 transition-all duration-300 shadow-sm group-hover:shadow-md">
+                    <div className="relative bg-white rounded-xl border-2 border-gray-200 group-hover:border-primary-400 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 transition-all duration-300 shadow-sm group-hover:shadow-md min-h-[44px]">
                       {/* Select element - covers entire area */}
                       <select
                         id="service"
@@ -272,20 +272,20 @@ const Contact = () => {
                       </select>
                       
                       {/* Visual content */}
-                      <div className="flex items-center gap-3 px-4 py-3 pointer-events-none relative z-0">
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 pointer-events-none relative z-0 min-h-[44px]">
                         {/* Icon */}
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-sm font-bold shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-md group-hover:scale-110 transition-transform duration-300">
                           ⚙️
                         </div>
                         
                         {/* Display text */}
-                        <span className="flex-1 text-gray-700 font-medium text-sm group-hover:text-primary-600 transition-colors duration-300">
+                        <span className="flex-1 text-gray-700 font-medium text-xs sm:text-sm group-hover:text-primary-600 transition-colors duration-300 truncate min-w-0">
                           {formData.service || 'Select a service...'}
                         </span>
                         
                         {/* Custom dropdown arrow */}
                         <svg 
-                          className="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-300 flex-shrink-0" 
+                          className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-300 flex-shrink-0" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"

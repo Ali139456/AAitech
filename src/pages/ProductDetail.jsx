@@ -184,7 +184,7 @@ const ProductDetail = () => {
                   
                   <div className="relative z-10">
                     <div className="flex items-center gap-5 mb-8">
-                      <motion.div 
+            <motion.div
                         className={`w-20 h-20 bg-gradient-to-br ${product.color} rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}
                         whileHover={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 0.5 }}
@@ -206,11 +206,11 @@ const ProductDetail = () => {
                           key={index}
                           initial={{ opacity: 0, x: 30 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
+              viewport={{ once: true }}
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           whileHover={{ x: -10 }}
                           className="group/item flex items-start gap-4 p-4 rounded-2xl bg-white/70 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg"
-                        >
+            >
                           <motion.div 
                             className={`w-10 h-10 bg-gradient-to-br ${product.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover/item:scale-110 transition-transform duration-300`}
                             whileHover={{ rotate: [0, -10, 10, 0] }}
@@ -225,7 +225,7 @@ const ProductDetail = () => {
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+            </motion.div>
               )}
             </div>
           </div>
@@ -254,15 +254,15 @@ const ProductDetail = () => {
               }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
                 {product.comingSoon ? 'Get Notified' : 'Talk to an Expert'}
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
               {!product.comingSoon && (
                 <Link
                   to="/contact"
