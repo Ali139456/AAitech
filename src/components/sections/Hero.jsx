@@ -131,7 +131,7 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative pb-32 overflow-hidden bg-gray-900 flex items-center"
+      className="relative pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-gray-900 flex items-center"
       style={{ 
         height: 'calc(100vh - var(--header-height, 80px))',
         minHeight: 'calc(100vh - var(--header-height, 80px))',
@@ -198,7 +198,7 @@ const Hero = () => {
       {/* Main Content */}
       <motion.div 
         style={{ y, opacity, scale }}
-        className="container-custom relative z-20"
+        className="container-custom relative z-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-[250px]"
       >
         <div className="max-w-4xl mx-auto text-center">
           {/* Text Content */}
@@ -213,28 +213,28 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/20 border border-primary-400/30 mb-6"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-primary-500/20 border border-primary-400/30 mb-4 sm:mb-6"
               >
                 <motion.div
-                  className="w-2 h-2 rounded-full bg-primary-400"
+                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary-400"
                   animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-xs font-medium text-primary-300 uppercase tracking-wider">
+                <span className="text-[10px] sm:text-xs font-medium text-primary-300 uppercase tracking-wider">
                   AI-Powered Solutions
                 </span>
               </motion.div>
 
               {/* Main Heading with TypeIt */}
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-tight"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 leading-tight px-2"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <motion.span
                   ref={typeItRef}
-                  className="block text-white min-h-[1.2em]"
+                  className="block text-white min-h-[1.2em] break-words"
                   style={{
                     x: useTransform(x, (val) => val * 0.3),
                     y: useTransform(yMouse, (val) => val * 0.3),
@@ -245,20 +245,20 @@ const Hero = () => {
               
               {/* Description */}
               <motion.p
-                className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 leading-relaxed px-2 sm:px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 We design, build, and scale intelligent digital platforms by combining{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">AI</span>,{' '}
-                <span className="font-semibold text-accent-400 bg-accent-400/10 px-2 py-1 rounded">cloud</span>, and{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-2 py-1 rounded">enterprise-grade engineering</span> — enabling organizations to innovate faster, operate smarter, and grow with confidence.
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm md:text-base lg:text-lg">AI</span>,{' '}
+                <span className="font-semibold text-accent-400 bg-accent-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm md:text-base lg:text-lg">cloud</span>, and{' '}
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm md:text-base lg:text-lg">enterprise-grade engineering</span> — enabling organizations to innovate faster, operate smarter, and grow with confidence.
               </motion.p>
               
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
@@ -266,7 +266,7 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/contact"
-                    className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-sm sm:text-base"
+                    className="group relative inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-xs sm:text-sm md:text-base whitespace-nowrap"
                   >
                     <span className="relative z-10">Start a Project</span>
                     <motion.div
@@ -276,7 +276,7 @@ const Hero = () => {
                       transition={{ duration: 0 }}
                     />
                     <motion.svg
-                      className="relative z-10 ml-2 w-5 h-5"
+                      className="relative z-10 ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -291,10 +291,10 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/partner-success"
-                    className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-sm sm:text-base"
+                    className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-xs sm:text-sm md:text-base whitespace-nowrap"
                   >
                     View Our Work
-                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
