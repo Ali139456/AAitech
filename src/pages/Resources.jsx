@@ -279,23 +279,26 @@ const Resources = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-purple-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/20">
-                <div className="flex items-center gap-2.5">
+                <select
+                  value={filters.industry}
+                  onChange={(e) => handleFilterChange('industry', e.target.value)}
+                  className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                >
+                  {filterOptions.industry.map((option, idx) => (
+                    <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
+                      {idx === 0 ? 'Industry' : option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     🏢
                   </div>
-                  <select
-                    value={filters.industry}
-                    onChange={(e) => handleFilterChange('industry', e.target.value)}
-                    className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-semibold text-xs md:text-sm focus:outline-none cursor-pointer pr-6 group-hover:text-purple-600 transition-colors duration-300"
-                  >
-                    {filterOptions.industry.map((option, idx) => (
-                      <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
-                        {idx === 0 ? 'Industry' : option}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-purple-600 transition-colors duration-300">
+                    {filters.industry === 'all' ? 'Industry' : filterOptions.industry.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.industry) || 'Industry'}
+                  </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-purple-500 pointer-events-none transition-colors duration-300" 
+                    className="w-4 h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -317,23 +320,26 @@ const Resources = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-green-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/20">
-                <div className="flex items-center gap-2.5">
+                <select
+                  value={filters.serviceArea}
+                  onChange={(e) => handleFilterChange('serviceArea', e.target.value)}
+                  className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                >
+                  {filterOptions.serviceArea.map((option, idx) => (
+                    <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
+                      {idx === 0 ? 'Service Area' : option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     ⚙️
                   </div>
-                  <select
-                    value={filters.serviceArea}
-                    onChange={(e) => handleFilterChange('serviceArea', e.target.value)}
-                    className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-semibold text-xs md:text-sm focus:outline-none cursor-pointer pr-6 group-hover:text-green-600 transition-colors duration-300"
-                  >
-                    {filterOptions.serviceArea.map((option, idx) => (
-                      <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
-                        {idx === 0 ? 'Service Area' : option}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-green-600 transition-colors duration-300">
+                    {filters.serviceArea === 'all' ? 'Service Area' : filterOptions.serviceArea.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.serviceArea) || 'Service Area'}
+                  </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-green-500 pointer-events-none transition-colors duration-300" 
+                    className="w-4 h-4 text-gray-400 group-hover:text-green-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -355,23 +361,26 @@ const Resources = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-orange-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20">
-                <div className="flex items-center gap-2.5">
+                <select
+                  value={filters.technology}
+                  onChange={(e) => handleFilterChange('technology', e.target.value)}
+                  className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                >
+                  {filterOptions.technology.map((option, idx) => (
+                    <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
+                      {idx === 0 ? 'Technology' : option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     💻
                   </div>
-                  <select
-                    value={filters.technology}
-                    onChange={(e) => handleFilterChange('technology', e.target.value)}
-                    className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-semibold text-xs md:text-sm focus:outline-none cursor-pointer pr-6 group-hover:text-orange-600 transition-colors duration-300"
-                  >
-                    {filterOptions.technology.map((option, idx) => (
-                      <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
-                        {idx === 0 ? 'Technology' : option}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-orange-600 transition-colors duration-300">
+                    {filters.technology === 'all' ? 'Technology' : filterOptions.technology.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.technology) || 'Technology'}
+                  </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-orange-500 pointer-events-none transition-colors duration-300" 
+                    className="w-4 h-4 text-gray-400 group-hover:text-orange-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -393,23 +402,26 @@ const Resources = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-indigo-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20">
-                <div className="flex items-center gap-2.5">
+                <select
+                  value={filters.audience}
+                  onChange={(e) => handleFilterChange('audience', e.target.value)}
+                  className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                >
+                  {filterOptions.audience.map((option, idx) => (
+                    <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
+                      {idx === 0 ? 'Audience' : option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     👥
                   </div>
-                  <select
-                    value={filters.audience}
-                    onChange={(e) => handleFilterChange('audience', e.target.value)}
-                    className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-semibold text-xs md:text-sm focus:outline-none cursor-pointer pr-6 group-hover:text-indigo-600 transition-colors duration-300"
-                  >
-                    {filterOptions.audience.map((option, idx) => (
-                      <option key={idx} value={idx === 0 ? 'all' : option.toLowerCase()}>
-                        {idx === 0 ? 'Audience' : option}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-indigo-600 transition-colors duration-300">
+                    {filters.audience === 'all' ? 'Audience' : filterOptions.audience.find((opt, idx) => idx > 0 && opt.toLowerCase() === filters.audience) || 'Audience'}
+                  </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 pointer-events-none transition-colors duration-300" 
+                    className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -431,23 +443,26 @@ const Resources = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-white rounded-2xl px-3 py-2.5 shadow-md border-2 border-gray-200 group-hover:border-teal-400 group-hover:shadow-lg transition-all duration-300 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20">
-                <div className="flex items-center gap-2.5">
+                <select
+                  value={filters.year}
+                  onChange={(e) => handleFilterChange('year', e.target.value)}
+                  className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                >
+                  {filterOptions.year.map((option, idx) => (
+                    <option key={idx} value={idx === 0 ? 'all' : option}>
+                      {idx === 0 ? 'Year' : option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2.5 pointer-events-none relative z-0">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform duration-300">
                     📅
                   </div>
-                  <select
-                    value={filters.year}
-                    onChange={(e) => handleFilterChange('year', e.target.value)}
-                    className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-semibold text-xs md:text-sm focus:outline-none cursor-pointer pr-6 group-hover:text-teal-600 transition-colors duration-300"
-                  >
-                    {filterOptions.year.map((option, idx) => (
-                      <option key={idx} value={idx === 0 ? 'all' : option}>
-                        {idx === 0 ? 'Year' : option}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="flex-1 text-gray-700 font-semibold text-xs md:text-sm group-hover:text-teal-600 transition-colors duration-300">
+                    {filters.year === 'all' ? 'Year' : filters.year}
+                  </span>
                   <motion.svg 
-                    className="w-4 h-4 text-gray-400 group-hover:text-teal-500 pointer-events-none transition-colors duration-300" 
+                    className="w-4 h-4 text-gray-400 group-hover:text-teal-500 transition-colors duration-300 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"

@@ -11,6 +11,7 @@ const Contact = () => {
     company: '',
     phone: '',
     message: '',
+    service: '',
   })
 
   const contactMethods = [
@@ -252,37 +253,45 @@ const Contact = () => {
                     
                     {/* Dropdown container */}
                     <div className="relative bg-white rounded-xl border-2 border-gray-200 group-hover:border-primary-400 focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 transition-all duration-300 shadow-sm group-hover:shadow-md">
-                      <div className="flex items-center gap-3 px-4 py-3">
+                      {/* Select element - covers entire area */}
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={(e) => {
+                          setFormData({ ...formData, service: e.target.value })
+                        }}
+                        className="absolute inset-0 w-full h-full appearance-none bg-transparent border-0 cursor-pointer opacity-0 z-10"
+                      >
+                        <option value="">Select a service...</option>
+                        {services.map((service, index) => (
+                          <option key={index} value={service}>
+                            {service}
+                          </option>
+                        ))}
+                      </select>
+                      
+                      {/* Visual content */}
+                      <div className="flex items-center gap-3 px-4 py-3 pointer-events-none relative z-0">
                         {/* Icon */}
                         <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-sm font-bold shadow-md group-hover:scale-110 transition-transform duration-300">
                           ⚙️
                         </div>
                         
-                        {/* Select element */}
-                        <select
-                          id="service"
-                          name="service"
-                          className="flex-1 appearance-none bg-transparent border-0 text-gray-700 font-medium text-sm focus:outline-none cursor-pointer pr-8 focus:text-primary-600 transition-colors duration-300"
-                        >
-                          <option value="">Select a service...</option>
-                          {services.map((service, index) => (
-                            <option key={index} value={service}>
-                              {service}
-                            </option>
-                          ))}
-                        </select>
+                        {/* Display text */}
+                        <span className="flex-1 text-gray-700 font-medium text-sm group-hover:text-primary-600 transition-colors duration-300">
+                          {formData.service || 'Select a service...'}
+                        </span>
                         
                         {/* Custom dropdown arrow */}
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg 
-                            className="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-300" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
+                        <svg 
+                          className="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-300 flex-shrink-0" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
                       </div>
                       
                       {/* Bottom accent line on focus */}
