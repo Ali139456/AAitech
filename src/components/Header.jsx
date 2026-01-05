@@ -471,7 +471,7 @@ const Header = () => {
       data-header="main"
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#13273D] backdrop-blur-md shadow-lg border-b border-primary-200' 
+          ? 'bg-[#13273D] backdrop-blur-md shadow-lg' 
           : 'bg-[#13273D] backdrop-blur-md'
       }`}
     >
