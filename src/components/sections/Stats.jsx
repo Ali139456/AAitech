@@ -122,41 +122,42 @@ const Stats = () => {
           </h3>
           
           {/* Achievements Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {achievements.map((achievement, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="text-center p-6 bg-white rounded-2xl border-2 border-blue-100 hover:border-primary-400 transition-all duration-300 hover:shadow-lg group"
+                className="group relative p-6 bg-white rounded-2xl border-2 border-gray-100 shadow-md hover:shadow-2xl hover:border-blue-300 transition-all duration-300 overflow-hidden"
               >
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  {achievement.icon}
-                </div>
-                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-                  {achievement.hasCountUp ? (
-                    isInView ? (
-                      <CountUp
-                        start={0}
-                        end={achievement.value}
-                        duration={2.5}
-                        suffix={achievement.suffix}
-                        separator=","
-                        decimals={0}
-                        enabled={isInView}
-                      />
+                {/* Gradient Background on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10 text-center">
+                  <div className="text-3xl mb-3 transform group-hover:scale-110 transition-transform duration-300">{achievement.icon}</div>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">
+                    {achievement.hasCountUp ? (
+                      isInView ? (
+                        <CountUp
+                          start={0}
+                          end={achievement.value}
+                          duration={2.5}
+                          suffix={achievement.suffix}
+                          separator=","
+                          decimals={0}
+                          enabled={isInView}
+                        />
+                      ) : (
+                        `0${achievement.suffix}`
+                      )
                     ) : (
-                      `0${achievement.suffix}`
-                    )
-                  ) : (
-                    achievement.value
-                  )}
-                </div>
-                <div className="text-sm sm:text-base text-gray-700 font-semibold">
-                  {achievement.label}
+                      achievement.value
+                    )}
+                  </div>
+                  <div className="text-sm text-gray-600 font-semibold mt-2">{achievement.label}</div>
                 </div>
               </motion.div>
             ))}
