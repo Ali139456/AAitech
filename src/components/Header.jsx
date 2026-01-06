@@ -482,7 +482,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="flex-shrink-0 z-10 relative -ml-2 sm:-ml-3 xl:-ml-4"
+              className="flex-shrink-0 z-10 relative ml-4 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-[120px]"
             >
               <Link to="/" className="flex items-center space-x-1 sm:space-x-2">
                 <img 
@@ -862,7 +862,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="hidden lg:block flex-shrink-0 ml-4 xl:ml-6 2xl:ml-8"
+              className="hidden lg:block flex-shrink-0 mr-4 sm:mr-8 md:mr-16 lg:mr-24 xl:mr-[120px]"
             >
               <Link
                 to="/contact"
