@@ -98,7 +98,7 @@ const About = () => {
               <p className="text-xl text-gray-600 leading-relaxed">
                 <span className="font-bold text-gray-900">Aaitek</span> delivers enterprise-grade solutions across{' '}
                 <span className="font-semibold text-primary-600">DXP (Sitecore, Kentico, Umbraco, Optimizely)</span>,{' '}
-                <span className="font-semibold text-primary-600">SAP, Salesforce, ServiceNow, AWS, AI, and Automation</span> — backed by{' '}
+                <span className="font-semibold text-primary-600">SAP, Salesforce, ServiceNow, AWS, AI, and Automation</span> backed by{' '}
                 <span className="font-bold text-primary-600">500+ certified tech professionals</span>.
               </p>
             </motion.div>

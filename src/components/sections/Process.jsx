@@ -20,7 +20,7 @@ const Process = () => {
         },
         {
           title: 'Delivery Roadmap & Milestones',
-          description: 'A structured roadmap outlining scope, timelines, milestones, and dependencies — providing transparency and predictability throughout the engagement.',
+          description: 'A structured roadmap outlining scope, timelines, milestones, and dependencies providing transparency and predictability throughout the engagement.',
         },
         {
           title: 'Scope & Requirements Definition',
@@ -43,7 +43,7 @@ const Process = () => {
       details: [
         {
           title: 'User Research & Experience Analysis',
-          description: 'We conduct structured user research and stakeholder analysis to understand user behaviours, needs, and pain points — ensuring design decisions are grounded in real-world insights.',
+          description: 'We conduct structured user research and stakeholder analysis to understand user behaviours, needs, and pain points ensuring design decisions are grounded in real-world insights.',
         },
         {
           title: 'Wireframing & Prototyping',
@@ -51,7 +51,7 @@ const Process = () => {
         },
         {
           title: 'UI/UX Design',
-          description: 'We design clean, intuitive, and accessible interfaces that balance aesthetics with usability — delivering consistent experiences across devices and platforms.',
+          description: 'We design clean, intuitive, and accessible interfaces that balance aesthetics with usability delivering consistent experiences across devices and platforms.',
         },
         {
           title: 'Design Systems & Standards',

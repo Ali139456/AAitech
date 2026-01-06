@@ -125,7 +125,7 @@ const Services = () => {
               End-to-End Digital & AI Services
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto">
-              We deliver comprehensive technology solutions across the full digital lifecycle — from product strategy and engineering to cloud platforms, AI, and enterprise systems — helping organizations transform, scale, and stay competitive.
+              We deliver comprehensive technology solutions across the full digital lifecycle from product strategy and engineering to cloud platforms, AI, and enterprise systems helping organizations transform, scale, and stay competitive.
             </p>
           </motion.div>
         </div>
@@ -254,7 +254,7 @@ const Services = () => {
                 The Advantage of Partnering with Aaitek
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                We don't just deliver technology — we partner with organizations to solve complex business challenges through intelligent platforms, strong engineering, and reliable delivery. Here's what sets Aaitek apart:
+                We don't just deliver technology, we partner with organizations to solve complex business challenges through intelligent platforms, strong engineering, and reliable delivery. Here's what sets Aaitek apart:
               </p>
             </motion.div>
 
@@ -302,7 +302,7 @@ const Services = () => {
                 },
                 {
                   title: 'Predictable, On-Time Delivery',
-                  description: 'Using agile delivery models, modern project management tools, and continuous communication, we ensure transparency and predictable delivery timelines — without compromising quality.',
+                  description: 'Using agile delivery models, modern project management tools, and continuous communication, we ensure transparency and predictable delivery timelines without compromising quality.',
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

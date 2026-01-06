@@ -235,7 +235,7 @@ const AboutUs = () => {
                   AaitekTOD™ – Talent on Demand
                 </motion.h3>
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                  Our <span className="font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">AaitekTOD™</span> (Talent on Demand) model provides flexible, on-demand access to experienced engineers, architects, and specialists who integrate seamlessly with your teams. This enables faster delivery, reduced risk, and the ability to scale expertise precisely when and where it's needed — without long-term overhead.
+                  Our <span className="font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">AaitekTOD™</span> (Talent on Demand) model provides flexible, on-demand access to experienced engineers, architects, and specialists who integrate seamlessly with your teams. This enables faster delivery, reduced risk, and the ability to scale expertise precisely when and where it's needed without long-term overhead.
                 </p>
               </motion.div>
 

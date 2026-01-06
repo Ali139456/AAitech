@@ -9,13 +9,13 @@ const Features = () => {
   const features = [
     {
       title: 'AI-First Engineering',
-      description: 'AI is integrated into every stage of delivery — from design and development to automation and insights — helping organizations operate smarter and innovate with confidence.',
+      description: 'AI is integrated into every stage of delivery from design and development to automation and insights helping organizations operate smarter and innovate with confidence.',
       icon: '🤖',
       color: 'from-blue-500 to-cyan-500',
     },
     {
       title: 'Enterprise Security & Governance',
-      description: 'Security, compliance, and governance built into every layer — ensuring data protection, regulatory alignment, and enterprise-grade resilience.',
+      description: 'Security, compliance, and governance built into every layer ensuring data protection, regulatory alignment, and enterprise-grade resilience.',
       icon: '🔒',
       color: 'from-green-500 to-emerald-500',
     },
@@ -27,7 +27,7 @@ const Features = () => {
     },
     {
       title: 'Agile, Outcome-Driven Delivery',
-      description: 'Iterative delivery models focused on speed, quality, and measurable business outcomes — without compromising stability or security.',
+      description: 'Iterative delivery models focused on speed, quality, and measurable business outcomes without compromising stability or security.',
       icon: '⚡',
       color: 'from-yellow-500 to-orange-500',
     },
@@ -39,7 +39,7 @@ const Features = () => {
     },
     {
       title: 'Built for Growth',
-      description: 'Solutions architected to evolve with your business — supporting expansion, new markets, and changing customer expectations.',
+      description: 'Solutions architected to evolve with your business supporting expansion, new markets, and changing customer expectations.',
       icon: '📈',
       color: 'from-indigo-500 to-purple-500',
     },

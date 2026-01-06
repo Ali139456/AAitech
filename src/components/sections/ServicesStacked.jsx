@@ -133,7 +133,7 @@ const ServicesStacked = () => {
             End-to-End Digital & AI Services
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We deliver comprehensive technology solutions across the full digital lifecycle — from product strategy and engineering to cloud platforms, AI, and enterprise systems — helping organizations transform, scale, and stay competitive.
+            We deliver comprehensive technology solutions across the full digital lifecycle from product strategy and engineering to cloud platforms, AI, and enterprise systems helping organizations transform, scale, and stay competitive.
           </p>
         </motion.div>
 
