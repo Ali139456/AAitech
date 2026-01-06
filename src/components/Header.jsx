@@ -475,14 +475,14 @@ const Header = () => {
           : 'bg-[#13273D] backdrop-blur-md'
       }`}
     >
-      <nav className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-[250px] relative w-full max-w-[1920px]">
+      <nav className="mx-auto relative w-full max-w-[1920px]">
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 relative w-full">
           {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="flex-shrink-0 z-10 relative ml-4 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-[120px]"
+              className="flex-shrink-0 z-10 relative ml-4 sm:ml-8 md:ml-12 lg:ml-16 xl:ml-[120px]"
             >
               <Link to="/" className="flex items-center space-x-1 sm:space-x-2">
                 <img 
@@ -494,7 +494,7 @@ const Header = () => {
             </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-4 relative z-[100] ml-4 xl:ml-6 2xl:ml-8">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-4 relative z-[100] ml-auto mr-auto">
             {Object.entries(menuItems).map(([key, item]) => (
               <div
                 key={key}
@@ -862,7 +862,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="hidden lg:block flex-shrink-0 mr-4 sm:mr-8 md:mr-16 lg:mr-24 xl:mr-[120px]"
+              className="hidden lg:block flex-shrink-0 mr-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-[120px]"
             >
               <Link
                 to="/contact"
