@@ -213,21 +213,21 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-primary-500/20 border border-primary-400/30 mb-4 sm:mb-6"
+                className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-primary-500/20 border border-primary-400/30 mb-3 sm:mb-4 md:mb-5"
               >
                 <motion.div
-                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary-400"
+                  className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary-400"
                   animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-[10px] sm:text-xs font-medium text-primary-300 uppercase tracking-wider">
+                <span className="text-[9px] sm:text-[10px] md:text-xs font-medium text-primary-300 uppercase tracking-wider whitespace-nowrap">
                   AI-Powered Solutions
                 </span>
               </motion.div>
 
               {/* Main Heading with TypeIt */}
               <motion.h1
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 leading-tight px-2 sm:px-4"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold text-white mb-3 sm:mb-4 md:mb-5 leading-tight px-2 sm:px-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -247,20 +247,20 @@ const Hero = () => {
               
               {/* Description */}
               <motion.p
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 leading-relaxed px-2 sm:px-4 max-w-3xl mx-auto"
+                className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mb-3 sm:mb-4 md:mb-6 leading-relaxed px-2 sm:px-4 max-w-3xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 We design, build, and scale intelligent digital platforms by combining{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg">AI</span>,{' '}
-                <span className="font-semibold text-accent-400 bg-accent-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg">cloud</span>, and{' '}
-                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg">enterprise-grade engineering</span> — enabling organizations to innovate faster, operate smarter, and grow with confidence.
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base">AI</span>,{' '}
+                <span className="font-semibold text-accent-400 bg-accent-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base">cloud</span>, and{' '}
+                <span className="font-semibold text-primary-400 bg-primary-400/10 px-1 sm:px-1.5 md:px-2 py-0.5 sm:py-1 rounded text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base">enterprise-grade engineering</span> — enabling organizations to innovate faster, operate smarter, and grow with confidence.
               </motion.p>
               
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2 mb-12 sm:mb-16 md:mb-20 lg:mb-24"
+                className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center items-center px-2 mb-10 sm:mb-12 md:mb-16 lg:mb-20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
@@ -268,7 +268,7 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/contact"
-                    className="group relative inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-xs sm:text-sm md:text-base whitespace-nowrap"
+                    className="group relative inline-flex items-center justify-center px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 bg-primary-500 text-white font-semibold rounded-xl overflow-hidden shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-0 text-[10px] sm:text-xs md:text-sm whitespace-nowrap"
                   >
                     <span className="relative z-10">Start a Project</span>
                     <motion.div
@@ -278,7 +278,7 @@ const Hero = () => {
                       transition={{ duration: 0 }}
                     />
                     <motion.svg
-                      className="relative z-10 ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5"
+                      className="relative z-10 ml-1 sm:ml-1.5 w-3.5 h-3.5 sm:w-4 sm:h-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -293,10 +293,10 @@ const Hero = () => {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0 }}>
                   <Link
                     to="/partner-success"
-                    className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-xs sm:text-sm md:text-base whitespace-nowrap"
+                    className="inline-flex items-center justify-center px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-0 text-[10px] sm:text-xs md:text-sm whitespace-nowrap"
                   >
                     View Our Work
-                    <svg className="ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-1 sm:ml-1.5 w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
