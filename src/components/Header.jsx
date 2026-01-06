@@ -862,7 +862,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="hidden lg:block flex-shrink-0 mr-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-[120px]"
+              className="hidden lg:block flex-shrink-0 ml-auto mr-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-[120px]"
             >
               <Link
                 to="/contact"
