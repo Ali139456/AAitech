@@ -263,8 +263,8 @@ const Process = () => {
                     </div>
                   </div>
 
-                  {/* Step Content Card - Responsive with proper text wrapping */}
-                  <div className={`relative bg-white rounded-xl p-2.5 sm:p-3 md:p-4 lg:p-5 border-2 shadow-md transition-all duration-0 min-h-[160px] sm:min-h-[180px] md:min-h-[200px] lg:min-h-[220px] xl:min-h-[240px] flex flex-col overflow-hidden ${
+                  {/* Step Content Card - Dynamic height based on content */}
+                  <div className={`relative bg-white rounded-xl p-2.5 sm:p-3 md:p-4 lg:p-5 border-2 shadow-md transition-all duration-0 flex flex-col ${
                     activeStep === index
                       ? 'border-primary-500 bg-gradient-to-br from-primary-50 to-white shadow-lg shadow-primary-500/20'
                       : 'border-gray-200 hover:border-primary-300 hover:shadow-lg'
@@ -279,12 +279,12 @@ const Process = () => {
                       />
                     )}
 
-                    <h3 className={`text-[10px] sm:text-xs md:text-sm lg:text-base font-bold mb-1.5 sm:mb-2 md:mb-3 text-center transition-colors duration-0 flex-shrink-0 line-clamp-2 ${
+                    <h3 className={`text-[10px] sm:text-xs md:text-sm lg:text-base font-bold mb-1.5 sm:mb-2 md:mb-3 text-center transition-colors duration-0 flex-shrink-0 ${
                       activeStep === index ? 'text-primary-600' : 'text-gray-800 group-hover:text-primary-600'
                     }`}>
                       {step.title}
                     </h3>
-                    <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm text-gray-600 text-center leading-relaxed flex-grow overflow-hidden line-clamp-3 sm:line-clamp-4 md:line-clamp-5 lg:line-clamp-6">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm text-gray-600 text-center leading-relaxed">
                       {step.description}
                     </p>
 
