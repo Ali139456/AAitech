@@ -100,7 +100,7 @@ const WhyChoose = () => {
                     ) : (
                       `0+`
                     )}{' '}
-                    {feature.title}
+                {feature.title}
                   </>
                 ) : (
                   feature.title

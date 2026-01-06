@@ -119,72 +119,72 @@ const Footer = () => {
 
           {/* Navigation Links - Right Side */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            {/* Company Links */}
-            <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Our Company</h4>
-              <ul className="space-y-2">
-                {footerLinks.company.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-sm hover:text-primary-400 transition-colors duration-0"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Company Links */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-4">Our Company</h4>
+            <ul className="space-y-2">
+              {footerLinks.company.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm hover:text-primary-400 transition-colors duration-0"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Services Links */}
-            <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Services</h4>
-              <ul className="space-y-2">
-                {footerLinks.services.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-sm hover:text-primary-400 transition-colors duration-0"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Services Links */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              {footerLinks.services.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm hover:text-primary-400 transition-colors duration-0"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Products Links */}
-            <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Products</h4>
-              <ul className="space-y-2">
-                {footerLinks.products.map((link, index) => (
-                  <li key={`${link.path}-${index}`}>
-                    <Link
-                      to={link.path}
-                      className="text-sm hover:text-primary-400 transition-colors duration-0"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Products Links */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-4">Products</h4>
+            <ul className="space-y-2">
+              {footerLinks.products.map((link, index) => (
+                <li key={`${link.path}-${index}`}>
+                  <Link
+                    to={link.path}
+                    className="text-sm hover:text-primary-400 transition-colors duration-0"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Resources Links */}
-            <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-sm hover:text-primary-400 transition-colors duration-0"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Resources Links */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm hover:text-primary-400 transition-colors duration-0"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
             </div>
           </div>
         </div>

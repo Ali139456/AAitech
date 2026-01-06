@@ -195,10 +195,10 @@ const Company = () => {
                 <div className="relative z-10 text-center">
                   <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                     {item.icon}
-                  </div>
+                </div>
                   <h3 className="text-base font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {item.title}
-                  </h3>
+                </h3>
                 </div>
               </motion.div>
             ))}
@@ -221,12 +221,12 @@ const Company = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  🎯
-                </div>
+                🎯
+              </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">Our Mission</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To help organisations succeed in a digital-first world through intelligent, secure, and scalable technology solutions.
-                </p>
+                To help organisations succeed in a digital-first world through intelligent, secure, and scalable technology solutions.
+              </p>
               </div>
             </motion.div>
 
@@ -241,12 +241,12 @@ const Company = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  🌟
-                </div>
+                🌟
+              </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">Our Vision</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To be a trusted global partner for enterprises navigating digital and AI-driven transformation.
-                </p>
+                To be a trusted global partner for enterprises navigating digital and AI-driven transformation.
+              </p>
               </div>
             </motion.div>
           </div>
@@ -287,7 +287,7 @@ const Company = () => {
               <div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-2">
                   Why Aaitek
-                </h2>
+            </h2>
                 <p className="text-lg font-semibold text-primary-600">A Different Kind of Technology Partner</p>
               </div>
             </div>
@@ -301,15 +301,15 @@ const Company = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
             {whatSetsUsApart.map((item, index) => (
-              <motion.div
+            <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.03, rotate: index % 2 === 0 ? 1 : -1 }}
                 className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 border-2 border-gray-200 hover:border-primary-400 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              >
+            >
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="relative z-10">
@@ -323,13 +323,13 @@ const Company = () => {
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+            </motion.div>
             ))}
           </div>
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-center"
           >
@@ -342,17 +342,17 @@ const Company = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
-          </motion.div>
+            </motion.div>
         </div>
       </section>
 
       {/* Careers Section */}
       <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-green-50/30 to-white">
         <div className="container-custom">
-          <motion.div
+            <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             variants={fadeInUp}
             className="text-center mb-12"
           >
@@ -373,7 +373,7 @@ const Company = () => {
             <p className="text-base text-gray-600 max-w-3xl mx-auto leading-relaxed mt-4">
               We work on complex, enterprise-grade challenges across industries — and we value people who are curious, accountable, and passionate about building quality solutions.
             </p>
-          </motion.div>
+            </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
             <motion.div

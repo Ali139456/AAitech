@@ -248,11 +248,11 @@ const HireTalent = () => {
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Talk to Our Experts
+              Talk to Our Experts
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+            </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -295,22 +295,22 @@ const HireTalent = () => {
                       </svg>
                     </div>
                     <span className="text-gray-800 text-lg font-medium leading-relaxed">{point}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <motion.div
+              </div>
+              </motion.div>
+            ))}
+        </div>
+          <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-8 text-center"
-            >
+          >
               <p className="text-lg text-gray-700 font-medium max-w-3xl mx-auto">
                 We focus on fit, trust, and outcomes — not volume hiring.
-              </p>
-            </motion.div>
-          </div>
+            </p>
+          </motion.div>
+                </div>
         </div>
       </section>
 
@@ -344,7 +344,7 @@ const HireTalent = () => {
                   <div className="relative z-10 flex items-center gap-6">
                     <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                       {step.step}
-                    </div>
+                  </div>
                     <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed flex-1">
                       {step.title}
                     </p>
@@ -385,11 +385,11 @@ const HireTalent = () => {
                   <div className="flex items-start gap-6 mb-6">
                     <div className={`w-20 h-20 bg-gradient-to-br ${model.color} rounded-2xl flex items-center justify-center text-4xl shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0`}>
                       {model.icon}
-                    </div>
+                </div>
                     <div className="flex-1">
                       <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-300">
                         {model.title}
-                      </h3>
+                </h3>
                       <p className="text-xl font-semibold text-primary-600 mb-4">{model.subtitle}</p>
                       <p className="text-lg text-gray-700 leading-relaxed">{model.description}</p>
                     </div>
@@ -432,7 +432,7 @@ const HireTalent = () => {
                             </div>
                             <span className="text-gray-700">{item}</span>
                           </li>
-                        ))}
+                  ))}
                       </ul>
                     </div>
                   </div>
@@ -463,26 +463,26 @@ const HireTalent = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {expertiseAreas.map((area, index) => (
-                <motion.div
-                  key={index}
+              <motion.div
+                key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover:border-primary-300 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                >
+              >
                   <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
                   <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${area.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-4">
                       <div className={`w-16 h-16 bg-gradient-to-br ${area.color} rounded-2xl flex items-center justify-center text-3xl shadow-xl group-hover:scale-110 transition-transform duration-300`}>
                         {area.icon}
-                      </div>
+                </div>
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                           {area.title}
-                        </h3>
+                </h3>
                         <p className="text-sm font-semibold text-primary-600">{area.subtitle}</p>
                       </div>
                     </div>
@@ -503,8 +503,8 @@ const HireTalent = () => {
                       </ul>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+              </motion.div>
+            ))}
             </div>
           </div>
         </div>
@@ -547,21 +547,21 @@ const HireTalent = () => {
                       </svg>
                     </div>
                     <span className="text-white text-lg font-medium leading-relaxed">{item}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <motion.div
+                </div>
+              </motion.div>
+            ))}
+        </div>
+          <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-8 text-center"
-            >
+          >
               <p className="text-xl text-white font-semibold">
                 You always know who you're working with
-              </p>
-            </motion.div>
+            </p>
+          </motion.div>
           </div>
         </div>
       </section>
@@ -594,15 +594,15 @@ const HireTalent = () => {
             </motion.p>
             <motion.div
               variants={fadeInUp}
-            >
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
+                <Link
+                  to="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
                 Talk to Our Experts
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
               </Link>
             </motion.div>
           </motion.div>

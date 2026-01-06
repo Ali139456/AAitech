@@ -475,26 +475,26 @@ const Header = () => {
           : 'bg-[#13273D] backdrop-blur-md'
       }`}
     >
-      <nav className="mx-auto relative w-full max-w-[1920px] px-4 sm:px-8 md:px-12 lg:px-20 xl:px-[150px]">
+      <nav className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-[250px] relative w-full max-w-[1920px]">
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 relative w-full">
           {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="flex-shrink-0 z-10 relative"
+              className="flex-shrink-0 z-10 relative -ml-2 sm:-ml-3 xl:-ml-4"
             >
               <Link to="/" className="flex items-center space-x-1 sm:space-x-2">
                 <img 
                   src="/logo.png" 
                   alt="Aaitek Logo" 
-                  className="h-7 sm:h-8 md:h-9 lg:h-10 w-auto block"
+                  className="h-8 sm:h-9 md:h-10 w-auto block"
                 />
               </Link>
             </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-2 absolute left-1/2 transform -translate-x-1/2 z-[100]">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-4 relative z-[100] ml-4 xl:ml-6 2xl:ml-8">
             {Object.entries(menuItems).map(([key, item]) => (
               <div
                 key={key}
@@ -517,7 +517,7 @@ const Header = () => {
                       const newActiveState = activeDropdown === key ? null : key
                       setActiveDropdown(newActiveState)
                     }}
-                    className={`text-[9px] lg:text-[10px] xl:text-xs font-medium transition-colors flex items-center whitespace-nowrap ${
+                    className={`text-[10px] lg:text-xs xl:text-sm font-medium transition-colors flex items-center whitespace-nowrap ${
                       location.pathname === item.path
                         ? 'text-primary-400'
                         : 'text-white hover:text-primary-400'
@@ -527,7 +527,7 @@ const Header = () => {
                   >
                     {item.label}
                     <svg
-                      className={`ml-0.5 w-3 h-3 lg:w-3.5 lg:h-3.5 transition-transform ${
+                      className={`ml-1 w-4 h-4 transition-transform ${
                         activeDropdown === key ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -545,7 +545,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`text-[9px] lg:text-[10px] xl:text-xs font-medium transition-colors flex items-center whitespace-nowrap ${
+                    className={`text-[10px] lg:text-xs xl:text-sm font-medium transition-colors flex items-center whitespace-nowrap ${
                       location.pathname === item.path
                         ? 'text-primary-400'
                         : 'text-white hover:text-primary-400'
@@ -585,10 +585,10 @@ const Header = () => {
                           ? (item.columns.length === 1 
                               ? 'w-80'
                               : key === 'services'
-                              ? 'w-[min(1100px,calc(100vw-300px))]'
-                              : 'w-[min(850px,calc(100vw-300px))]')
+                              ? 'w-[min(1160px,calc(100vw-24px))]'
+                              : 'w-[min(900px,calc(100vw-24px))]')
                           : key === 'industries' || key === 'partner-success' || key === 'resources' || key === 'company'
-                          ? 'w-[min(850px,calc(100vw-300px))]'
+                          ? 'w-[min(900px,calc(100vw-24px))]'
                           : 'w-64'
                       } bg-white text-gray-900 border-2 border-primary-300 shadow-2xl z-[100] rounded-[18px]`}
                     >
@@ -862,11 +862,11 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0 }}
-              className="hidden lg:block flex-shrink-0 ml-auto"
+              className="hidden lg:block flex-shrink-0 ml-4 xl:ml-6 2xl:ml-8"
             >
               <Link
                 to="/contact"
-                className="btn-primary text-[9px] lg:text-[10px] xl:text-xs px-2 lg:px-2.5 xl:px-3 py-1.5 lg:py-2 whitespace-nowrap"
+                className="btn-primary text-[10px] lg:text-xs xl:text-sm px-2.5 lg:px-3 xl:px-4 2xl:px-6 py-1.5 lg:py-2 whitespace-nowrap"
               >
                 Get a Quote
               </Link>
