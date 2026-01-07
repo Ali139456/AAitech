@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import FilterSidebar from '../components/FilterSidebar'
 
 const Resources = () => {
   const [filters, setFilters] = useState({
@@ -13,6 +14,7 @@ const Resources = () => {
     audience: 'all',
     year: 'all',
   })
+  const [searchQuery, setSearchQuery] = useState('')
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
@@ -147,6 +149,18 @@ const Resources = () => {
     }))
   }
 
+  const handleClearFilters = () => {
+    setFilters({
+      contentType: 'all',
+      industry: 'all',
+      serviceArea: 'all',
+      technology: 'all',
+      audience: 'all',
+      year: 'all',
+    })
+    setSearchQuery('')
+  }
+
   return (
     <div className="pt-0 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
       {/* Hero Section */}
@@ -211,10 +225,13 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Global Filters */}
-      <section className="py-4 md:py-5 bg-gradient-to-br from-white via-primary-50/30 to-white border-b-2 border-gray-200 md:sticky md:top-[80px] z-40 shadow-lg backdrop-blur-md">
+      {/* Main Content with Sidebar */}
+      <section ref={ref} className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-white via-blue-50/30 to-white">
         <div className="container-custom">
-          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-2 justify-center">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            {/* Main Content */}
+            <div className="flex-1">
+              {/* Insights & Articles Section */}
             {/* Filter Label */}
             <div className="flex items-center gap-2 mb-2 md:mb-0 md:mr-2">
               <span className="text-2xl">🔍</span>
