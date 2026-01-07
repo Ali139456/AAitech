@@ -316,23 +316,23 @@ const CaseStudies = () => {
                               </div>
                             </div>
                           )}
-                          <div className="p-6 lg:p-8">
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center text-2xl lg:text-3xl shadow-lg`}>
+                          <div className="p-5 sm:p-6 lg:p-8">
+                            <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                              <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center text-xl sm:text-2xl lg:text-3xl shadow-lg flex-shrink-0`}>
                                 {study.icon}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
+                                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors leading-tight">
                                   {study.title}
                                 </h3>
-                                <div className="flex flex-wrap gap-2 text-xs lg:text-sm text-gray-600">
-                                  <span className="px-2.5 py-1 bg-gray-100 rounded-full font-medium">{study.industry}</span>
-                                  <span className="px-2.5 py-1 bg-gray-100 rounded-full font-medium">{study.service}</span>
-                                  <span className="px-2.5 py-1 bg-gray-100 rounded-full font-medium">{study.tech}</span>
+                                <div className="flex flex-wrap gap-1.5 sm:gap-2 text-xs lg:text-sm text-gray-600">
+                                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-gray-100 rounded-full font-medium text-xs">{study.industry}</span>
+                                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-gray-100 rounded-full font-medium text-xs">{study.service}</span>
+                                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-gray-100 rounded-full font-medium text-xs">{study.tech}</span>
                                 </div>
                               </div>
                             </div>
-                            <p className="text-sm lg:text-base text-gray-600 leading-relaxed line-clamp-3">
+                            <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed line-clamp-3">
                               {study.description}
                             </p>
                             <div className="mt-4 flex items-center gap-2 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
