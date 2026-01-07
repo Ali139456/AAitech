@@ -17,7 +17,11 @@ const BrandGuidelines = () => {
   return (
     <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#1C1C1C] via-[#2E2E2E] to-[#1C1C1C] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
         <div className="container-custom relative z-10">
           <motion.div
             initial="hidden"
@@ -25,13 +29,20 @@ const BrandGuidelines = () => {
             variants={fadeInUp}
             className="max-w-4xl mx-auto text-center"
           >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/30 mb-8 shadow-xl"
+            >
+              <span className="text-2xl">🎨</span>
+              <span className="text-sm font-bold text-white uppercase tracking-wider">Brand Guidelines</span>
+            </motion.div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
               Aaitek Brand Guidelines 2025
             </h1>
-            <p className="text-xl md:text-2xl text-[#FBD506] mb-4">
+            <p className="text-xl md:text-2xl text-white/95 mb-4">
               ✨ "Transform Your Digital Vision Into Reality"
             </p>
-            <p className="text-base md:text-lg text-[#F4F4F4] max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto">
               A premium digital experience starts with consistency. Follow these brand standards to deliver high-impact, unified experiences across all platforms.
             </p>
           </motion.div>
@@ -55,7 +66,7 @@ const BrandGuidelines = () => {
             </div>
             <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Tagline</h3>
-              <p className="text-lg text-[#FBD506]">✨ "Transform Your Digital Vision Into Reality"</p>
+              <p className="text-lg text-primary-600 font-semibold">✨ "Transform Your Digital Vision Into Reality"</p>
             </div>
             <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Core Essence</h3>
@@ -259,10 +270,10 @@ const BrandGuidelines = () => {
             <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Buttons</h3>
               <div className="space-y-4 mb-6">
-                <button className="w-full px-6 py-3 bg-[#FBD506] text-[#1C1C1C] font-semibold rounded-xl shadow-md hover:shadow-lg transition-all">
+                <button className="w-full px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105">
                   Primary
                 </button>
-                <button className="w-full px-6 py-3 bg-transparent border-2 border-[#FBD506] text-[#FBD506] font-semibold rounded-xl hover:bg-[#FBD506]/10 transition-all">
+                <button className="w-full px-6 py-3 bg-transparent border-2 border-primary-600 text-primary-600 font-semibold rounded-xl hover:bg-primary-50 transition-all hover:scale-105">
                   Secondary
                 </button>
               </div>
@@ -294,13 +305,13 @@ const BrandGuidelines = () => {
             </p>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Examples:</h3>
             <div className="space-y-4">
-              <blockquote className="pl-4 border-l-4 border-[#FBD506] text-gray-700 italic">
+              <blockquote className="pl-4 border-l-4 border-primary-500 text-gray-700 italic">
                 "Transform your digital ecosystem with composable architecture."
               </blockquote>
-              <blockquote className="pl-4 border-l-4 border-[#FBD506] text-gray-700 italic">
+              <blockquote className="pl-4 border-l-4 border-primary-500 text-gray-700 italic">
                 "Aaitek — where design, technology, and performance converge."
               </blockquote>
-              <blockquote className="pl-4 border-l-4 border-[#FBD506] text-gray-700 italic">
+              <blockquote className="pl-4 border-l-4 border-primary-500 text-gray-700 italic">
                 "We turn your digital vision into reality."
               </blockquote>
             </div>
@@ -352,11 +363,11 @@ const BrandGuidelines = () => {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">🚀 Brand Purpose</h2>
-          <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2E2E2E] rounded-2xl p-8 text-white border-2 border-gray-800 shadow-xl">
+          <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 rounded-2xl p-8 text-white border-2 border-primary-500 shadow-xl">
             <p className="text-lg md:text-xl mb-4">
               Aaitek exists to empower creators, brands, and enterprises with composable, full-stack digital ecosystems that evolve with technology — not against it.
             </p>
-            <h3 className="text-xl font-bold text-[#FBD506] mb-3 mt-6">Tagline Integration (for marketing):</h3>
+            <h3 className="text-xl font-bold text-accent-300 mb-3 mt-6">Tagline Integration (for marketing):</h3>
             <p className="text-lg">
               "At Aaitek, we help you Transform Your Digital Vision Into Reality."
             </p>
@@ -371,19 +382,19 @@ const BrandGuidelines = () => {
           variants={fadeInUp}
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">📋 Sample Implementation</h2>
-          <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2E2E2E] rounded-2xl p-8 md:p-12 border-2 border-gray-800 shadow-xl">
+          <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 rounded-2xl p-8 md:p-12 border-2 border-primary-500 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-6">Sample Hero Section</h3>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
               Transform Your Digital Vision Into Reality
             </h1>
-            <p className="text-lg text-[#F4F4F4] mb-6">
+            <p className="text-lg text-white/90 mb-6">
               Empowering innovation through composable, scalable, and intelligent digital solutions. Experience the future of technology with Aaitek.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-6 py-3 bg-[#FBD506] text-[#1C1C1C] font-semibold rounded-xl shadow-md hover:shadow-lg transition-all">
+              <button className="px-6 py-3 bg-white text-primary-600 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105">
                 Get Started
               </button>
-              <button className="px-6 py-3 bg-transparent border-2 border-[#FBD506] text-[#FBD506] font-semibold rounded-xl hover:bg-[#FBD506]/10 transition-all">
+              <button className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all hover:scale-105">
                 Learn More
               </button>
             </div>

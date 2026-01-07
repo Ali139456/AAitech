@@ -522,17 +522,15 @@ const Company = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <a
-                href="https://aaitek.com.au/BrandGuidelines"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/brand-guidelines"
                 className="inline-flex items-center justify-center px-8 py-4 bg-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Download Brand Guidelines
+                View Brand Guidelines
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
