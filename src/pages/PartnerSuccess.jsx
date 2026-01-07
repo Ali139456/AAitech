@@ -302,7 +302,7 @@ const PartnerSuccess = () => {
                 <p className="text-lg text-gray-700 max-w-3xl mb-6 leading-relaxed">
                   Deep dives into how Aaitek partnered with organisations to solve complex challenges — from discovery to delivery.
                 </p>
-                <div className="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl shadow-md">
+                <div className="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl shadow-md mb-8">
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">💡</span>
                     <div>
@@ -312,6 +312,64 @@ const PartnerSuccess = () => {
                       </p>
                     </div>
                   </div>
+                </div>
+
+                {/* Case Studies Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                  {caseStudies.slice(0, 4).map((study, index) => (
+                    <motion.div
+                      key={study.slug}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="group"
+                    >
+                      <Link
+                        to={`/case-study/${study.slug}`}
+                        className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-primary-400 h-full"
+                      >
+                        {study.image && (
+                          <div className="relative h-56 overflow-hidden">
+                            <img
+                              src={study.image}
+                              alt={study.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-20`}></div>
+                            <div className="absolute top-4 right-4">
+                              <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-bold text-gray-900">
+                                {study.status}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        <div className="p-6 lg:p-8">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center text-2xl lg:text-3xl shadow-lg`}>
+                              {study.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-wrap gap-2 text-xs lg:text-sm text-gray-600 mb-2">
+                                <span className="px-2.5 py-1 bg-gray-100 rounded-full font-medium">{study.industry}</span>
+                                <span className="px-2.5 py-1 bg-primary-100 text-primary-700 rounded-full font-medium">{study.tech}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors">
+                            {study.title}
+                          </h3>
+                          <div className="flex items-center gap-2 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                            Read Case Study
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </div>
