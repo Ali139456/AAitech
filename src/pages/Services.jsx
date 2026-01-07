@@ -3,8 +3,20 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { getServiceSlug } from '../utils/slugHelper'
+import SEO from '../components/SEO'
 
 const Services = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Technology Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Aaitek Technology Specialists"
+    },
+    "areaServed": "Worldwide",
+    "description": "Comprehensive technology solutions including AI, cloud services, software engineering, and digital transformation."
+  }
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
@@ -104,7 +116,14 @@ const Services = () => {
   ]
 
   return (
-    <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
+    <>
+      <SEO
+        title="Services - Aaitek Technology Specialists"
+        description="Comprehensive technology services including AI solutions, cloud services, software engineering, digital transformation, and enterprise platforms."
+        keywords="technology services, AI solutions, cloud services, software development, digital transformation, enterprise platforms"
+        structuredData={structuredData}
+      />
+      <div className="pt-0 pb-24 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
       {/* Hero Section */}
       <section className="py-12 sm:py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -511,6 +530,7 @@ const Services = () => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

@@ -43,7 +43,7 @@ const Footer = () => {
   }
 
   return (
-    <footer ref={footerRef} className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50 text-gray-800 border-t border-gray-200 overflow-hidden">
+    <footer ref={footerRef} className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50 text-gray-800 border-t border-gray-200 overflow-hidden" role="contentinfo" aria-label="Site footer">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div

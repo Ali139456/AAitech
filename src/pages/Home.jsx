@@ -11,10 +11,41 @@ import Process from '../components/sections/Process'
 import AboutUs from '../components/sections/AboutUs'
 import Stats from '../components/sections/Stats'
 import FAQ from '../components/sections/FAQ'
+import SEO from '../components/SEO'
 
 const Home = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aaitek Technology Specialists",
+    "url": "https://aaitek.com.au",
+    "logo": "https://aaitek.com.au/logo.png",
+    "description": "Transform your digital vision into reality with Aaitek. Enterprise-grade AI, cloud solutions, and digital transformation services.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressCountry": "AU"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/aaitek",
+      "https://twitter.com/aaitek"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "info@aaitek.com.au"
+    }
+  }
+
   return (
-    <div>
+    <>
+      <SEO
+        title="Aaitek - Empowering Businesses With AI, Data Analytics & Cloud"
+        description="Transform your digital vision into reality with Aaitek. Enterprise-grade AI, cloud solutions, and digital transformation services. Australia-based, globally delivered."
+        keywords="AI solutions, cloud services, digital transformation, enterprise software, data analytics, Australia, technology consulting, software development"
+        structuredData={structuredData}
+      />
+      <div>
       {/* Section 1 – Hero Image */}
       <Hero />
       

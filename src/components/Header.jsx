@@ -475,7 +475,7 @@ const Header = () => {
           : 'bg-[#13273D] backdrop-blur-md'
       }`}
     >
-      <nav className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-[250px] relative w-full max-w-[1920px]">
+      <nav className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-[250px] relative w-full max-w-[1920px]" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 relative w-full">
           {/* Logo */}
             <motion.div
@@ -882,7 +882,9 @@ const Header = () => {
                 setExpandedMobileItem(null)
               }
             }}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             type="button"
           >
             <svg
@@ -915,12 +917,16 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
+              id="mobile-menu"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="lg:hidden fixed inset-0 z-[10000]"
               style={{ pointerEvents: 'auto' }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
               {/* Semi-transparent Backdrop */}
               <div

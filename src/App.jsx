@@ -30,8 +30,15 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10001] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg"
+          aria-label="Skip to main content"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="flex-grow" style={{ paddingTop: 'var(--header-height, 80px)' }}>
+        <main id="main-content" className="flex-grow" style={{ paddingTop: 'var(--header-height, 80px)' }} role="main">
           <Routes>
             <Route path="/" element={<Home />} />
             {/* Services Routes */}
