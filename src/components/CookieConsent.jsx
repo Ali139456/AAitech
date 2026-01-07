@@ -15,6 +15,17 @@ const CookieConsent = () => {
   useEffect(() => {
     // Check if user has already made a choice
     const cookieConsent = localStorage.getItem('cookieConsent')
+    
+    // For localhost development: allow resetting via console
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      // Expose reset function to window for easy testing
+      window.resetCookieConsent = () => {
+        localStorage.removeItem('cookieConsent')
+        setIsVisible(true)
+        console.log('Cookie consent reset! Banner will show again.')
+      }
+    }
+    
     if (!cookieConsent) {
       // Show immediately
       setIsVisible(true)
