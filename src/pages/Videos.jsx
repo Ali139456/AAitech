@@ -1,0 +1,305 @@
+import { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import FilterSidebar from '../components/FilterSidebar'
+import SEO from '../components/SEO'
+
+const Videos = () => {
+  const [filters, setFilters] = useState({
+    topic: 'all',
+    type: 'all',
+    year: 'all',
+  })
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const filterOptions = {
+    topic: ['All Topics', 'AI & Automation', 'Platform Strategy', 'Architecture', 'Product Demos', 'Expert Commentary'],
+    type: ['All Types', 'Explainer', 'Walkthrough', 'Overview', 'Highlights'],
+    year: ['All Years', '2024', '2023', '2022', '2021'],
+  }
+
+  const videos = [
+    {
+      title: 'Introduction to Aaitek AI Agents',
+      slug: 'introduction-aaitek-ai-agents',
+      status: 'Coming Soon',
+      color: 'from-orange-500 to-red-500',
+      icon: '🎬',
+      type: 'Video',
+      videoType: 'Explainer',
+      topic: 'AI & Automation',
+      year: '2024',
+      description: 'An overview of Aaitek\'s AI agent portfolio and how they can transform enterprise workflows.',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    },
+    {
+      title: 'Understanding Enterprise Integration Architectures',
+      slug: 'understanding-enterprise-integration-architectures',
+      status: 'Coming Soon',
+      color: 'from-indigo-500 to-blue-500',
+      icon: '🏗️',
+      type: 'Video',
+      videoType: 'Overview',
+      topic: 'Architecture',
+      year: '2024',
+      description: 'Deep dive into modern enterprise integration patterns and best practices.',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+    },
+    {
+      title: 'Platform Strategy Explained',
+      slug: 'platform-strategy-explained',
+      status: 'Coming Soon',
+      color: 'from-teal-500 to-cyan-500',
+      icon: '📊',
+      type: 'Video',
+      videoType: 'Walkthrough',
+      topic: 'Platform Strategy',
+      year: '2023',
+      description: 'Learn how to develop and execute a successful platform strategy for your organization.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    },
+  ]
+
+  const handleFilterChange = (key, value) => {
+    setFilters(prev => ({ ...prev, [key]: value }))
+  }
+
+  const handleClearFilters = () => {
+    setFilters({
+      topic: 'all',
+      type: 'all',
+      year: 'all',
+    })
+    setSearchQuery('')
+  }
+
+  // Filter and search logic
+  const filteredVideos = useMemo(() => {
+    return videos.filter(video => {
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        if (!video.title.toLowerCase().includes(query) && 
+            !video.description.toLowerCase().includes(query) &&
+            !video.topic.toLowerCase().includes(query)) {
+          return false
+        }
+      }
+
+      // Filter by topic
+      if (filters.topic !== 'all' && video.topic.toLowerCase().replace(/\s+/g, '-') !== filters.topic) {
+        return false
+      }
+
+      // Filter by type
+      if (filters.type !== 'all' && video.videoType.toLowerCase().replace(/\s+/g, '-') !== filters.type) {
+        return false
+      }
+
+      // Filter by year
+      if (filters.year !== 'all' && video.year !== filters.year) {
+        return false
+      }
+
+      return true
+    })
+  }, [filters, searchQuery, videos])
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    },
+  }
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Videos & Media - Aaitek",
+    "description": "Short and long-form video content showcasing insights, product overviews, demos, and expert commentary.",
+    "url": "https://aaitek.com.au/videos"
+  }
+
+  return (
+    <>
+      <SEO
+        seoTitle="Videos & Media - Aaitek"
+        seoDescription="Watch video content from Aaitek including expert explainers, product walkthroughs, architecture overviews, and event highlights."
+        canonicalUrl="https://aaitek.com.au/videos"
+        robots="index,follow"
+        ogTitle="Videos & Media - Aaitek"
+        ogDescription="Visual content, demos, and thought leadership videos."
+        ogImage="https://aaitek.com.au/og/videos.png"
+        ogType="website"
+        schemaType="CollectionPage"
+        structuredData={structuredData}
+        indexable={true}
+      />
+      <div className="pt-0 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
+        {/* Hero Section */}
+        <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-300 rounded-full blur-3xl"></div>
+          </div>
+          <div className="container-custom relative z-10">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <motion.div
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/30 mb-8 shadow-xl"
+              >
+                <span className="text-2xl">🎬</span>
+                <span className="text-sm font-bold text-white uppercase tracking-wider">Videos & Media</span>
+              </motion.div>
+              <motion.h1
+                variants={fadeInUp}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"
+              >
+                Visual Content & Demos
+              </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg sm:text-xl md:text-2xl text-white/95 mb-6 max-w-3xl mx-auto leading-relaxed font-medium"
+              >
+                Short and long-form video content showcasing insights, product overviews, demos, and expert commentary.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Main Content with Sidebar */}
+        <section className="py-8 sm:py-12 lg:py-16">
+          <div className="container-custom">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+              {/* Filter Sidebar - appears first on mobile, last on desktop */}
+              <FilterSidebar
+                filters={filters}
+                filterOptions={filterOptions}
+                onFilterChange={handleFilterChange}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                onClearFilters={handleClearFilters}
+                title="Filter Videos"
+              />
+              
+              {/* Main Content */}
+              <div className="flex-1">
+                {/* Results Count */}
+                <div className="mb-6 flex items-center justify-between">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="text-gray-700"
+                  >
+                    <span className="font-bold text-lg">{filteredVideos.length}</span>
+                    <span className="text-gray-600 ml-2">
+                      {filteredVideos.length === 1 ? 'Video' : 'Videos'} Found
+                    </span>
+                  </motion.div>
+                </div>
+
+                {/* Videos Grid */}
+                {filteredVideos.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredVideos.map((video, index) => (
+                      <motion.div
+                        key={video.slug}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        whileHover={{ y: -8, scale: 1.02 }}
+                        className="group"
+                      >
+                        <Link
+                          to={`/video/${video.slug}`}
+                          className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-orange-400"
+                        >
+                          {video.image && (
+                            <div className="relative h-48 overflow-hidden">
+                              <img
+                                src={video.image}
+                                alt={video.title}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              />
+                              <div className={`absolute inset-0 bg-gradient-to-br ${video.color} opacity-20`}></div>
+                              <div className="absolute top-4 right-4">
+                                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-bold text-gray-900">
+                                  {video.status}
+                                </span>
+                              </div>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                                  <svg className="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          <div className="p-6">
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${video.color} flex items-center justify-center text-2xl shadow-lg`}>
+                                {video.icon}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex flex-wrap gap-2 text-xs text-gray-600 mb-2">
+                                  <span className="px-2 py-0.5 bg-gray-100 rounded-full">{video.topic}</span>
+                                  <span className="px-2 py-0.5 bg-gray-100 rounded-full">{video.videoType}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
+                              {video.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 leading-relaxed line-clamp-2 mb-4">
+                              {video.description}
+                            </p>
+                            <div className="flex items-center gap-2 text-orange-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                              Watch Video
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-16 bg-white rounded-2xl border-2 border-gray-200"
+                  >
+                    <div className="text-6xl mb-4">🔍</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">No Videos Found</h3>
+                    <p className="text-gray-600 mb-6">Try adjusting your filters or search query.</p>
+                    <button
+                      onClick={handleClearFilters}
+                      className="px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-colors"
+                    >
+                      Clear All Filters
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  )
+}
+
+export default Videos
+

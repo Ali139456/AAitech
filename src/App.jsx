@@ -19,7 +19,14 @@ import PartnerSuccess from './pages/PartnerSuccess'
 import CaseStudyDetail from './pages/CaseStudyDetail'
 import CaseStudies from './pages/CaseStudies'
 import PressReleases from './pages/PressReleases'
+import PressReleaseDetail from './pages/PressReleaseDetail'
 import Resources from './pages/Resources'
+import Articles from './pages/Articles'
+import ArticleDetail from './pages/ArticleDetail'
+import Webinars from './pages/Webinars'
+import WebinarDetail from './pages/WebinarDetail'
+import Videos from './pages/Videos'
+import VideoDetail from './pages/VideoDetail'
 import About from './pages/About'
 import Company from './pages/Company'
 import Contact from './pages/Contact'
@@ -61,6 +68,13 @@ function App() {
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
             <Route path="/press-releases" element={<PressReleases />} />
+            <Route path="/press-release/:slug" element={<PressReleaseDetail />} />
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/article/:slug" element={<ArticleDetail />} />
+            <Route path="/webinars" element={<Webinars />} />
+            <Route path="/webinar/:slug" element={<WebinarDetail />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/video/:slug" element={<VideoDetail />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
             <Route path="/company" element={<Company />} />

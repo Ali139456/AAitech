@@ -16,6 +16,7 @@ const CaseStudyDetail = () => {
     fullContent: '<p>Full content would be loaded from Strapi CMS...</p>',
     category: 'cloud',
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
+    video: null, // Optional: YouTube/Vimeo URL or embed code
     results: {
       outcome: 'Successful migration',
       impact: 'Improved efficiency by 40%'
@@ -236,6 +237,42 @@ const CaseStudyDetail = () => {
               )}
             </div>
 
+            {/* Video Section (if available) */}
+            {caseStudy.video && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-12 bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-gray-200"
+              >
+                <div className="aspect-video bg-gray-900">
+                  {caseStudy.video.includes('youtube.com') || caseStudy.video.includes('youtu.be') ? (
+                    <iframe
+                      src={caseStudy.video.includes('youtu.be') 
+                        ? `https://www.youtube.com/embed/${caseStudy.video.split('/').pop()}`
+                        : `https://www.youtube.com/embed/${caseStudy.video.split('v=')[1]?.split('&')[0]}`
+                      }
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={caseStudy.title}
+                    />
+                  ) : caseStudy.video.includes('vimeo.com') ? (
+                    <iframe
+                      src={`https://player.vimeo.com/video/${caseStudy.video.split('/').pop()}`}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={caseStudy.title}
+                    />
+                  ) : (
+                    <div dangerouslySetInnerHTML={{ __html: caseStudy.video }} />
+                  )}
+                </div>
+              </motion.div>
+            )}
+
             {/* Full Content */}
             {caseStudy.fullContent && (
               <motion.div
@@ -262,7 +299,7 @@ const CaseStudyDetail = () => {
               className="mt-12 text-center"
             >
               <Link
-                to="/partner-success"
+                to="/case-studies"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-primary-600 to-accent-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
