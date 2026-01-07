@@ -20,6 +20,8 @@ import Resources from './pages/Resources'
 import About from './pages/About'
 import Company from './pages/Company'
 import Contact from './pages/Contact'
+import Career from './pages/Career'
+import BrandGuidelines from './pages/BrandGuidelines'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsConditions from './pages/TermsConditions'
 
@@ -51,6 +53,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/company" element={<Company />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/brand-guidelines" element={<BrandGuidelines />} />
+            <Route path="/BrandGuidelines" element={<BrandGuidelines />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
           </Routes>
