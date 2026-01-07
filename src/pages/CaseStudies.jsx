@@ -287,7 +287,7 @@ const CaseStudies = () => {
 
                 {/* Case Studies Grid */}
                 {filteredCaseStudies.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                     {filteredCaseStudies.map((study, index) => (
                       <motion.div
                         key={study.slug}
@@ -299,10 +299,10 @@ const CaseStudies = () => {
                       >
                         <Link
                           to={`/case-study/${study.slug}`}
-                          className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-primary-400"
+                          className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-primary-400 h-full"
                         >
                           {study.image && (
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-56 overflow-hidden">
                               <img
                                 src={study.image}
                                 alt={study.title}
