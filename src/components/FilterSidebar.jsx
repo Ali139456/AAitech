@@ -81,7 +81,8 @@ const FilterSidebar = ({ filters, filterOptions, onFilterChange, searchQuery, on
               <div className="space-y-2">
                 {options.map((option, idx) => {
                   const value = idx === 0 ? 'all' : option.toLowerCase().replace(/\s+/g, '-')
-                  const isSelected = filters[key] === value || (idx === 0 && filters[key] === 'all')
+                  const currentFilterValue = filters[key] || 'all'
+                  const isSelected = currentFilterValue === value || (idx === 0 && currentFilterValue === 'all')
                   
                   return (
                     <motion.button
