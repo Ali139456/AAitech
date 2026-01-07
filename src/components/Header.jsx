@@ -160,13 +160,13 @@ const Header = () => {
           title: 'Growth Companies',
           description: 'Optimise, integrate, accelerate.',
           icon: '📈',
-          path: '/services/category/product-experience',
+          path: '/services/category/growth-companies',
         },
         {
           title: 'Startups',
           description: 'From idea to market, fast.',
           icon: '🚀',
-          path: '/services/category/product-experience',
+          path: '/services/category/startups',
         },
       ],
       columns: [

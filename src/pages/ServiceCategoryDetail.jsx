@@ -291,6 +291,88 @@ const ServiceCategoryDetail = () => {
       ],
       technologies: ['Sitecore', 'Salesforce', 'ServiceNow', 'SAP', 'Microsoft Dynamics', 'HubSpot', 'Kentico', 'Umbraco', 'Optimizely', 'Contentful'],
     },
+    'growth-companies': {
+      title: 'Growth Companies',
+      description: 'Optimise, integrate, accelerate. Scale your operations with solutions designed for growing businesses.',
+      icon: '📈',
+      color: 'from-indigo-500 to-purple-500',
+      services: [
+        'API & Integration Engineering',
+        'Cloud Migration & Modernisation',
+        'Platform Optimisation',
+        'Digital Growth Services',
+        'Application Support & Maintenance',
+        'Performance & Paid Marketing',
+      ],
+      longDescription: 'Our Growth Companies services are designed for businesses that are scaling rapidly and need to optimize, integrate, and accelerate their operations. We help you streamline processes, integrate systems, and leverage cloud technologies to support your growth trajectory. From API integrations to cloud migrations, we provide solutions that scale with your business.',
+      useCases: [
+        'Integrating multiple systems to streamline operations',
+        'Migrating to cloud for better scalability and cost efficiency',
+        'Optimizing existing platforms for better performance',
+        'Scaling digital marketing efforts to drive growth',
+        'Implementing automation to reduce manual work',
+      ],
+      approach: [
+        {
+          title: 'Assessment & Strategy',
+          description: 'We analyze your current systems and processes to identify optimization opportunities and integration needs.',
+        },
+        {
+          title: 'Integration & Optimization',
+          description: 'We integrate your systems and optimize platforms to improve efficiency and reduce bottlenecks.',
+        },
+        {
+          title: 'Cloud Migration',
+          description: 'We help you migrate to cloud platforms for better scalability, cost management, and performance.',
+        },
+        {
+          title: 'Growth Acceleration',
+          description: 'We implement digital growth strategies and automation to accelerate your business growth.',
+        },
+      ],
+      technologies: ['AWS', 'Azure', 'Node.js', 'Python', 'React', 'Next.js', 'PostgreSQL', 'MongoDB', 'Docker', 'Kubernetes'],
+    },
+    'startups': {
+      title: 'Startups',
+      description: 'From idea to market, fast. Rapid product development and launch services for startups.',
+      icon: '🚀',
+      color: 'from-orange-500 to-red-500',
+      services: [
+        'Product Discovery & Strategy',
+        'Web Platform Development',
+        'Mobile Application Development',
+        'MVP Development',
+        'UX & UI Design',
+        'eCommerce Solutions',
+      ],
+      longDescription: 'Our Startups services are tailored for fast-moving startups that need to get to market quickly. We focus on rapid product development, MVP creation, and scalable architecture that grows with your business. From initial concept to launch, we help you build products that users love while maintaining the speed and agility startups need.',
+      useCases: [
+        'Building an MVP to validate your business idea',
+        'Developing a web or mobile app for launch',
+        'Creating a product strategy and roadmap',
+        'Designing user experiences that convert',
+        'Building eCommerce platforms for online sales',
+      ],
+      approach: [
+        {
+          title: 'Rapid Discovery',
+          description: 'We quickly understand your vision and market opportunity through focused discovery sessions.',
+        },
+        {
+          title: 'MVP Development',
+          description: 'We build minimum viable products that validate your idea while keeping costs and timelines lean.',
+        },
+        {
+          title: 'Agile Development',
+          description: 'We use agile methodologies to deliver features quickly and iterate based on user feedback.',
+        },
+        {
+          title: 'Launch & Scale',
+          description: 'We help you launch successfully and prepare your product architecture for rapid scaling.',
+        },
+      ],
+      technologies: ['React', 'Next.js', 'React Native', 'Flutter', 'Node.js', 'TypeScript', 'Firebase', 'Vercel', 'Stripe', 'Shopify'],
+    },
   }
 
   const category = categories[slug] || {
@@ -315,6 +397,8 @@ const ServiceCategoryDetail = () => {
       'digital-growth': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
       'managed-services': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
       'enterprise-platforms': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
+      'growth-companies': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+      'startups': 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80',
     }
     return categoryImages[slug] || 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80'
   }
