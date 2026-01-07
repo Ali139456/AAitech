@@ -353,7 +353,7 @@ const PartnerSuccess = () => {
               </div>
             </div>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {successStories.map((story, index) => (
               <motion.div
                 key={index}
@@ -361,26 +361,26 @@ const PartnerSuccess = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.03, rotate: -1 }}
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 lg:p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${story.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${story.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${story.color} rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                    <div className={`w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br ${story.color} rounded-2xl flex items-center justify-center text-3xl lg:text-4xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                       {story.icon}
                     </div>
                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 text-xs font-bold shadow-md border border-amber-200">
                       {story.status}
                     </span>
                   </div>
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs font-semibold rounded-lg">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs lg:text-sm font-semibold rounded-lg">
                       {story.outcome}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {story.title}
                 </h3>
                 </div>
@@ -424,7 +424,7 @@ const PartnerSuccess = () => {
               </div>
             </div>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {migrations.map((migration, index) => (
               <motion.div
                 key={index}
@@ -432,26 +432,26 @@ const PartnerSuccess = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.03, rotate: 1 }}
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 lg:p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${migration.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${migration.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${migration.color} rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                    <div className={`w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br ${migration.color} rounded-2xl flex items-center justify-center text-3xl lg:text-4xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                       {migration.icon}
                     </div>
                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 text-xs font-bold shadow-md border border-amber-200">
                       {migration.status}
                       </span>
                   </div>
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs font-semibold rounded-lg">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-xs lg:text-sm font-semibold rounded-lg">
                       {migration.type}
                       </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {migration.title}
                   </h3>
                 </div>
@@ -495,7 +495,7 @@ const PartnerSuccess = () => {
               </div>
             </div>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {aiOutcomes.map((outcome, index) => (
               <motion.div
                 key={index}
@@ -503,26 +503,26 @@ const PartnerSuccess = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.03, rotate: -1 }}
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 lg:p-8 border-2 border-gray-200 hover:border-primary-400 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${outcome.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${outcome.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${outcome.color} rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                    <div className={`w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br ${outcome.color} rounded-2xl flex items-center justify-center text-3xl lg:text-4xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                       {outcome.icon}
                     </div>
                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 text-xs font-bold shadow-md border border-amber-200">
                       {outcome.status}
                     </span>
                   </div>
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-xs font-semibold rounded-lg">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-xs lg:text-sm font-semibold rounded-lg">
                       {outcome.impact}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
                     {outcome.title}
                   </h3>
                 </div>
