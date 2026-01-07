@@ -154,7 +154,7 @@ const Header = () => {
           title: 'Enterprise',
           description: 'Complex systems. Governance & scale.',
           icon: '🏢',
-          path: '/services/enterprise',
+          path: '/services/category/enterprise-platforms',
         },
         {
           title: 'Growth Companies',
