@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import FilterSidebar from '../components/FilterSidebar'
 
 const PartnerSuccess = () => {
   const [filters, setFilters] = useState({
@@ -13,6 +14,7 @@ const PartnerSuccess = () => {
     year: 'all',
     region: 'all',
   })
+  const [searchQuery, setSearchQuery] = useState('')
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
@@ -148,6 +150,45 @@ const PartnerSuccess = () => {
       [filterType]: value,
     }))
   }
+
+  const handleClearFilters = () => {
+    setFilters({
+      industry: 'all',
+      service: 'all',
+      technology: 'all',
+      engagementType: 'all',
+      year: 'all',
+      region: 'all',
+    })
+    setSearchQuery('')
+  }
+
+  // Filter case studies based on filters and search
+  const filteredCaseStudies = useMemo(() => {
+    return caseStudies.filter(study => {
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        if (!study.title.toLowerCase().includes(query) && 
+            !study.industry.toLowerCase().includes(query) &&
+            !study.tech.toLowerCase().includes(query)) {
+          return false
+        }
+      }
+
+      // Filter by industry
+      if (filters.industry !== 'all' && study.industry.toLowerCase() !== filters.industry) {
+        return false
+      }
+
+      // Filter by technology
+      if (filters.technology !== 'all' && study.tech.toLowerCase() !== filters.technology) {
+        return false
+      }
+
+      return true
+    })
+  }, [filters, searchQuery, caseStudies])
 
   return (
     <div className="pt-0 bg-gradient-to-br from-gray-50 via-white to-sky-50 min-h-screen">
