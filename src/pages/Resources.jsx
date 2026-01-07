@@ -288,18 +288,15 @@ const Resources = () => {
                   </div>
                 </div>
               </motion.div>
-              </motion.div>
 
               {/* Press Releases Section */}
-              <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-white via-indigo-50/30 to-white">
-        <div className="container-custom">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="mb-12"
-          >
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="mb-12"
+              >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center text-3xl shadow-xl">
                 📢
