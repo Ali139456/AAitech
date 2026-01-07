@@ -64,6 +64,20 @@ const CookieConsent = () => {
 
   if (!isVisible) return null
 
+  const cookieVariants = {
+    initial: { scale: 0, rotate: -180 },
+    animate: { 
+      scale: 1, 
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 200, damping: 15 }
+    },
+    hover: { 
+      scale: 1.2, 
+      rotate: 15,
+      transition: { type: 'spring', stiffness: 400, damping: 10 }
+    }
+  }
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -74,80 +88,214 @@ const CookieConsent = () => {
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           className="fixed bottom-0 left-0 right-0 z-[10000] p-4 sm:p-6"
         >
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-gradient-to-br from-white via-gray-50 to-blue-50 rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-primary-600 to-accent-600 p-4 sm:p-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>
-                  </div>
+          {/* Animated Background Blur */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-black/20 backdrop-blur-sm -z-10"
+          />
+          
+          <div className="max-w-6xl mx-auto relative">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="bg-gradient-to-br from-white via-blue-50/50 to-cyan-50/50 rounded-3xl shadow-2xl border-2 border-primary-200/50 overflow-hidden backdrop-blur-xl"
+            >
+              {/* Animated Header with Gradient Background */}
+              <div className="relative bg-gradient-to-r from-primary-600 via-primary-500 to-accent-600 p-4 sm:p-6 overflow-hidden">
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <motion.div
+                    animate={{
+                      x: [0, 100, 0],
+                      y: [0, 50, 0],
+                    }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute w-64 h-64 bg-white rounded-full blur-3xl"
+                  />
+                  <motion.div
+                    animate={{
+                      x: [0, -80, 0],
+                      y: [0, -30, 0],
+                    }}
+                    transition={{
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute top-0 right-0 w-48 h-48 bg-cyan-300 rounded-full blur-3xl"
+                  />
+                </div>
+                
+                <div className="relative flex items-start gap-4">
+                  {/* Animated Cookie Icon */}
+                  <motion.div
+                    variants={cookieVariants}
+                    initial="initial"
+                    animate="animate"
+                    whileHover="hover"
+                    className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-xl border-2 border-white/30"
+                  >
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                      className="text-3xl sm:text-4xl"
+                    >
+                      🍪
+                    </motion.div>
+                  </motion.div>
+                  
                   <div className="flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    <motion.h3
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-xl sm:text-2xl font-extrabold text-white mb-2 flex items-center gap-2"
+                    >
                       We Value Your Privacy
-                    </h3>
-                    <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+                      <motion.span
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="text-2xl"
+                      >
+                        🔒
+                      </motion.span>
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-sm sm:text-base text-white/95 leading-relaxed"
+                    >
                       We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.
-                    </p>
+                    </motion.p>
                   </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-4 sm:p-6">
+              <div className="p-4 sm:p-6 bg-gradient-to-b from-white to-gray-50/50">
                 {!showDetails ? (
                   // Simple View
-                  <div className="space-y-4">
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                      We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.
-                    </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="space-y-5"
+                  >
+                    <div className="flex items-start gap-3 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200/50">
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="text-2xl flex-shrink-0"
+                      >
+                        ℹ️
+                      </motion.div>
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.
+                      </p>
+                    </div>
                     
-                    <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                    <div className="flex flex-wrap items-center gap-3 text-sm">
                       <Link 
                         to="/privacy-policy" 
-                        className="text-primary-600 hover:text-primary-700 font-semibold underline"
+                        className="group inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 font-semibold transition-all duration-300 hover:gap-2"
                       >
-                        Privacy Policy
+                        <span className="underline">Privacy Policy</span>
+                        <motion.svg
+                          whileHover={{ x: 3 }}
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </motion.svg>
                       </Link>
-                      <span>•</span>
+                      <span className="text-gray-400">•</span>
                       <Link 
                         to="/terms-conditions" 
-                        className="text-primary-600 hover:text-primary-700 font-semibold underline"
+                        className="group inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 font-semibold transition-all duration-300 hover:gap-2"
                       >
-                        Terms & Conditions
+                        <span className="underline">Terms & Conditions</span>
+                        <motion.svg
+                          whileHover={{ x: 3 }}
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </motion.svg>
                       </Link>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2">
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={handleAcceptAll}
-                        className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="group relative flex-1 px-6 py-3.5 bg-gradient-to-r from-primary-600 via-primary-500 to-accent-600 text-white font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
                       >
-                        Accept All
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                          animate={{
+                            x: ['-100%', '100%'],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        />
+                        <span className="relative flex items-center justify-center gap-2">
+                          <motion.span
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          >
+                            ✓
+                          </motion.span>
+                          Accept All
+                        </span>
                       </motion.button>
+                      
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={() => setShowDetails(true)}
-                        className="flex-1 px-6 py-3 bg-white border-2 border-primary-600 text-primary-600 font-semibold rounded-xl hover:bg-primary-50 transition-all duration-300"
+                        className="flex-1 px-6 py-3.5 bg-white border-2 border-primary-600 text-primary-600 font-bold rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-cyan-50 transition-all duration-300 shadow-md hover:shadow-lg group"
                       >
-                        Customize Preferences
+                        <span className="flex items-center justify-center gap-2">
+                          <motion.svg
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                          </motion.svg>
+                          Customize
+                        </span>
                       </motion.button>
+                      
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={handleDeny}
-                        className="flex-1 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
+                        className="flex-1 px-6 py-3.5 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-bold rounded-xl hover:from-gray-200 hover:to-gray-300 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         Deny All
                       </motion.button>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : (
                   // Detailed View
                   <motion.div
@@ -157,190 +305,269 @@ const CookieConsent = () => {
                     className="space-y-6"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-lg font-bold text-gray-900">Cookie Preferences</h4>
-                      <button
+                      <motion.h4
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-xl font-extrabold text-gray-900 flex items-center gap-2"
+                      >
+                        <span className="text-2xl">⚙️</span>
+                        Cookie Preferences
+                      </motion.h4>
+                      <motion.button
+                        whileHover={{ rotate: 90, scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                         onClick={() => setShowDetails(false)}
-                        className="text-gray-500 hover:text-gray-700 transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300"
                         aria-label="Hide details"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                      </button>
+                      </motion.button>
                     </div>
 
                     {/* Cookie Categories */}
                     <div className="space-y-4">
                       {/* Necessary Cookies */}
-                      <div className="bg-gray-50 rounded-xl p-4 border-2 border-gray-200">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-gray-500 to-gray-600 rounded-lg flex items-center justify-center">
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                              </svg>
-                            </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="group relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-5 border-2 border-gray-300 shadow-md hover:shadow-lg transition-all duration-300"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200/0 to-gray-300/0 group-hover:from-gray-200/20 group-hover:to-gray-300/20 rounded-2xl transition-all duration-300" />
+                        <div className="relative flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-4">
+                            <motion.div
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              className="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-700 rounded-xl flex items-center justify-center shadow-lg"
+                            >
+                              <span className="text-2xl">🔒</span>
+                            </motion.div>
                             <div>
-                              <h5 className="font-semibold text-gray-900">Necessary</h5>
-                              <p className="text-xs text-gray-500">Always Active</p>
+                              <h5 className="font-bold text-gray-900 text-lg">Necessary</h5>
+                              <p className="text-xs text-gray-500 font-medium">Always Active</p>
                             </div>
                           </div>
-                          <div className="px-3 py-1 bg-gray-200 text-gray-700 text-xs font-semibold rounded-full">
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            className="px-4 py-1.5 bg-gradient-to-r from-gray-400 to-gray-600 text-white text-xs font-bold rounded-full shadow-md"
+                          >
                             Required
-                          </div>
+                          </motion.div>
                         </div>
-                        <p className="text-sm text-gray-600 ml-13">
+                        <p className="text-sm text-gray-600 ml-16 leading-relaxed">
                           Essential cookies required for the website to function properly. These cannot be disabled.
                         </p>
-                      </div>
+                      </motion.div>
 
                       {/* Preferences Cookies */}
-                      <div className={`rounded-xl p-4 border-2 transition-all duration-300 ${
-                        preferences.preferences 
-                          ? 'bg-blue-50 border-blue-300' 
-                          : 'bg-white border-gray-200'
-                      }`}>
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                              preferences.preferences
-                                ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
-                                : 'bg-gray-200'
-                            }`}>
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                              </svg>
-                            </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
+                        whileHover={{ scale: 1.02 }}
+                        className={`group relative rounded-2xl p-5 border-2 transition-all duration-300 shadow-md hover:shadow-xl ${
+                          preferences.preferences 
+                            ? 'bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 border-blue-400 shadow-blue-200/50' 
+                            : 'bg-white border-gray-200 hover:border-blue-300'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-4">
+                            <motion.div
+                              whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                              className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg ${
+                                preferences.preferences
+                                  ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
+                                  : 'bg-gray-200'
+                              }`}
+                            >
+                              <span className="text-2xl">⚙️</span>
+                            </motion.div>
                             <div>
-                              <h5 className="font-semibold text-gray-900">Preferences</h5>
-                              <p className="text-xs text-gray-500">Remember your settings</p>
+                              <h5 className="font-bold text-gray-900 text-lg">Preferences</h5>
+                              <p className="text-xs text-gray-500 font-medium">Remember your settings</p>
                             </div>
                           </div>
-                          <button
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={() => togglePreference('preferences')}
-                            className={`relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                              preferences.preferences ? 'bg-primary-600' : 'bg-gray-300'
+                            className={`relative w-16 h-9 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-lg ${
+                              preferences.preferences ? 'bg-gradient-to-r from-blue-500 to-cyan-500' : 'bg-gray-300'
                             }`}
                             aria-label="Toggle preferences cookies"
                           >
-                            <span
-                              className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                                preferences.preferences ? 'translate-x-6' : 'translate-x-0'
-                              }`}
+                            <motion.span
+                              layout
+                              className="absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-lg"
+                              animate={{
+                                x: preferences.preferences ? 28 : 0,
+                              }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             />
-                          </button>
+                          </motion.button>
                         </div>
-                        <p className="text-sm text-gray-600 ml-13">
+                        <p className="text-sm text-gray-600 ml-16 leading-relaxed">
                           These cookies allow the website to remember choices you make and provide enhanced, personalized features.
                         </p>
-                      </div>
+                      </motion.div>
 
                       {/* Statistics Cookies */}
-                      <div className={`rounded-xl p-4 border-2 transition-all duration-300 ${
-                        preferences.statistics 
-                          ? 'bg-green-50 border-green-300' 
-                          : 'bg-white border-gray-200'
-                      }`}>
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                              preferences.statistics
-                                ? 'bg-gradient-to-br from-green-500 to-emerald-500'
-                                : 'bg-gray-200'
-                            }`}>
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                              </svg>
-                            </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                        whileHover={{ scale: 1.02 }}
+                        className={`group relative rounded-2xl p-5 border-2 transition-all duration-300 shadow-md hover:shadow-xl ${
+                          preferences.statistics 
+                            ? 'bg-gradient-to-br from-green-50 via-emerald-50 to-green-100 border-green-400 shadow-green-200/50' 
+                            : 'bg-white border-gray-200 hover:border-green-300'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-4">
+                            <motion.div
+                              whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                              className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg ${
+                                preferences.statistics
+                                  ? 'bg-gradient-to-br from-green-500 to-emerald-500'
+                                  : 'bg-gray-200'
+                              }`}
+                            >
+                              <span className="text-2xl">📊</span>
+                            </motion.div>
                             <div>
-                              <h5 className="font-semibold text-gray-900">Statistics</h5>
-                              <p className="text-xs text-gray-500">Help us improve</p>
+                              <h5 className="font-bold text-gray-900 text-lg">Statistics</h5>
+                              <p className="text-xs text-gray-500 font-medium">Help us improve</p>
                             </div>
                           </div>
-                          <button
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={() => togglePreference('statistics')}
-                            className={`relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                              preferences.statistics ? 'bg-primary-600' : 'bg-gray-300'
+                            className={`relative w-16 h-9 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-lg ${
+                              preferences.statistics ? 'bg-gradient-to-r from-green-500 to-emerald-500' : 'bg-gray-300'
                             }`}
                             aria-label="Toggle statistics cookies"
                           >
-                            <span
-                              className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                                preferences.statistics ? 'translate-x-6' : 'translate-x-0'
-                              }`}
+                            <motion.span
+                              layout
+                              className="absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-lg"
+                              animate={{
+                                x: preferences.statistics ? 28 : 0,
+                              }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             />
-                          </button>
+                          </motion.button>
                         </div>
-                        <p className="text-sm text-gray-600 ml-13">
+                        <p className="text-sm text-gray-600 ml-16 leading-relaxed">
                           These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.
                         </p>
-                      </div>
+                      </motion.div>
 
                       {/* Marketing Cookies */}
-                      <div className={`rounded-xl p-4 border-2 transition-all duration-300 ${
-                        preferences.marketing 
-                          ? 'bg-purple-50 border-purple-300' 
-                          : 'bg-white border-gray-200'
-                      }`}>
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                              preferences.marketing
-                                ? 'bg-gradient-to-br from-purple-500 to-pink-500'
-                                : 'bg-gray-200'
-                            }`}>
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                              </svg>
-                            </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        whileHover={{ scale: 1.02 }}
+                        className={`group relative rounded-2xl p-5 border-2 transition-all duration-300 shadow-md hover:shadow-xl ${
+                          preferences.marketing 
+                            ? 'bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 border-purple-400 shadow-purple-200/50' 
+                            : 'bg-white border-gray-200 hover:border-purple-300'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-4">
+                            <motion.div
+                              whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                              className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg ${
+                                preferences.marketing
+                                  ? 'bg-gradient-to-br from-purple-500 to-pink-500'
+                                  : 'bg-gray-200'
+                              }`}
+                            >
+                              <span className="text-2xl">📢</span>
+                            </motion.div>
                             <div>
-                              <h5 className="font-semibold text-gray-900">Marketing</h5>
-                              <p className="text-xs text-gray-500">Personalized ads</p>
+                              <h5 className="font-bold text-gray-900 text-lg">Marketing</h5>
+                              <p className="text-xs text-gray-500 font-medium">Personalized ads</p>
                             </div>
                           </div>
-                          <button
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={() => togglePreference('marketing')}
-                            className={`relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                              preferences.marketing ? 'bg-primary-600' : 'bg-gray-300'
+                            className={`relative w-16 h-9 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-lg ${
+                              preferences.marketing ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gray-300'
                             }`}
                             aria-label="Toggle marketing cookies"
                           >
-                            <span
-                              className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                                preferences.marketing ? 'translate-x-6' : 'translate-x-0'
-                              }`}
+                            <motion.span
+                              layout
+                              className="absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-lg"
+                              animate={{
+                                x: preferences.marketing ? 28 : 0,
+                              }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             />
-                          </button>
+                          </motion.button>
                         </div>
-                        <p className="text-sm text-gray-600 ml-13">
+                        <p className="text-sm text-gray-600 ml-16 leading-relaxed">
                           These cookies are used to deliver advertisements that are more relevant to you and your interests.
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
 
                     {/* Action Buttons in Detailed View */}
-                    <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-gray-200"
+                    >
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={handleAcceptSelection}
-                        className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="group relative flex-1 px-6 py-3.5 bg-gradient-to-r from-primary-600 via-primary-500 to-accent-600 text-white font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
                       >
-                        Save Preferences
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                          animate={{
+                            x: ['-100%', '100%'],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        />
+                        <span className="relative flex items-center justify-center gap-2">
+                          <motion.span
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          >
+                            💾
+                          </motion.span>
+                          Save Preferences
+                        </span>
                       </motion.button>
                       <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={handleAcceptAll}
-                        className="flex-1 px-6 py-3 bg-white border-2 border-primary-600 text-primary-600 font-semibold rounded-xl hover:bg-primary-50 transition-all duration-300"
+                        className="flex-1 px-6 py-3.5 bg-white border-2 border-primary-600 text-primary-600 font-bold rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-cyan-50 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         Accept All
                       </motion.button>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
@@ -349,4 +576,3 @@ const CookieConsent = () => {
 }
 
 export default CookieConsent
-
