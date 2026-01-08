@@ -96,14 +96,26 @@ const CookieConsent = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-4"
-        >
-          <div className="max-w-4xl w-full relative">
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10000]"
+            onClick={() => setIsVisible(false)}
+          />
+          
+          {/* Cookie Consent Banner */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[10001] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
+          >
+            <div className="max-w-4xl w-full relative pointer-events-auto">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -571,6 +583,7 @@ const CookieConsent = () => {
             </motion.div>
           </div>
         </motion.div>
+        </>
       )}
     </AnimatePresence>
   )
