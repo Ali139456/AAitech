@@ -441,7 +441,6 @@ const Header = () => {
       columns: null, // Only category, no subcategories
       items: [
         { label: 'Insights & Articles', path: '/resources' },
-        { label: 'Case Studies', path: '/resources' },
         { label: 'Press Releases', path: '/resources' },
         { label: 'Webinars & Events', path: '/resources' },
         { label: 'Videos & Media', path: '/resources' },
