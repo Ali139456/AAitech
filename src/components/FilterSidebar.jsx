@@ -39,7 +39,7 @@ const FilterSidebar = ({ filters, filterOptions, onFilterChange, searchQuery, on
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="w-full lg:w-80 flex-shrink-0 order-first lg:order-last"
+      className="w-full lg:w-80 flex-shrink-0 order-first"
     >
       <div className="lg:sticky lg:top-[100px] bg-white rounded-2xl lg:rounded-2xl rounded-t-3xl lg:rounded-t-2xl shadow-xl lg:shadow-xl shadow-2xl border-2 border-gray-200 overflow-hidden">
         {/* Header */}

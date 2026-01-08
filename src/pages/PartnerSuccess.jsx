@@ -256,7 +256,7 @@ const PartnerSuccess = () => {
 
       {/* Main Content with Sidebar */}
       <section ref={ref} className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-white via-blue-50/30 to-white">
-        <div className="container-custom">
+        <div className="container-custom 2xl:ml-[250px] 2xl:mr-[250px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
             {/* Filter Sidebar - appears first on mobile, last on desktop */}
             <FilterSidebar

@@ -205,7 +205,7 @@ const PressReleases = () => {
 
         {/* Main Content with Sidebar */}
         <section className="py-6 sm:py-8 md:py-12 lg:py-16">
-          <div className="container-custom px-4 sm:px-6">
+          <div className="container-custom px-4 sm:px-6 2xl:ml-[250px] 2xl:mr-[250px]">
             <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8">
               {/* Filter Sidebar - appears first on mobile, last on desktop */}
               <FilterSidebar
