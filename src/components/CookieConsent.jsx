@@ -21,14 +21,18 @@ const CookieConsent = () => {
       // Expose reset function to window for easy testing
       window.resetCookieConsent = () => {
         localStorage.removeItem('cookieConsent')
-        setIsVisible(true)
-        console.log('Cookie consent reset! Banner will show again.')
+        setTimeout(() => setIsVisible(true), 5000)
+        console.log('Cookie consent reset! Banner will show again after 5 seconds.')
       }
     }
     
     if (!cookieConsent) {
-      // Show immediately
-      setIsVisible(true)
+      // Show after 5 seconds
+      const timer = setTimeout(() => {
+        setIsVisible(true)
+      }, 5000)
+      
+      return () => clearTimeout(timer)
     } else {
       // Load saved preferences
       const savedPreferences = JSON.parse(cookieConsent)
@@ -93,13 +97,13 @@ const CookieConsent = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="fixed bottom-0 left-0 right-0 z-[10000] p-3 sm:p-4"
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-4"
         >
-          <div className="max-w-4xl mx-auto relative">
+          <div className="max-w-4xl w-full relative">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -259,12 +263,7 @@ const CookieConsent = () => {
                           }}
                         />
                         <span className="relative flex items-center justify-center gap-2">
-                          <motion.span
-                            animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                          >
-                            ✓
-                          </motion.span>
+                          <span>✓</span>
                           Accept All
                         </span>
                       </motion.button>
@@ -276,16 +275,14 @@ const CookieConsent = () => {
                         className="flex-1 px-4 py-2.5 bg-white border-2 border-primary-600 text-primary-600 font-bold text-sm rounded-lg hover:bg-gradient-to-r hover:from-primary-50 hover:to-cyan-50 transition-all duration-300 shadow-md hover:shadow-lg group"
                       >
                         <span className="flex items-center justify-center gap-1.5">
-                          <motion.svg
-                            animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          <svg
                             className="w-4 h-4"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                          </motion.svg>
+                          </svg>
                           Customize
                         </span>
                       </motion.button>
