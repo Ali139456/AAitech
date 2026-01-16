@@ -36,6 +36,8 @@ module.exports = [
         'https://a-aitech.vercel.app',
         'https://aaitek.com.au',
         /^https:\/\/.*\.vercel\.app$/,
+        /^https:\/\/a-aitech-.*\.vercel\.app$/,
+        /^https:\/\/.*-alis-projects-.*\.vercel\.app$/,
       ],
       credentials: true,
     },
