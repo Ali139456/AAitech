@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import FilterSidebar from '../components/FilterSidebar'
 import SEO from '../components/SEO'
+import { fetchArticles } from '../utils/api'
 
 const Articles = () => {
   const [filters, setFilters] = useState({
@@ -13,6 +14,58 @@ const Articles = () => {
     year: 'all',
   })
   const [searchQuery, setSearchQuery] = useState('')
+  const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        setLoading(true)
+        const response = await fetchArticles()
+        if (response?.data) {
+          // Map Strapi data to component format
+          const mapped = response.data.map(item => ({
+            id: item.id,
+            title: item.attributes?.title || '',
+            slug: item.attributes?.slug || '',
+            excerpt: item.attributes?.excerpt || '',
+            content: item.attributes?.content || '',
+            category: item.attributes?.category || '',
+            author: item.attributes?.author || '',
+            publishedAt: item.attributes?.publishedAt || '',
+            tags: item.attributes?.tags || [],
+            image: item.attributes?.image?.data?.attributes?.url 
+              ? `https://aaitech-production.up.railway.app${item.attributes.image.data.attributes.url}`
+              : item.attributes?.image?.data?.attributes?.formats?.medium?.url
+              ? `https://aaitech-production.up.railway.app${item.attributes.image.data.attributes.formats.medium.url}`
+              : 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+            // Map for filters
+            industry: 'Finance', // Default or from tags
+            serviceArea: item.attributes?.category || 'Engineering',
+            technology: Array.isArray(item.attributes?.tags) 
+              ? item.attributes.tags[0] || 'AI'
+              : 'AI',
+            audience: 'CTO',
+            year: item.attributes?.publishedAt 
+              ? new Date(item.attributes.publishedAt).getFullYear().toString()
+              : '2024',
+            status: 'Published',
+            color: 'from-blue-500 to-cyan-500',
+            icon: '📝',
+            type: 'Article',
+            description: item.attributes?.excerpt || item.attributes?.description || '',
+          }))
+          setArticles(mapped)
+        }
+      } catch (error) {
+        console.error('Error fetching articles:', error)
+        setArticles([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadArticles()
+  }, [])
 
   const filterOptions = {
     industry: ['All Industries', 'Finance', 'Sports', 'Healthcare', 'Government', 'Retail', 'Real Estate', 'Education', 'Energy'],
@@ -22,7 +75,8 @@ const Articles = () => {
     year: ['All Years', '2024', '2023', '2022', '2021'],
   }
 
-  const articles = [
+  // Fallback data (only used if API fails)
+  const fallbackArticles = [
     {
       title: 'Designing Enterprise-Ready AI Solutions',
       slug: 'designing-enterprise-ready-ai-solutions',
@@ -233,22 +287,30 @@ const Articles = () => {
               
               {/* Main Content */}
               <div className="flex-1">
-                {/* Results Count */}
-                <div className="mb-4 sm:mb-6 flex items-center justify-between">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="text-gray-700"
-                  >
-                    <span className="font-bold text-base sm:text-lg">{filteredArticles.length}</span>
-                    <span className="text-gray-600 ml-2 text-sm sm:text-base">
-                      {filteredArticles.length === 1 ? 'Article' : 'Articles'} Found
-                    </span>
-                  </motion.div>
-                </div>
+                {/* Loading State */}
+                {loading ? (
+                  <div className="text-center py-16">
+                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    <p className="mt-4 text-gray-600">Loading articles...</p>
+                  </div>
+                ) : (
+                  <>
+                    {/* Results Count */}
+                    <div className="mb-4 sm:mb-6 flex items-center justify-between">
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-gray-700"
+                      >
+                        <span className="font-bold text-base sm:text-lg">{filteredArticles.length}</span>
+                        <span className="text-gray-600 ml-2 text-sm sm:text-base">
+                          {filteredArticles.length === 1 ? 'Article' : 'Articles'} Found
+                        </span>
+                      </motion.div>
+                    </div>
 
-                {/* Articles Grid */}
-                {filteredArticles.length > 0 ? (
+                    {/* Articles Grid */}
+                    {filteredArticles.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                     {filteredArticles.map((article, index) => (
                       <motion.div
@@ -322,7 +384,9 @@ const Articles = () => {
                     >
                       Clear All Filters
                     </button>
-                  </motion.div>
+                    </motion.div>
+                    )}
+                  </>
                 )}
               </div>
             </div>

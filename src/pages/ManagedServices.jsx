@@ -1,5 +1,39 @@
+import { useState, useEffect } from 'react'
+import { fetchManagedServices } from '../utils/api'
+
 const ManagedServices = () => {
-  const services = [
+  const [services, setServices] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadServices = async () => {
+      try {
+        setLoading(true)
+        const response = await fetchManagedServices()
+        if (response?.data) {
+          // Map Strapi data to component format
+          const mapped = response.data.map(item => ({
+            id: item.id,
+            title: item.attributes?.title || '',
+            slug: item.attributes?.slug || '',
+            description: item.attributes?.description || '',
+            features: item.attributes?.features || [],
+            icon: item.attributes?.icon || '🛠️',
+          }))
+          setServices(mapped)
+        }
+      } catch (error) {
+        console.error('Error fetching managed services:', error)
+        setServices([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadServices()
+  }, [])
+
+  // Fallback data (only used if API fails)
+  const fallbackServices = [
     {
       title: '24/7 Monitoring & Support',
       description: 'Round-the-clock monitoring and support to ensure your systems run smoothly',
@@ -72,8 +106,14 @@ const ManagedServices = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
+        {loading ? (
+          <div className="text-center py-16 mb-16">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+            <p className="mt-4 text-gray-600">Loading managed services...</p>
+          </div>
+        ) : services.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {services.map((service, index) => (
             <div
               key={index}
               className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-0 border border-gray-200"
@@ -91,8 +131,13 @@ const ManagedServices = () => {
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 mb-16">
+            <p className="text-gray-600">No managed services available at the moment.</p>
+          </div>
+        )}
 
         <div className="bg-gray-800 rounded-xl p-8 md:p-12">
           <div className="max-w-3xl mx-auto text-center">
