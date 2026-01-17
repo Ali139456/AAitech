@@ -96,7 +96,7 @@ const ArticleDetail = () => {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": article.title,
-    "description": article.description,
+    "description": article.description || article.excerpt,
     "image": article.image || "https://aaitek.com.au/logo.png",
     "author": {
       "@type": "Organization",
@@ -110,7 +110,7 @@ const ArticleDetail = () => {
         "url": "https://aaitek.com.au/logo.png"
       }
     },
-    "datePublished": article.date,
+    "datePublished": article.publishedAt || new Date().toISOString(),
     "url": `https://aaitek.com.au/article/${slug}`,
   }
 
@@ -217,7 +217,7 @@ const ArticleDetail = () => {
             )}
 
             {/* Full Content */}
-            {(article.fullContent || article.content) && (
+            {(article.fullContent || article.content) ? (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -227,8 +227,18 @@ const ArticleDetail = () => {
               >
                 <div 
                   className="prose prose-lg max-w-none text-gray-700 prose-headings:text-gray-900 prose-a:text-blue-600 prose-strong:text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: article.fullContent || article.content }}
+                  dangerouslySetInnerHTML={{ __html: article.fullContent || article.content || '<p>No content available.</p>' }}
                 />
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="bg-white rounded-3xl p-8 md:p-12 border-2 border-gray-200 shadow-xl mb-8"
+              >
+                <p className="text-gray-600 text-lg">Content coming soon...</p>
               </motion.div>
             )}
 
